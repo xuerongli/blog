@@ -3,18 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>My First Post | 遥感数据挖掘与应用</title>
+  <title>Digital Image Processing - MATLAB part1 | 遥感数据挖掘与应用</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录足迹、总结提高">
+  <meta name="description" content="#1．PricipalInput –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
+#2．Excise
+##(1) Ex1A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display imageimagesc(A);image(A); % axis off / on;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My First Post">
-<meta property="og:url" content="http://xuerongli.github.io/2017/03/16/My-First-Post-1/index.html">
+<meta property="og:title" content="Digital Image Processing - MATLAB part1">
+<meta property="og:url" content="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/index.html">
 <meta property="og:site_name" content="遥感数据挖掘与应用">
-<meta property="og:description" content="记录足迹、总结提高">
-<meta property="og:updated_time" content="2017-03-16T06:05:26.507Z">
+<meta property="og:description" content="#1．PricipalInput –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
+#2．Excise
+##(1) Ex1A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display imageimagesc(A);image(A); % axis off / on;">
+<meta property="og:image" content="http://xuerongli.github.io/img/cameraman_show.jpg">
+<meta property="og:updated_time" content="2017-03-21T09:12:41.819Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My First Post">
-<meta name="twitter:description" content="记录足迹、总结提高">
+<meta name="twitter:title" content="Digital Image Processing - MATLAB part1">
+<meta name="twitter:description" content="#1．PricipalInput –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
+#2．Excise
+##(1) Ex1A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display imageimagesc(A);image(A); % axis off / on;">
+<meta name="twitter:image" content="http://xuerongli.github.io/img/cameraman_show.jpg">
   
     <link rel="alternate" href="/atom.xml" title="遥感数据挖掘与应用" type="application/atom+xml">
   
@@ -65,12 +73,16 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-My-First-Post-1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Matlab_DIP1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/16/My-First-Post-1/" class="article-date">
-  <time datetime="2017-03-16T06:05:26.000Z" itemprop="datePublished">2017-03-16</time>
+    <a href="/2017/03/20/Matlab_DIP1/" class="article-date">
+  <time datetime="2017-03-20T13:20:25.000Z" itemprop="datePublished">2017-03-20</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/matlab/">matlab</a>►<a class="article-category-link" href="/categories/matlab/DIP/">DIP</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -79,7 +91,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      My First Post
+      Digital Image Processing - MATLAB part1
     </h1>
   
 
@@ -87,32 +99,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>#1．Pricipal<br>Input –&gt; matrix –&gt; computing –&gt; output</p>
+<p>#2．Excise</p>
+<p>##(1) Ex1<br>A= imread(‘cameraman.tif’); % Read image from graphics file<br>imshow(A); % Display image<br>imagesc(A);<br>image(A); % axis off / on;<br><img src="/img/cameraman_show.jpg" alt="&#39;Camera Man&#39;"><br>Whos A;  % List variables in workspace<br>imfinfo cameraman.tif; % Information about graphics file<br>imwrite(A,’1cameraman.jpg’,’quality’,50) % Write image to jpg graphics file, compress the file from 60k to 6k<br>% imwrite(f,’filename.jpg’,’quality’,q) 0&lt;=q&lt;=100<br>imwrite(A,’cameraman.bmp’,’bmp’) % Write image to bmp graphics file<br>B=im2bw(A) % Convert image to binary image, based on threshold<br>subplot(1,2,1),imshow(A); % Create axes in tiled positions<br>subplot(1,2,2),imshow(B);</p>
+<p>##(2) Ex2<br>C=imread(‘greens.jpg’);<br>D=rgb2gray(C); % Convert RGB image or colormap to grayscale<br>subplot(1,2,1),imshow(C);<br>subplot(1,2,2),imshow(D)</p>
+<p>##(3)<br>imread的常见调用格式为：<br>A = imread(filename,fmt)<br>其作用是将文件名用字符串filename表示的，扩展名用fmt表示的图像文件中的数据读到矩阵A中。如果filename所指的为灰度级图像，则A为一个二维矩阵；如果filename所指的为RGB图像，则A为一个m×n×3的三维矩阵。Filename表示的文件名必须在MATLAB的搜索路径范围内，否则需指出其完整路径。</p>
+<p>imread的其他几种重要的调用格式为：<br>[X,map] = imread(filename.fmt)<br>[…] = imread(filename)<br>[…] = imread(URL,…)<br>[…] = imread(…,idx); % (CUR,ICO and TIFF only), idx是指读取图标（cur、ico、tiff）文件中第idx个图像，默认值为1。<br>[…] = imread(…,’frames’,idx) (GIF only), ’frame’,idx是指读取gif文件中的图像帧，idx值可以是数量、向量或’all’。<br>[…] = imread(…,ref) (HDF only) % ref是指整数值<br>[…] = imread(…,’BackgroundColor’,BG) (PNG only)<br>[A,map,alpha] = imread(…) (ICO,CUR and PNG only) % alpha是指透明度</p>
+<p>##(4)<br>为什么用I = imread(‘lena.bmp’) 命令得到的图像I 不可以进行算术运算？<br>MATLAB系统默认的算术运算是针对双精度类型(double)的数据，而上述命令产生的矩阵的数据类型是无符号8位(MATLAB为图像提供的特殊的数据类型)，直接进行运算会溢出。<br>可以I = double(I); 先转换为浮点数进行运算，然后再转换为无符号数。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/My-First-Post-1/" data-id="cj0jbohlf0005o4p6alkji7q2" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0jbohl30000o4p61vqfa2wc" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DIP/">DIP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2017/03/16/my-new-post/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          评论文章
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/16/My-First-Post/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/16/my-new-post/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo发表的文章</div>
+      <div class="article-nav-title">评论文章</div>
     </a>
   
 </nav>
