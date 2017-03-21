@@ -92,18 +92,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#1．Pricipal<br>Input –&gt; matrix –&gt; computing –&gt; output</p>
+        <h1 id="1．Pricipal"><a href="#1．Pricipal" class="headerlink" title="1．Pricipal"></a>1．Pricipal</h1><p>Input –&gt; matrix –&gt; computing –&gt; output</p>
 <p>#2．Excise</p>
-<p>##(1) Ex1<br>A= imread(‘cameraman.tif’); % Read image from graphics file<br>imshow(A); % Display image<br>imagesc(A);<br>image(A); % axis off / on;<br><img src="/img/cameraman_show.jpg" alt="&#39;Camera Man&#39;"><br>Whos A;  % List variables in workspace<br>imfinfo cameraman.tif; % Information about graphics file<br>imwrite(A,’1cameraman.jpg’,’quality’,50) % Write image to jpg graphics file, compress the file from 60k to 6k<br>% imwrite(f,’filename.jpg’,’quality’,q) 0&lt;=q&lt;=100<br>imwrite(A,’cameraman.bmp’,’bmp’) % Write image to bmp graphics file<br>B=im2bw(A) % Convert image to binary image, based on threshold<br>subplot(1,2,1),imshow(A); % Create axes in tiled positions<br>subplot(1,2,2),imshow(B);</p>
-<p>##(2) Ex2<br>C=imread(‘greens.jpg’);<br>D=rgb2gray(C); % Convert RGB image or colormap to grayscale<br>subplot(1,2,1),imshow(C);<br>subplot(1,2,2),imshow(D)</p>
-<p>##(3)<br>imread的常见调用格式为：<br>A = imread(filename,fmt)<br>其作用是将文件名用字符串filename表示的，扩展名用fmt表示的图像文件中的数据读到矩阵A中。如果filename所指的为灰度级图像，则A为一个二维矩阵；如果filename所指的为RGB图像，则A为一个m×n×3的三维矩阵。Filename表示的文件名必须在MATLAB的搜索路径范围内，否则需指出其完整路径。</p>
-<p>imread的其他几种重要的调用格式为：<br>[X,map] = imread(filename.fmt)<br>[…] = imread(filename)<br>[…] = imread(URL,…)<br>[…] = imread(…,idx); % (CUR,ICO and TIFF only), idx是指读取图标（cur、ico、tiff）文件中第idx个图像，默认值为1。<br>[…] = imread(…,’frames’,idx) (GIF only), ’frame’,idx是指读取gif文件中的图像帧，idx值可以是数量、向量或’all’。<br>[…] = imread(…,ref) (HDF only) % ref是指整数值<br>[…] = imread(…,’BackgroundColor’,BG) (PNG only)<br>[A,map,alpha] = imread(…) (ICO,CUR and PNG only) % alpha是指透明度</p>
-<p>##(4)<br>为什么用I = imread(‘lena.bmp’) 命令得到的图像I 不可以进行算术运算？<br>MATLAB系统默认的算术运算是针对双精度类型(double)的数据，而上述命令产生的矩阵的数据类型是无符号8位(MATLAB为图像提供的特殊的数据类型)，直接进行运算会溢出。<br>可以I = double(I); 先转换为浮点数进行运算，然后再转换为无符号数。</p>
+<h2 id="1-Ex1"><a href="#1-Ex1" class="headerlink" title="(1) Ex1"></a>(1) Ex1</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A= imread(‘cameraman.tif’); % Read image <span class="keyword">from</span> graphics file</div><div class="line">imshow(A); % Display image </div><div class="line">imagesc(A);</div><div class="line">image(A); % axis off / on;</div></pre></td></tr></table></figure>
+<p><img src="/img/cameraman.png" alt="&#39;Camera Man&#39;"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Whos A;  % List variables <span class="keyword">in</span> workspace</div><div class="line">imfinfo cameraman.tif; % Information about graphics file</div><div class="line">imwrite(A,’<span class="number">1</span>cameraman.jpg’,’quality’,<span class="number">50</span>) % Write image to jpg graphics file, compress the file <span class="keyword">from</span> <span class="number">60</span>k to <span class="number">6</span>k</div><div class="line">% imwrite(f,’filename.jpg’,’quality’,q) <span class="number">0</span>&lt;=q&lt;=<span class="number">100</span></div><div class="line">imwrite(A,’cameraman.bmp’,’bmp’) % Write image to bmp graphics file</div><div class="line">B=im2bw(A) % Convert image to binary image, based on threshold</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),imshow(A); % Create axes <span class="keyword">in</span> tiled positions</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),imshow(B);</div></pre></td></tr></table></figure></p>
+<h2 id="2-Ex2"><a href="#2-Ex2" class="headerlink" title="(2) Ex2"></a>(2) Ex2</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">C=imread(‘greens.jpg’);</div><div class="line">D=rgb2gray(C); % Convert RGB image or colormap to grayscale</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),imshow(C);</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),imshow(D)</div></pre></td></tr></table></figure>
+<h2 id="3-imread"><a href="#3-imread" class="headerlink" title="(3) imread"></a>(3) imread</h2><p>imread的常见调用格式为：<br>A = imread(filename,fmt)<br>其作用是将文件名用字符串filename表示的，扩展名用fmt表示的图像文件中的数据读到矩阵A中。如果filename所指的为灰度级图像，则A为一个二维矩阵；如果filename所指的为RGB图像，则A为一个m×n×3的三维矩阵。Filename表示的文件名必须在MATLAB的搜索路径范围内，否则需指出其完整路径。</p>
+<p>imread的其他几种重要的调用格式为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[X,map] = imread(filename.fmt)</div><div class="line">[…] = imread(filename)</div><div class="line">[…] = imread(URL,…)</div><div class="line">[…] = imread(…,idx); % (CUR,ICO and TIFF only), idx是指读取图标（cur、ico、tiff）文件中第idx个图像，默认值为<span class="number">1</span>。</div><div class="line">[…] = imread(…,’frames’,idx) (GIF only), ’frame’,idx是指读取gif文件中的图像帧，idx值可以是数量、向量或’all’。</div><div class="line">[…] = imread(…,ref) (HDF only) % ref是指整数值</div><div class="line">[…] = imread(…,’BackgroundColor’,BG) (PNG only)</div><div class="line">[A,map,alpha] = imread(…) (ICO,CUR and PNG only) % alpha是指透明度</div></pre></td></tr></table></figure></p>
+<h2 id="4"><a href="#4" class="headerlink" title="(4)"></a>(4)</h2><p>为什么用I = imread(‘lena.bmp’) 命令得到的图像I 不可以进行算术运算？<br>MATLAB系统默认的算术运算是针对双精度类型(double)的数据，而上述命令产生的矩阵的数据类型是无符号8位(MATLAB为图像提供的特殊的数据类型)，直接进行运算会溢出。<br>可以I = double(I); 先转换为浮点数进行运算，然后再转换为无符号数。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0jbohl30000o4p61vqfa2wc" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0jc5r7l0004jsp6jkq19nj1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DIP/">DIP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
@@ -152,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/my-new-post/" data-id="cj0jbohlj0006o4p6djkzecfg" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/my-new-post/" data-id="cj0jc5r7y0007jsp6teo0431p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文章/">文章</a></li></ul>
@@ -190,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/My-First-Post-1/" data-id="cj0jbohlf0005o4p6alkji7q2" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/My-First-Post-1/" data-id="cj0jc5r7d0002jsp6bel62h7a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/My-First-Post/" data-id="cj0jbohlo000ao4p6j7hguayn" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/My-First-Post/" data-id="cj0jc5r7j0003jsp6uyscutn8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
@@ -278,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/hello-world/" data-id="cj0jbohlm0007o4p6hchuzvs3" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/hello-world/" data-id="cj0jc5r820008jsp6pmowe40y" class="article-share-link">Share</a>
       
       
     </footer>
