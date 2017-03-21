@@ -6,22 +6,19 @@
   <title>Digital Image Processing - MATLAB part1 | 遥感数据挖掘与应用</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1．PricipalInput –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
-#2．Excise
-(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc(A);image(A); % axis off / o">
+2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc(A);image(A); % axis off / on;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Digital Image Processing - MATLAB part1">
 <meta property="og:url" content="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/index.html">
 <meta property="og:site_name" content="遥感数据挖掘与应用">
 <meta property="og:description" content="1．PricipalInput –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
-#2．Excise
-(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc(A);image(A); % axis off / o">
+2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc(A);image(A); % axis off / on;">
 <meta property="og:image" content="http://xuerongli.github.io/img/cameraman.png">
-<meta property="og:updated_time" content="2017-03-21T09:26:33.015Z">
+<meta property="og:updated_time" content="2017-03-21T09:36:13.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Digital Image Processing - MATLAB part1">
 <meta name="twitter:description" content="1．PricipalInput –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
-#2．Excise
-(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc(A);image(A); % axis off / o">
+2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc(A);image(A); % axis off / on;">
 <meta name="twitter:image" content="http://xuerongli.github.io/img/cameraman.png">
   
     <link rel="alternate" href="/atom.xml" title="遥感数据挖掘与应用" type="application/atom+xml">
@@ -100,8 +97,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="1．Pricipal"><a href="#1．Pricipal" class="headerlink" title="1．Pricipal"></a>1．Pricipal</h1><p>Input –&gt; matrix –&gt; computing –&gt; output</p>
-<p>#2．Excise</p>
-<h2 id="1-Ex1"><a href="#1-Ex1" class="headerlink" title="(1) Ex1"></a>(1) Ex1</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A= imread(‘cameraman.tif’); % Read image <span class="keyword">from</span> graphics file</div><div class="line">imshow(A); % Display image </div><div class="line">imagesc(A);</div><div class="line">image(A); % axis off / on;</div></pre></td></tr></table></figure>
+<h1 id="2．Excise"><a href="#2．Excise" class="headerlink" title="2．Excise"></a>2．Excise</h1><h2 id="1-Ex1"><a href="#1-Ex1" class="headerlink" title="(1) Ex1"></a>(1) Ex1</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A= imread(‘cameraman.tif’); % Read image <span class="keyword">from</span> graphics file</div><div class="line">imshow(A); % Display image </div><div class="line">imagesc(A);</div><div class="line">image(A); % axis off / on;</div></pre></td></tr></table></figure>
 <p><img src="/img/cameraman.png" alt="&#39;Camera Man&#39;"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Whos A;  % List variables <span class="keyword">in</span> workspace</div><div class="line">imfinfo cameraman.tif; % Information about graphics file</div><div class="line">imwrite(A,’<span class="number">1</span>cameraman.jpg’,’quality’,<span class="number">50</span>) % Write image to jpg graphics file, compress the file <span class="keyword">from</span> <span class="number">60</span>k to <span class="number">6</span>k</div><div class="line">% imwrite(f,’filename.jpg’,’quality’,q) <span class="number">0</span>&lt;=q&lt;=<span class="number">100</span></div><div class="line">imwrite(A,’cameraman.bmp’,’bmp’) % Write image to bmp graphics file</div><div class="line">B=im2bw(A) % Convert image to binary image, based on threshold</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),imshow(A); % Create axes <span class="keyword">in</span> tiled positions</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),imshow(B);</div></pre></td></tr></table></figure></p>
 <h2 id="2-Ex2"><a href="#2-Ex2" class="headerlink" title="(2) Ex2"></a>(2) Ex2</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">C=imread(‘greens.jpg’);</div><div class="line">D=rgb2gray(C); % Convert RGB image or colormap to grayscale</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),imshow(C);</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),imshow(D)</div></pre></td></tr></table></figure>
 <h2 id="3-imread"><a href="#3-imread" class="headerlink" title="(3) imread"></a>(3) imread</h2><p>imread的常见调用格式为：<br>A = imread(filename,fmt)<br>其作用是将文件名用字符串filename表示的，扩展名用fmt表示的图像文件中的数据读到矩阵A中。如果filename所指的为灰度级图像，则A为一个二维矩阵；如果filename所指的为RGB图像，则A为一个m×n×3的三维矩阵。Filename表示的文件名必须在MATLAB的搜索路径范围内，否则需指出其完整路径。</p>
@@ -111,7 +107,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0jcdykn0000g0p6xc3asqx7" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0jci8do000280p6kn5qrdma" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DIP/">DIP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
