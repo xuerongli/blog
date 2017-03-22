@@ -5,16 +5,28 @@
   
   <title>Hexo + Github Pages | 遥感数据挖掘与应用</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录足迹、总结提高">
+  <meta name="description" content="博客架设于github；静态博客hexo；markdown写作。数据归自己管，可以本地随时查看，对外是博客，对内知识库。
+1. Github配置
+注册Github账号访问地址：https://github.com用户名：[uname]邮箱：[user]@yic.ac.cn密码：[passwd]成功后，访问地址：https://[uname].github.com
+
+创建代码库New reposit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo + Github Pages">
 <meta property="og:url" content="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/index.html">
 <meta property="og:site_name" content="遥感数据挖掘与应用">
-<meta property="og:description" content="记录足迹、总结提高">
-<meta property="og:updated_time" content="2017-03-22T00:22:27.643Z">
+<meta property="og:description" content="博客架设于github；静态博客hexo；markdown写作。数据归自己管，可以本地随时查看，对外是博客，对内知识库。
+1. Github配置
+注册Github账号访问地址：https://github.com用户名：[uname]邮箱：[user]@yic.ac.cn密码：[passwd]成功后，访问地址：https://[uname].github.com
+
+创建代码库New reposit">
+<meta property="og:updated_time" content="2017-03-22T05:11:58.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo + Github Pages">
-<meta name="twitter:description" content="记录足迹、总结提高">
+<meta name="twitter:description" content="博客架设于github；静态博客hexo；markdown写作。数据归自己管，可以本地随时查看，对外是博客，对内知识库。
+1. Github配置
+注册Github账号访问地址：https://github.com用户名：[uname]邮箱：[user]@yic.ac.cn密码：[passwd]成功后，访问地址：https://[uname].github.com
+
+创建代码库New reposit">
   
     <link rel="alternate" href="/atom.xml" title="遥感数据挖掘与应用" type="application/atom+xml">
   
@@ -91,11 +103,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>博客架设于github；静态博客hexo；markdown写作。数据归自己管，可以本地随时查看，对外是博客，对内知识库。</p>
+<h1 id="1-Github配置"><a href="#1-Github配置" class="headerlink" title="1. Github配置"></a>1. Github配置</h1><ul>
+<li><p>注册Github账号<br>访问地址：<a href="https://github.com" target="_blank" rel="external">https://github.com</a><br>用户名：[<strong>uname</strong>]<br>邮箱：[<strong>user</strong>]@yic.ac.cn<br>密码：[<strong>passwd</strong>]<br>成功后，访问地址：<a href="https://[uname].github.com" target="_blank" rel="external">https://[uname].github.com</a></p>
+</li>
+<li><p>创建代码库<br>New repository …<br>作为博客使用,则repository name名字填写：uname.github.io</p>
+</li>
+<li><p>开启GitHub Pages功能<br>Settings -&gt; GitHub Pages …</p>
+</li>
+<li><p>完成后，可以正常访问：<a href="http://[uname].github.io" target="_blank" rel="external">http://[uname].github.io</a></p>
+</li>
+</ul>
+<h1 id="2-Windows下环境配置"><a href="#2-Windows下环境配置" class="headerlink" title="2. Windows下环境配置"></a>2. Windows下环境配置</h1><ul>
+<li>下载并配置Node.js<br>下载Windows Installer 32-bit （<a href="https://nodejs.org/en/download/）" target="_blank" rel="external">https://nodejs.org/en/download/）</a><br>默认安装…<br>安装完后， Win + R 打开运行cmd窗口，输入代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; node -v</div><div class="line">&gt; npm -v</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>检查是否安装正确</p>
+<ul>
+<li>下载并配置Git环境<br>下载Git（<a href="https://git-scm.com/downloads）" target="_blank" rel="external">https://git-scm.com/downloads）</a><br>默认安装…<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; git --version</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>检查是否安装正确</p>
+<h1 id="3-Hexo安装与配置"><a href="#3-Hexo安装与配置" class="headerlink" title="3. Hexo安装与配置"></a>3. Hexo安装与配置</h1><p>在C盘建立MyBlog文件夹，作为工作目录。<br>打开文件夹并在空白处按住<strong>Shift+鼠标右键</strong>，然后选择“在此处打开命令窗口”。<br>输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; npm install hexo-cli –g</div><div class="line">&gt; npm install hexo –save</div><div class="line">&gt; hexo -v</div></pre></td></tr></table></figure></p>
+<p>安装Hexo，并验证。<br>初始化Hexo, 然后自动安装所需组件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; hexo init</div><div class="line">&gt; npm install</div></pre></td></tr></table></figure></p>
+<p>运行Hexo 服务，然后可以在浏览器中打开<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 访问Web页面。</p>
+<h1 id="4-常用Hexo命令"><a href="#4-常用Hexo命令" class="headerlink" title="4. 常用Hexo命令"></a>4. 常用Hexo命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">hexo init &lt;folder&gt; # 创建并初始化一个站点文件夹</div><div class="line">hexo clean # 用于主题切换等涉及到站点整体布局效果改变时清除hexo原有缓存</div><div class="line">hexo new &apos;article title&apos; # 新增一篇文章</div><div class="line">hexo generate # 可以简写为 hexo g ，为文章自动生成静态页面的文件</div><div class="line">hexo server # 可简写为 hexo s ，开启本地服务器，测试静态页面的效果</div><div class="line">hexo deploy # 可简写为 hexo d ，将本地页面部署到GitHub Pages上</div><div class="line">hexo generate -d # 生成静态页面的文件并直接部署</div><div class="line">hexo deploy -g # 跟上一条命令相同作用</div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/" data-id="cj0k8t7z7000020p6hx5yf8dh" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/" data-id="cj0k84kpv001kfop64uugg35x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -106,20 +143,15 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/03/16/my-new-post/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/16/Hexo-advance/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          评论文章
+          Hexo 进阶
         
       </div>
     </a>
   
-  
-    <a href="/2017/03/16/Hexo-QuickStart/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo Quick Start</div>
-    </a>
   
 </nav>
 
@@ -184,15 +216,15 @@
           </li>
         
           <li>
-            <a href="/2017/03/16/Hexo-Githubpages/">Hexo + Github Pages</a>
-          </li>
-        
-          <li>
             <a href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
           </li>
         
           <li>
             <a href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/16/Hexo-Githubpages/">Hexo + Github Pages</a>
           </li>
         
       </ul>
