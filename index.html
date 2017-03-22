@@ -92,7 +92,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1．Pricipal"><a href="#1．Pricipal" class="headerlink" title="1．Pricipal"></a>1．Pricipal</h1><p>Digital Image Processing (DIP)<br>Input –&gt; matrix –&gt; computing –&gt; output</p>
+        <h1 id="1．Principal"><a href="#1．Principal" class="headerlink" title="1．Principal"></a>1．Principal</h1><p>Digital Image Processing (DIP)<br>Input –&gt; matrix –&gt; computing –&gt; output</p>
 <h1 id="2．Excise"><a href="#2．Excise" class="headerlink" title="2．Excise"></a>2．Excise</h1><h2 id="1-Ex1"><a href="#1-Ex1" class="headerlink" title="(1) Ex1"></a>(1) Ex1</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A= imread(‘cameraman.tif’); % Read image <span class="keyword">from</span> graphics file</div><div class="line">imshow(A); % Display image </div><div class="line">imagesc(A);</div><div class="line">image(A); % axis off / on;</div></pre></td></tr></table></figure>
 <p><img src="/img/cameraman.png" alt="&#39;Camera Man&#39;"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Whos A;  % List variables <span class="keyword">in</span> workspace</div><div class="line">imfinfo cameraman.tif; % Information about graphics file</div><div class="line">imwrite(A,’<span class="number">1</span>cameraman.jpg’,’quality’,<span class="number">50</span>) % Write image to jpg graphics file, compress the file <span class="keyword">from</span> <span class="number">60</span>k to <span class="number">6</span>k</div><div class="line">% imwrite(f,’filename.jpg’,’quality’,q) <span class="number">0</span>&lt;=q&lt;=<span class="number">100</span></div><div class="line">imwrite(A,’cameraman.bmp’,’bmp’) % Write image to bmp graphics file</div><div class="line">B=im2bw(A) % Convert image to binary image, based on threshold</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),imshow(A); % Create axes <span class="keyword">in</span> tiled positions</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),imshow(B);</div></pre></td></tr></table></figure></p>
         
@@ -103,7 +103,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0kiwqsi00079kp6x45355p6" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0kiys2b0007nsp6zd1lqlh2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DIP/">DIP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
@@ -158,10 +158,57 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/" data-id="cj0kiwqs200029kp696km1xuq" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/" data-id="cj0kiys1s0002nsp6srmjkyjw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Hexo-advance" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/16/Hexo-advance/" class="article-date">
+  <time datetime="2017-03-16T06:01:25.000Z" itemprop="datePublished">2017-03-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/hexo/">hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>hexo new ‘filename’<br>或者直接在_posts目录下创建 filename.md文件<br>然后打开并编辑该文件，头部信息以—开始和结尾<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 文章名称  #文章页面上的显示名称，可以任意修改，不会出现在URL中</div><div class="line">layout: post</div><div class="line">date: 2014-11-10 10:07:43  #文章生成时间，一般不改，当然也可以任意修改</div><div class="line">updated: 2014-11-12 13:24</div><div class="line">comments: true</div><div class="line">categories: </div><div class="line">- Git</div><div class="line">tags: </div><div class="line">- hexo</div><div class="line">- pages</div><div class="line">---</div><div class="line">正文</div><div class="line">... ...</div></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/16/Hexo-advance/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-advance/" data-id="cj0kiys1x0003nsp6jlvvfaas" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
     </footer>
   </div>
@@ -207,57 +254,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-QuickStart/" data-id="cj0kiwqs700039kp6s2l29ku3" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-QuickStart/" data-id="cj0kiys270006nsp6kir6jf8r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Hexo-advance" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/16/Hexo-advance/" class="article-date">
-  <time datetime="2017-03-16T06:01:25.000Z" itemprop="datePublished">2017-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>hexo new ‘filename’<br>或者直接在_posts目录下创建 filename.md文件<br>然后打开并编辑该文件，头部信息以—开始和结尾<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 文章名称  #文章页面上的显示名称，可以任意修改，不会出现在URL中</div><div class="line">layout: post</div><div class="line">date: 2014-11-10 10:07:43  #文章生成时间，一般不改，当然也可以任意修改</div><div class="line">updated: 2014-11-12 13:24</div><div class="line">comments: true</div><div class="line">categories: </div><div class="line">- Git</div><div class="line">tags: </div><div class="line">- hexo</div><div class="line">- pages</div><div class="line">---</div><div class="line">正文</div><div class="line">... ...</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/03/16/Hexo-advance/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-advance/" data-id="cj0kiwqse00069kp6ta246ulw" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
     </footer>
   </div>
@@ -325,11 +325,11 @@
           </li>
         
           <li>
-            <a href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
+            <a href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
           </li>
         
           <li>
-            <a href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
+            <a href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
           </li>
         
       </ul>

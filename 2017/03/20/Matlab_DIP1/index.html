@@ -5,20 +5,20 @@
   
   <title>Matlab DIP - part1 | 遥感数据挖掘与应用</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1．PricipalDigital Image Processing (DIP)Input –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
-2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc">
+  <meta name="description" content="1．PrincipalDigital Image Processing (DIP)Input –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
+2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image images">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Matlab DIP - part1">
 <meta property="og:url" content="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/index.html">
 <meta property="og:site_name" content="遥感数据挖掘与应用">
-<meta property="og:description" content="1．PricipalDigital Image Processing (DIP)Input –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
-2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc">
+<meta property="og:description" content="1．PrincipalDigital Image Processing (DIP)Input –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
+2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image images">
 <meta property="og:image" content="http://xuerongli.github.io/img/cameraman.png">
-<meta property="og:updated_time" content="2017-03-22T05:23:04.925Z">
+<meta property="og:updated_time" content="2017-03-22T05:24:51.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Matlab DIP - part1">
-<meta name="twitter:description" content="1．PricipalDigital Image Processing (DIP)Input –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
-2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc">
+<meta name="twitter:description" content="1．PrincipalDigital Image Processing (DIP)Input –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
+2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image images">
 <meta name="twitter:image" content="http://xuerongli.github.io/img/cameraman.png">
   
     <link rel="alternate" href="/atom.xml" title="遥感数据挖掘与应用" type="application/atom+xml">
@@ -96,7 +96,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1．Pricipal"><a href="#1．Pricipal" class="headerlink" title="1．Pricipal"></a>1．Pricipal</h1><p>Digital Image Processing (DIP)<br>Input –&gt; matrix –&gt; computing –&gt; output</p>
+        <h1 id="1．Principal"><a href="#1．Principal" class="headerlink" title="1．Principal"></a>1．Principal</h1><p>Digital Image Processing (DIP)<br>Input –&gt; matrix –&gt; computing –&gt; output</p>
 <h1 id="2．Excise"><a href="#2．Excise" class="headerlink" title="2．Excise"></a>2．Excise</h1><h2 id="1-Ex1"><a href="#1-Ex1" class="headerlink" title="(1) Ex1"></a>(1) Ex1</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A= imread(‘cameraman.tif’); % Read image <span class="keyword">from</span> graphics file</div><div class="line">imshow(A); % Display image </div><div class="line">imagesc(A);</div><div class="line">image(A); % axis off / on;</div></pre></td></tr></table></figure>
 <p><img src="/img/cameraman.png" alt="&#39;Camera Man&#39;"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Whos A;  % List variables <span class="keyword">in</span> workspace</div><div class="line">imfinfo cameraman.tif; % Information about graphics file</div><div class="line">imwrite(A,’<span class="number">1</span>cameraman.jpg’,’quality’,<span class="number">50</span>) % Write image to jpg graphics file, compress the file <span class="keyword">from</span> <span class="number">60</span>k to <span class="number">6</span>k</div><div class="line">% imwrite(f,’filename.jpg’,’quality’,q) <span class="number">0</span>&lt;=q&lt;=<span class="number">100</span></div><div class="line">imwrite(A,’cameraman.bmp’,’bmp’) % Write image to bmp graphics file</div><div class="line">B=im2bw(A) % Convert image to binary image, based on threshold</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),imshow(A); % Create axes <span class="keyword">in</span> tiled positions</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),imshow(B);</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -108,7 +108,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0kiwqsi00079kp6x45355p6" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0kiys2b0007nsp6zd1lqlh2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DIP/">DIP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
@@ -188,11 +188,11 @@
           </li>
         
           <li>
-            <a href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
+            <a href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
           </li>
         
           <li>
-            <a href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
+            <a href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
           </li>
         
       </ul>
