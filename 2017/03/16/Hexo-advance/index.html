@@ -11,12 +11,10 @@
 <meta property="og:url" content="http://xuerongli.github.io/2017/03/16/Hexo-advance/index.html">
 <meta property="og:site_name" content="遥感数据挖掘与应用">
 <meta property="og:description" content="写文章hexo new ‘filename’或者直接在_posts目录下创建 filename.md文件然后打开并编辑该文件，头部信息以—开始和结尾1234567891011121314---title: 文章名称  #文章页面上的显示名称，可以任意修改，不会出现在URL中layout: postdate: 2014-11-10 10:07:43  #文章生成时间，一般不改，当然也可以任意修改up">
-<meta property="og:image" content="http://xuerongli.github.io/链接地址">
-<meta property="og:updated_time" content="2017-03-21T10:12:04.888Z">
+<meta property="og:updated_time" content="2017-03-22T00:39:31.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 进阶">
 <meta name="twitter:description" content="写文章hexo new ‘filename’或者直接在_posts目录下创建 filename.md文件然后打开并编辑该文件，头部信息以—开始和结尾1234567891011121314---title: 文章名称  #文章页面上的显示名称，可以任意修改，不会出现在URL中layout: postdate: 2014-11-10 10:07:43  #文章生成时间，一般不改，当然也可以任意修改up">
-<meta name="twitter:image" content="http://xuerongli.github.io/链接地址">
   
     <link rel="alternate" href="/atom.xml" title="遥感数据挖掘与应用" type="application/atom+xml">
   
@@ -94,8 +92,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>hexo new ‘filename’<br>或者直接在_posts目录下创建 filename.md文件<br>然后打开并编辑该文件，头部信息以—开始和结尾<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 文章名称  <span class="comment">#文章页面上的显示名称，可以任意修改，不会出现在URL中</span></div><div class="line">layout: post</div><div class="line">date: 2014-11-10 10:07:43  <span class="comment">#文章生成时间，一般不改，当然也可以任意修改</span></div><div class="line">updated: 2014-11-12 13:24</div><div class="line">comments: <span class="literal">true</span></div><div class="line">categories: </div><div class="line">- Git</div><div class="line">tags: </div><div class="line">- hexo</div><div class="line">- pages</div><div class="line">---</div><div class="line">正文</div><div class="line">... ...</div></pre></td></tr></table></figure></p>
+<h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><p>Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯（JohnGruber）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。</p>
 <h2 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">以上是摘要</div><div class="line">&lt;!--more--&gt;</div><div class="line">以下是余下全文</div></pre></td></tr></table></figure>
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>插入图片的格式为<img src="链接地址" alt="">:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![](http://www.sina.com.cn/aa.png)</div></pre></td></tr></table></figure></p>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>插入图片的格式为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![](链接地址)</div></pre></td></tr></table></figure></p>
 <p>对于hexo，使用本地路径：在/source目录下新建一个img文件夹，将图片放入该文件夹，插入图片时链接即为/img/图片名称。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![camera](/img/camera.jpg)</div></pre></td></tr></table></figure></p>
 <h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 一级标题</span></div><div class="line"><span class="comment">## 二级标题</span></div><div class="line"><span class="comment">### 三级标题</span></div><div class="line"><span class="comment">#### 四级标题</span></div><div class="line"><span class="comment">##### 五级标题</span></div><div class="line"><span class="comment">###### 六级标题</span></div></pre></td></tr></table></figure>
 <p>注：# 和「一级标题」之间建议保留一个字符的<em>空格</em>，这是最标准的 Markdown 写法。</p>
@@ -103,16 +102,21 @@
 <p>有序列表，在文字前面加上 1. 2. 3. 就可以：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 文本<span class="number">1</span></div><div class="line"><span class="number">2.</span> 文本<span class="number">2</span></div><div class="line"><span class="number">3.</span> 文本<span class="number">3</span></div></pre></td></tr></table></figure></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>插入链接只需要使用 <a href="链接地址">显示文本</a> 这样的语法:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[简书](http://www.jianshu.com)</div></pre></td></tr></table></figure></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>在希望引用的文字前面加上 &gt; 就好：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</div></pre></td></tr></table></figure></p>
-<h2 id="代码引用"><a href="#代码引用" class="headerlink" title="代码引用"></a>代码引用</h2><p>引用代码时，如果引用的语句只有一段，不分行，可以用 ` 将语句包起来。<br>如果引用的语句为多行，可以将<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">## 粗体和斜体</div><div class="line">两个 * 包含一段文本就是粗体的语法；</div><div class="line">用一个 * 包含一段文本就是斜体的语法。</div><div class="line">```bash</div><div class="line">*一盏灯*， 一片昏黄；**一简书**， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</div></pre></td></tr></table></figure></p>
+<h2 id="代码引用"><a href="#代码引用" class="headerlink" title="代码引用"></a>代码引用</h2><p>引用代码时，如果引用的语句只有一段，不分行，可以用 <code>将语句包起来。
+如果引用的语句为多行，可以将三个</code> 置于这段代码的首行和末行。</p>
+<h2 id="粗体和斜体"><a href="#粗体和斜体" class="headerlink" title="粗体和斜体"></a>粗体和斜体</h2><p>两个 <em> 包含一段文本就是粗体的语法；<br>用一个 </em> 包含一段文本就是斜体的语法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*一盏灯*， 一片昏黄；**一简书**， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</div></pre></td></tr></table></figure></p>
+<h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p><em>强调</em> 或者 <em>强调</em>  (示例：斜体)</p>
+<p><strong>加重强调</strong> 或者 <strong>加重强调</strong><br>又或者以制表符或至少四个空格缩进的行，例如：<br>        第一行代码<br>        第二行代码<br>        第三行代码<br>后面一种用法会让Markdown保留所有的空白字符——而与之相反，一般情况下，Markdown会删除所有换行和空格，打乱原有的缩进和排版。</p>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><h2 id="三条以上的短线"><a href="#三条以上的短线" class="headerlink" title="三条以上的短线"></a>三条以上的短线</h2><h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>在文本中输入的换行会从最终生成的结果中删除，浏览器会根据可用空间自动换行。如果想强迫换行，可以在行尾插入至少两个空格。</p>
 <h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">| Tables        | Are           | Cool  |</div><div class="line">| ------------- |:-------------:| -----:|</div><div class="line">| col 3 is      | right-aligned | $1600 |</div><div class="line">| col 2 is      | centered      |   $12 |</div><div class="line">| zebra stripes | are neat      |    $1 |</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-advance/" data-id="cj0jdssrd0002q8p6jkw1e81y" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-advance/" data-id="cj0k8t7zl000520p6pmax3abd" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
     </footer>
   </div>
@@ -120,20 +124,15 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/03/16/my-new-post/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/16/Hexo-QuickStart/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          评论文章
+          Hexo Quick Start
         
       </div>
     </a>
   
-  
-    <a href="/2017/03/16/Hexo-QuickStart/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo Quick Start</div>
-    </a>
   
 </nav>
 
@@ -158,7 +157,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文章/">文章</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文章/">文章</a></li></ul>
     </div>
   </div>
 
@@ -168,7 +167,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/文章/" style="font-size: 10px;">文章</a>
+      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/文章/" style="font-size: 10px;">文章</a>
     </div>
   </div>
 
@@ -198,11 +197,15 @@
           </li>
         
           <li>
-            <a href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
+            <a href="/2017/03/16/Hexo-Githubpages/">Hexo + Github Pages</a>
           </li>
         
           <li>
             <a href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
           </li>
         
       </ul>
