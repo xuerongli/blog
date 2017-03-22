@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Read and Write NetCDF with IDL | 遥感数据挖掘与应用</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="NetCDF（network Common Data Form）由位于科罗拉多州波尔市的 Unidata 程序中心开发，主要应用于大气科学的研究。NetCDF 的数据模式具有简单性和灵活性的特点。NetCDF 文件的基本组成为变量、属性和维数：
+变量为标量或多维数组。NetCDF 所支持的 IDL 数据类型有 string、byte、int、long、float 和 double
+属性包含一个变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Read and Write NetCDF with IDL">
+<meta property="og:url" content="http://xuerongli.github.io/2017/03/22/NetCDF_IDL/index.html">
+<meta property="og:site_name" content="遥感数据挖掘与应用">
+<meta property="og:description" content="NetCDF（network Common Data Form）由位于科罗拉多州波尔市的 Unidata 程序中心开发，主要应用于大气科学的研究。NetCDF 的数据模式具有简单性和灵活性的特点。NetCDF 文件的基本组成为变量、属性和维数：
+变量为标量或多维数组。NetCDF 所支持的 IDL 数据类型有 string、byte、int、long、float 和 double
+属性包含一个变量">
+<meta property="og:image" content="http://www.lai18.com/content/5631585.html">
+<meta property="og:updated_time" content="2017-03-22T12:10:47.330Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Read and Write NetCDF with IDL">
+<meta name="twitter:description" content="NetCDF（network Common Data Form）由位于科罗拉多州波尔市的 Unidata 程序中心开发，主要应用于大气科学的研究。NetCDF 的数据模式具有简单性和灵活性的特点。NetCDF 文件的基本组成为变量、属性和维数：
+变量为标量或多维数组。NetCDF 所支持的 IDL 数据类型有 string、byte、int、long、float 和 double
+属性包含一个变量">
+<meta name="twitter:image" content="http://www.lai18.com/content/5631585.html">
+  
+    <link rel="alternate" href="/atom.xml" title="遥感数据挖掘与应用" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">遥感数据挖掘与应用</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xuerongli.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-NetCDF_IDL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/NetCDF_IDL/" class="article-date">
+  <time datetime="2017-03-22T11:47:07.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/IDL/">IDL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Read and Write NetCDF with IDL
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>NetCDF（network Common Data Form）由位于科罗拉多州波尔市的 Unidata 程序中心开发，主要应用于大气科学的研究。NetCDF 的数据模式具有简单性和灵活性的特点。NetCDF 文件的基本组成为变量、属性和维数：</p>
+<p><strong>变量</strong>为标量或多维数组。NetCDF 所支持的 IDL 数据类型有 string、byte、int、long、float 和 double</p>
+<p><strong>属性</strong>包含一个变量或这个文件的附加性质。包含变量信息（如单位、有效范围、尺度因子等）的属性称作变量属性；包含文件信息的属性称作全局属性。属性可以是标量或一维数组，支持的数据类型为 string、byte、int、long、float 和 double</p>
+<p><strong>维数</strong>为长整形标量，记录了一个或多个变量的大小。</p>
+<p>从数学上来说，NetCDF 存储的数据就是一个多自变量的单值函数。 用公式来说就是 f(x,y,z,…) = value，函数的自变量 x,y,z 等在 NetCDF 中叫做维 (dimension) 或坐标轴 (axis)，函数值 value 在 NetCDF 中叫做变量 (Variables)。而自变量和函数值在物理学上的一些性质，比如计量单位 (量纲)、物理学名称等等在 NetCDF 中就叫属性 (Attributes)。</p>
+<p>常用的 NetCDF 程序</p>
+<p>名 称    功 能    名 称    功 能<br>NCDF_OPEN()    打开一个 NetCDF 文件    NCDF_ATTNAME()    返回一个属性名称<br>NCDF_CLOSE    关闭一个 NetCDF 文件    NCDF_CREATE()    创建一个 NetCDF 文件<br>NCDF_VARID()    返回一个变量标识符    NCDF_DIMDEF()    创建一个维度<br>NCDF_VARGET    读取一个变量    NCDF_VARDEF()    创建一个变量<br>NCDF_ATTGET    读取一个属性    NCDF_ATTPUT    写入属性数据<br>NCDF_INQUIRE()    返回文件信息    NCDF_CONTROL    开始或结束定义模式<br>NCDF_VARINQ()    返回变量信息    NCDF_VARPUT    写入变量数据<br>常用的标准 NetCDF 文件属性</p>
+<p>属性名称    定 义<br>long_name    详细描述变量的字符串（如“Northwards velocity component”）<br>units    描述变量单位的字符串（如“meters/second”）<br>valid_range    一个两元素的数组，包含变量有效的最小和最大值（如 [0.0, 5.0]），<br>该属性的类型必须和变量类型一致<br>scale_factor    变量读取以后作用于变量的一个乘数（允许 float 值存在 short 或 byte 类型），<br>该属性的类型必须和需要的变量类型一致（如浮点型）<br>add_offset    变量读取完毕，并且 scale_factor 使用后，加入到变量的一个偏值，<br>该属性的类型必须和需要的变量类型一致（如浮点型）<br>FillValue    表示没有数据写入的一个值，该属性的类型必须和变量的类型一致<br>NCDF_OPEN：【函数】打开一个 NetCDF 文件，返回值是这个文件的 NetCDF ID 值。<br>语法：Result = NCDF_OPEN( Filename [, /NOWRITE | , /WRITE] )</p>
+<p>NCDF_CLOSE：关闭一个 NetCDF 文件。<br>语法：NCDF_CLOSE, Cdfid</p>
+<p>NCDF_VARID：【函数】返回一个变量标识符，变量 ID，如果返回值为 -1 说明变量不存在。<br>语法：Result = NCDF_VARID(Cdfid, Name)</p>
+<p>NCDF_VARGET：读取一个变量。<br>语法：NCDF_VARGET, Cdfid, Varid, Value [, COUNT=vector] [, OFFSET=vector] [, STRIDE=vector]<br>说明：Cdfid 是 NCDF_OPEN 函数获取的返回值；<br>Varid 是 NCDF_VARID 函数获取的返回值；<br>Value 是读取变量的结果；<br>COUNT 是每维中读取元素的数目（默认情况是从当前 offset 的位置到每维的最后一个元素）；<br>OFFSET 是每维中读取的第一个元素（从零开始，默认为 [0, 0, … ,0]；<br>STRIDE 是在每维中提取的间隔（默认为 [1, 1, … , 1]，意味着每个元素均被选中）。<br>注意：如果 offset、count 或 stride 导致变量超出了范围，则 IDL 在读取时将舍去超出的部分，并给出错误信息。<br>image.nc 可利用 HDFView 打开显示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">IDL&gt; cd, &apos;F:\IDL\netCDF&apos;</div><div class="line">IDL&gt; cdfid = ncdf_open(&apos;image.nc&apos;)</div><div class="line">IDL&gt; varid = ncdf_varid(cdfid, &apos;image&apos;)</div><div class="line">IDL&gt; ncdf_varget, cdfid, varid, data</div><div class="line">IDL&gt; help,data</div><div class="line">DATA            BYTE      = Array[1200, 600]</div><div class="line">IDL&gt; tvscl, data</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">IDL&gt; cdfid = ncdf_open(&apos;image.nc&apos;)</div><div class="line">IDL&gt; varid = ncdf_varid(cdfid, &apos;image&apos;)</div><div class="line">IDL&gt; ncdf_varget, cdfid, varid, data, offset=[600,0], count=[256,256], stride=[2,2]</div><div class="line">IDL&gt; help, data</div><div class="line">DATA            BYTE      = Array[256, 256]</div><div class="line">IDL&gt; tvscl, data</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">IDL&gt; ncdf_varget, cdfid, varid, data, offset=[600,0], count=[256,512], stride=[2,2]</div><div class="line">% NCDF_VARGET: Requested read is larger than data in dimension 1. Reducing COUNT</div><div class="line">                to 300.</div></pre></td></tr></table></figure>
+<p>NCDF_ATTGET：读取一个属性。<br>语法：NCDF_ATTGET, Cdfid [, Varid] , Name, Value [, /GLOBAL]<br>说明：Name 是包含属性名称的字符串；<br>Value 获取变量结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">IDL&gt; cdfid = ncdf_open(&apos;sao.nc&apos;)</div><div class="line">IDL&gt; varid = ncdf_varid(cdfid, &apos;PRECIP&apos;)</div><div class="line">IDL&gt; ncdf_attget, cdfid, varid, &apos;long_name&apos;, attvalue</div><div class="line">IDL&gt; print, attvalue</div><div class="line"> 112 114 101  99 105 112 105 116  97 116 105 111 110  32  97 109 111 117 110 116</div><div class="line">IDL&gt; string(attvalue)</div><div class="line">precipitation amount</div></pre></td></tr></table></figure></p>
+<p>NCDF_INQUIRE：返回文件信息<br>【函数】返回值是一个结构体，{ NDIMS:0L, NVARS:0L, NGATTS:0L, RECDIM:0L }<br>说明：Ndims 这个 NetCDF 文件定义维度的数目；<br>Nvars 这个 NetCDF 文件定义变量的数目；<br>Ngatts 这个 NetCDF 文件定义全局属性的数目；<br>RecDim The ID of the unlimited dimension, if there is one, for this NetCDF file. If there is no unlimited dimension, RecDim is set to -1.<br>语法：Result = NCDF_INQUIRE(Cdfid)</p>
+<p>NCDF_VARINQ：返回变量信息<br>【函数】返回值是一个结构体，{ NAME:””, DATATYPE:””, NDIMS:0L, NATTS:0L, DIM:LONARR(NDIMS) }<br>说明：Name 变量的名称；<br>DataType 变量数据类型，’BYTE’, ‘CHAR’, ‘INT’, ‘LONG’, ‘FLOAT’, or ‘DOUBLE’；<br>Ndims 维度的数目；<br>Natts 给这个变量分配属性的数目；<br>Dim A vector of the dimension IDs for the variable dimensions.<br>语法：Result = NCDF_VARINQ(Cdfid, Varid)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">Function ncdf_vardir, cdfid</div><div class="line">  ;- Check arguments</div><div class="line">  if(n_params() ne 1) then $</div><div class="line">    message, &apos;Usage: result=ncdf_vardir(cdfid)&apos;</div><div class="line">  if(n_elements(cdfid) eq 0) then $</div><div class="line">    message, &apos;Argument cdfid is undefined&apos;</div><div class="line">    </div><div class="line">  ;- Set default return value</div><div class="line">  varnames=&apos;&apos;</div><div class="line">  </div><div class="line">  ;- Get file information</div><div class="line">  fileinfo = ncdf_inquire(cdfid)</div><div class="line">  nvars=fileinfo.nvars</div><div class="line">  </div><div class="line">  ;- If variables were found, get variable names</div><div class="line">  if(nvars gt 0) then begin</div><div class="line">    varnames = strarr(nvars)</div><div class="line">    for index = 0L, nvars - 1L do begin</div><div class="line">      varinfo = ncdf_varinq(cdfid, index)</div><div class="line">      varnames[index] = varinfo.name</div><div class="line">    endfor</div><div class="line">  endif</div><div class="line">  </div><div class="line">  ; -return the result</div><div class="line">  return, varnames</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">IDL&gt; cdfid = ncdf_open(&apos;sao.nc&apos;)</div><div class="line">IDL&gt; varnames = ncdf_vardir(cdfid)</div><div class="line">IDL&gt; help, varnames</div><div class="line">VARNAMES        STRING    = Array[25]</div><div class="line">IDL&gt; print, varnames</div><div class="line">id region time lat lon elev T TD PSL ALTIM SPD</div><div class="line">DIR GUST WX ZCL CC cloudtype VIS Ptend delP</div><div class="line">PRECIP reftime_PRECIP Tmax Tmin remarks</div></pre></td></tr></table></figure>
+<p>NCDF_ATTNAME：返回一个属性名称。<br>【函数】返回属性名称，如果没有，就返回空。<br>语法：Result = NCDF_ATTNAME( Cdfid [, Varid] , Attnum [, /GLOBAL])</p>
+<p>NCDF_CREATE：创建一个 NetCDF 文件。<br>【函数】创建成功的话就会返回 NetCDF ID 值。文件自动转入定义模式（define mode），意味着新的变量、属性和维度可以加入文件中。<br>语法：Result = NCDF_CREATE( Filename [, /CLOBBER | /NOCLOBBER] [, /NETCDF3_64BIT] [, /NETCDF4_FORMAT] )<br>说明：CLOBBER 设置此关键字，并且文件存在，那么在创建新的版本之前直接擦除文件内容；<br>NOCLOBBER 设置此关键字，只有不存在此文件的情况下才能创建成功，否则报错。</p>
+<p>NCDF_DIMDEF：创建一个维度。<br>【函数】如果成功，返回维度的 ID 值。<br>语法：Result = NCDF_DIMDEF( Cdfid, DimName, Size [, /UNLIMITED] )<br>说明：DimName 被定义纬度的字符串名称；<br>Size 维度的大小。可以用任何数量的表达式来表达。如果使用了关键字 UNLIMITED，Size 相当于无效；<br>UNLIMITED 设置此关键字可以创建一个无限大小的维度。</p>
+<p>NCDF_VARDEF：创建一个变量。<br>【函数】如果成功，返回变量的 ID 值。如果不能创建这个新的变量，就会返回-1。<br>语法：Result = NCDF_VARDEF( Cdfid, Name [, Dim] [, /BYTE | , /CHAR | , /DOUBLE | , /FLOAT | , /LONG | , /SHORT] [, CHUNK_DIMENSIONS] [, /CONTIGUOUS] [, GZIP=value] [, /SHUFFLE] [, /STRING] [, /UBYTE] [, /UINT64] [, /ULONG] [, /USHORT])<br>说明：如果类型关键字没有数据，默认使用 FLOAT；<br>Dim 包括变量维度的 dimension IDs。如果 ID 是无限大小的，那必须放在数组的最右面。如果没有设置 Dim，变量默认为一个标量。</p>
+<p>NCDF_ATTPUT：写入属性数据。<br>语法：NCDF_ATTPUT, Cdfid [, Varid] , Name , Value [, /GLOBAL] [, LENGTH=value] [, /BYTE | , /CHAR | , /DOUBLE | , /FLOAT | , /LONG | , /SHORT] [, /STRING] [, /UBYTE] [, /UINT64] [, /ULONG] [, / USHORT]<br>说明：GLOBAL 设置此关键字去创建全局属性。</p>
+<p>NCDF_CONTROL：开始或结束定义模式。<br>语法：NCDF_CONTROL, Cdfid [, /ABORT] [, /ENDEF] [, /FILL | , /NOFILL] [, /NOVERBOSE | , /VERBOSE] [, OLDFILL=variable] [, /REDEF] [, /SYNC]<br>说明： 设置此关键字可以将一个打开的 NetCDF 文件结束定义模式（define mode），进入数据模式（data mode）文件只有在数据模式下才能写入变量。</p>
+<p>NCDF_VARPUT：写入变量数据。<br>语法：NCDF_VARPUT, Cdfid, Varid, Value [, COUNT=vector] [, OFFSET=vector] [, STRIDE=vector]</p>
+<p><img src="http://www.lai18.com/content/5631585.html" alt="参考"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/22/NetCDF_IDL/" data-id="cj0kxh1dz0009v4p6rk8p1vae" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NetCDF/">NetCDF</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/22/HierarchicalData/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Open Hierarchical Data in ENVI
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/22/Markdown/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Markdown语法手册</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/HDF/" style="font-size: 15px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 15px;">NetCDF</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/22/HDF_IDL/">Read and Write HDF with IDL</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/HierarchicalData/">Open Hierarchical Data in ENVI</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/NetCDF_IDL/">Read and Write NetCDF with IDL</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/Markdown/">Markdown语法手册</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/20/Matlab_DIP1/">Matlab DIP - part1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Xuerong Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

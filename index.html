@@ -66,6 +66,178 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-HDF_IDL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/HDF_IDL/" class="article-date">
+  <time datetime="2017-03-22T11:47:07.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/HDF_IDL/">Read and Write HDF with IDL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HDF（Hierarchical Data Formats）数据格式由 NCSA 开发。HDF 提供了大量的数据模式，包括多维数组、表格、图像、注解和调色板。在下面的章节中，将描述 HDF 科学数据系列（SDS）的数据模式，因为它是 HDF 中最具灵活性的，并且它和 NetCDF 具有相似性。也就是说，HDF SDS 的基本组成也是变量、属性和维数。</p>
+<p>常用的 HDF SDS 程序<br>名 称    功 能<br>HDF_SD_START()    打开一个 SDS 模式的 HDF 文件<br>HDF_SD_END    关闭一个 SDS 模式的 HDF 文件<br>HDF_SD_NAMETOINDEX()    返回变量索引<br>HDF_SD_SELECT    返回变量标识符<br>HDF_SD_GETDATA    读取变量数据<br>HDF_SD_ENDACCESS    结束到一个变量的通道<br>HDF_SD_ATTRFIND()    返回属性索引<br>HDF_SD_ATTRINFO    读取属性数据<br>HDF_SD_ATTRFIND()    返回全局属性索引<br>HDF_SD_ATTRINFO    读取全局属性数据<br>HDF_SD_FILEINFO    返回文件信息<br>HDF_SD_GETINFO    返回变量信息<br>HDF_SD_ATTRINFO    返回属性名称<br>HDF_SD_START()    创建一个 HDF 文件<br>HDF_SD_CREATE()    创建一个变量<br>HDF_SD_DIMGETID()    创建一个维度<br>HDF_SD_DIMSET    设置维度信息<br>HDF_SD_ADDDATA    写入变量数据<br>HDF_SD_ATTRSET    写入属性数据</p>
+<p>HDF_SD_START：打开一个 SDS模式的 HDF 文件。<br>【函数】返回值是这个 HDF 文件的 SD ID。如果没有设置关键字，则以只读形式打开。<br>语法：Result = HDF_SD_START( Filename [, /READ | , /RDWR] [, /CREATE] )<br>说明：READ 只读模式，默认模式；<br>RDWR 读写模式；<br>CREATE 创建一个新的 SD 文件。</p>
+<p>HDF_SD_END：关闭一个 SDS 模式的 HDF 文件。<br>语法：HDF_SD_END, SDinterface_id</p>
+<p>HDF_SD_NAMETOINDEX：返回变量索引。<br>【函数】返回值为指定 SD 数据集的索引值。<br>语法：Result = HDF_SD_NAMETOINDEX(SDinterface_id, SDS_Name)<br>说明：SDinterface_id An SD interface ID as returned by HDF_SD_START.<br>SDS_Name A string containing the name of the SD dataset be located.</p>
+<p>HDF_SD_SELECT：返回变量标识符。<br>语法：Result = HDF_SD_SELECT(SDinterface_id, Number)</p>
+<p>HDF_SD_GETDATA：读取变量数据<br>语法：HDF_SD_GETDATA, SDdataset_id, Data [, COUNT=vector] [, /NOREVERSE] [, START=vector] [, STRIDE=vector]<br>说明：START 每维中读取的第一个元素（从零开始；默认为 [0, 0, …, 0]）<br>COUNT 每维中读取元素的数目（默认情况是从当前 start 的位置到每维的最后一个元素）<br>STRIDE 在每维中提取的间隔（默认为 [1, 1, …, 1]，意味着每个元素都被选中）<br>注意：如果 START、COUNT 或 STRIDE 导致变量超出了范围，则 IDL 在读取时将舍去超出的部分，并给出错误信息。</p>
+<p>在下面的例子中，从 0 列、100 行开始读取 100×1 的变量子集，读取时在列的维度上元素一个隔一个地读取（左右）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">IDL&gt; hdfid = hdf_sd_start(&apos;EarthProbe5_31_99.hdf&apos;)</div><div class="line">IDL&gt; index = hdf_sd_nametoindex(hdfid, &apos;TOTAL_OZONE&apos;)</div><div class="line">IDL&gt; varid = hdf_sd_select(hdfid, index)</div><div class="line">IDL&gt; hdf_sd_getdata, varid, data, start=[0, 100], count=[100,1], stride=[2,1]</div><div class="line">IDL&gt; help, data</div><div class="line">DATA            INT       = Array[100]</div><div class="line">IDL&gt; data[0:3]</div><div class="line">     257       0       0     258</div><div class="line">IDL&gt; hdf_sd_endaccess, varid</div><div class="line">IDL&gt; hdf_sd_end, hdfid</div><div class="line">IDL&gt; tvscl, data</div></pre></td></tr></table></figure></p>
+<p>HDF_SD_ENDACCESS：结束到一个变量的通道。<br>语法：HDF_SD_ENDACCESS, SDinterface_id<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">IDL&gt; cd, &apos;..\HDF&apos;</div><div class="line">IDL&gt; hdfid = hdf_sd_start(&apos;EarthProbe5_31_99.hdf&apos;)</div><div class="line">IDL&gt; index = hdf_sd_nametoindex(hdfid, &apos;TOTAL_OZONE&apos;)</div><div class="line">IDL&gt; hdfid</div><div class="line">     1441793</div><div class="line">IDL&gt; index</div><div class="line">           0</div><div class="line">IDL&gt; varid = hdf_sd_select(hdfid, index)</div><div class="line">IDL&gt; varid</div><div class="line">     1310720</div><div class="line">IDL&gt; hdf_sd_getdata, varid, data</div><div class="line">IDL&gt; help, data</div><div class="line">DATA            INT       = Array[288, 180]</div><div class="line">IDL&gt; data[0:3,0:3]</div><div class="line">     415     415     415     415</div><div class="line">     411     411     411     411</div><div class="line">     395     395     395     395</div><div class="line">     386     386     386     386</div><div class="line">IDL&gt; hdf_sd_endaccess, varid</div><div class="line">IDL&gt; hdf_sd_end, hdfid</div><div class="line">IDL&gt; tvscl, data</div></pre></td></tr></table></figure></p>
+<p>HDF_SD_ATTRFIND：返回属性索引。（使用 hdfid 读取全局）<br>语法：Result = HDF_SD_ATTRFIND(SD_id, Name)<br>说明：SD_id An SD interface ID as returned by HDF_SD_START, or HDF_SD_SELECT/HDF_SD_CREATE，可以是 hdfid 或者 varid；<br>Name 属性的名称。</p>
+<p>HDF_SD_ATTRINFO：读取属性数据。（使用 hdfid 读取全局）<br>语法：HDF_SD_ATTRINFO, SD_id, Attr_Index [, COUNT=variable] [, DATA=variable] [, HDF_TYPE=variable] [, NAME=variable] [, TYPE=variable]<br>说明：SD_id 同上；<br>Attr_Index 索引值；<br>COUNT Set this keyword to a named variable in which the total number of values in the specified attribute is returned.<br>DATA 返回属性数据；<br>HDF_TYPE 返回属性的 HDF type；<br>NAME 返回属性的名称；<br>TYPE 返回数据的类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">IDL&gt; hdfid = hdf_sd_start(&apos;Manassas.hdf&apos;)</div><div class="line">IDL&gt; index = hdf_sd_nametoindex(hdfid, &apos;CEL0: ELEVATION&apos;)</div><div class="line">IDL&gt; varid = hdf_sd_select(hdfid, index)</div><div class="line">IDL&gt; attindex = hdf_sd_attrfind(varid, &apos;valid_range&apos;)</div><div class="line">IDL&gt; hdf_sd_attrinfo, varid, attindex, data=attvalue</div><div class="line">IDL&gt; attvalue</div><div class="line">   17134   17394</div><div class="line">IDL&gt; hdf_sd_attrinfo, varid, attindex, COUNT=count , DATA=data, HDF_TYPE=HDF_type , NAME=name , TYPE=type</div><div class="line">IDL&gt; count</div><div class="line">           2</div><div class="line">IDL&gt; data</div><div class="line">   17134   17394</div><div class="line">IDL&gt; hdf_type</div><div class="line">DFNT_INT16</div><div class="line">IDL&gt; name</div><div class="line">valid_range</div><div class="line">IDL&gt; type</div><div class="line">INT</div></pre></td></tr></table></figure></p>
+<p>HDF_SD_FILEINFO：返回文件信息。<br>语法：HDF_SD_FILEINFO, SDinterface_id, Datasets, Attributes<br>说明：SDinterface_id An SD interface ID as returned by HDF_SD_START.<br>Datasets 变量的总数；<br>Attributes 全局属性的总数。</p>
+<p>HDF_SD_GETINFO：返回变量信息。<br>语法：HDF_SD_GETINFO, SDdataset_id [, CALDATA=variable] [, COORDSYS=variable] [, DIMS=variable] [, FILL=variable] [, FORMAT=variable] [, HDF_TYPE=variable] [, LABEL=variable] [, NAME=variable] [, NATTS=variable] [, NDIMS=variable] [, /NOREVERSE] [, RANGE=variable] [, TYPE=variable] [, UNIT=variable]<br>说明：SDdataset_id varid；<br>NATTS 属性的数目；<br>NDIMS 维度的数目；<br>DIMS 具体的维度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">IDL&gt; hdfid = hdf_sd_start(&apos;Manassas.hdf&apos;)</div><div class="line">IDL&gt; hdf_sd_fileinfo, hdfid, nvars, ngatts</div><div class="line">IDL&gt; nvars</div><div class="line">           1</div><div class="line">IDL&gt; ngatts</div><div class="line">           6</div><div class="line">IDL&gt; hdfid = hdf_sd_start(&apos;EarthProbe5_31_99.hdf&apos;)</div><div class="line">IDL&gt; hdf_sd_fileinfo, hdfid, nvars, ngatts</div><div class="line">IDL&gt; nvars</div><div class="line">           4</div><div class="line">IDL&gt; ngatts</div><div class="line">           0</div><div class="line">IDL&gt; varid = hdf_sd_select(hdfid, 0)</div><div class="line">IDL&gt; hdf_sd_getinfo, varid, name=name, ndims=ndims, type=type, dims=dims</div><div class="line">IDL&gt; name</div><div class="line">TOTAL_OZONE</div><div class="line">IDL&gt; ndims</div><div class="line">           2</div><div class="line">IDL&gt; type</div><div class="line">INT</div><div class="line">IDL&gt; dims</div><div class="line">         288         180</div><div class="line">IDL&gt; hdf_sd_getinfo, varid, name=name, ndims=ndims, type=type, dims=dims, unit=unit, format=format</div><div class="line">IDL&gt; unit</div><div class="line">MATM_CM</div><div class="line">IDL&gt; format</div><div class="line">I3</div></pre></td></tr></table></figure></p>
+<p>HDF_SD_ATTRINFO：返回属性名称<br>语法：HDF_SD_ATTRINFO, SD_id, Attr_Index [, COUNT=variable] [, DATA=variable] [, HDF_TYPE=variable] [, NAME=variable] [, TYPE=variable]<br>说明：SD_id varid，hdfid 关于全局属性；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">IDL&gt; hdf_sd_attrinfo, varid, 0, count=count, data=data, HDF_type=hdf_type, name=name, type=type</div><div class="line">IDL&gt; count</div><div class="line">           1</div><div class="line">IDL&gt; data</div><div class="line">       1.0000000000000000</div><div class="line">IDL&gt; hdf_type</div><div class="line">DFNT_FLOAT64</div><div class="line">IDL&gt; name</div><div class="line">scale_factor</div><div class="line">IDL&gt; type</div><div class="line">DOUBLE</div></pre></td></tr></table></figure></p>
+<p>HDF_SD_START：创建一个 HDF 文件<br>【函数】返回值为 HDF ID 值。<br>语法：Result = HDF_SD_START( Filename [, /READ | , /RDWR] [, /CREATE] )</p>
+<p>HDF_SD_CREATE：创建一个变量<br>语法：Result = HDF_SD_CREATE( SDinterface_id, Name, Dims [, /BYTE] [, /DFNT_CHAR8] [, /DFNT_FLOAT32] [, /DFNT_FLOAT64] [, /DFNT_INT8] [, /DFNT_INT16] [, /DFNT_INT32] [, /DFNT_UINT8] [, /DFNT_UINT16] [, /DFNT_UINT32] [, /DOUBLE] [, /FLOAT] [, HDF_TYPE=type] [, /INT] [, /LONG] [, /SHORT] [, /STRING] )</p>
+<p>HDF_SD_DIMGETID：创建一个维度<br>【函数】返回值为维度标识符。<br>语法：Result = HDF_SD_DIMGETID(SDdataset_id, Dimension_Number)</p>
+<p>HDF_SD_DIMSET：设置维度信息<br>语法：HDF_SD_DIMSET, Dim_ID [, /BW_INCOMP] [, FORMAT=string] [, LABEL=string] [, NAME=string] [, SCALE=vector] [, UNIT=string]</p>
+<p>HDF_SD_ADDDATA：写入变量数据<br>语法：HDF_SD_ADDDATA, SDdataset_id, Data [, COUNT=vector] [, /NOREVERSE] [, START=vector] [, STRIDE=vector]</p>
+<p>HDF_SD_ATTRSET：写入属性数据<br>语法：HDF_SD_ATTRSET, SD_id, Attr_Name, Values [, Count] [, /BYTE] [, /DFNT_CHAR] [, /DFNT_FLOAT32] [, /DFNT_FLOAT64] [, /DFNT_INT8] [, /DFNT_INT16] [, /DFNT_INT32] [, /DFNT_UINT8] [, /DFNT_UINT16] [, /DFNT_UINT32] [, /DOUBLE] [, /FLOAT] [, /INT] [, /LONG] [, /SHORT] [, /STRING]</p>
+<p><img src="http://www.lai18.com/content/5631586.html" alt="参考"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/22/HDF_IDL/" data-id="cj0kxh1d70000v4p65i8txnki" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HDF/">HDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HierarchicalData" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/HierarchicalData/" class="article-date">
+  <time datetime="2017-03-22T11:47:07.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/HierarchicalData/">Open Hierarchical Data in ENVI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>HDF4</li>
+<li>HDF5 and NetCDF-4</li>
+<li>NetCDF-3</li>
+</ul>
+<hr>
+<p><a href="https://www.harrisgeospatial.com/docs/OpenHierarchicalData.html" target="_blank" rel="external">https://www.harrisgeospatial.com/docs/OpenHierarchicalData.html</a></p>
+<p><a href="http://www.harrisgeospatial.com/docs/idl_programming.html" target="_blank" rel="external">http://www.harrisgeospatial.com/docs/idl_programming.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/22/HierarchicalData/" data-id="cj0kxh1dl0004v4p62niel7um" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HDF/">HDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NetCDF/">NetCDF</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-NetCDF_IDL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/NetCDF_IDL/" class="article-date">
+  <time datetime="2017-03-22T11:47:07.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/IDL/">IDL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/NetCDF_IDL/">Read and Write NetCDF with IDL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>NetCDF（network Common Data Form）由位于科罗拉多州波尔市的 Unidata 程序中心开发，主要应用于大气科学的研究。NetCDF 的数据模式具有简单性和灵活性的特点。NetCDF 文件的基本组成为变量、属性和维数：</p>
+<p><strong>变量</strong>为标量或多维数组。NetCDF 所支持的 IDL 数据类型有 string、byte、int、long、float 和 double</p>
+<p><strong>属性</strong>包含一个变量或这个文件的附加性质。包含变量信息（如单位、有效范围、尺度因子等）的属性称作变量属性；包含文件信息的属性称作全局属性。属性可以是标量或一维数组，支持的数据类型为 string、byte、int、long、float 和 double</p>
+<p><strong>维数</strong>为长整形标量，记录了一个或多个变量的大小。</p>
+<p>从数学上来说，NetCDF 存储的数据就是一个多自变量的单值函数。 用公式来说就是 f(x,y,z,…) = value，函数的自变量 x,y,z 等在 NetCDF 中叫做维 (dimension) 或坐标轴 (axis)，函数值 value 在 NetCDF 中叫做变量 (Variables)。而自变量和函数值在物理学上的一些性质，比如计量单位 (量纲)、物理学名称等等在 NetCDF 中就叫属性 (Attributes)。</p>
+<p>常用的 NetCDF 程序</p>
+<p>名 称    功 能    名 称    功 能<br>NCDF_OPEN()    打开一个 NetCDF 文件    NCDF_ATTNAME()    返回一个属性名称<br>NCDF_CLOSE    关闭一个 NetCDF 文件    NCDF_CREATE()    创建一个 NetCDF 文件<br>NCDF_VARID()    返回一个变量标识符    NCDF_DIMDEF()    创建一个维度<br>NCDF_VARGET    读取一个变量    NCDF_VARDEF()    创建一个变量<br>NCDF_ATTGET    读取一个属性    NCDF_ATTPUT    写入属性数据<br>NCDF_INQUIRE()    返回文件信息    NCDF_CONTROL    开始或结束定义模式<br>NCDF_VARINQ()    返回变量信息    NCDF_VARPUT    写入变量数据<br>常用的标准 NetCDF 文件属性</p>
+<p>属性名称    定 义<br>long_name    详细描述变量的字符串（如“Northwards velocity component”）<br>units    描述变量单位的字符串（如“meters/second”）<br>valid_range    一个两元素的数组，包含变量有效的最小和最大值（如 [0.0, 5.0]），<br>该属性的类型必须和变量类型一致<br>scale_factor    变量读取以后作用于变量的一个乘数（允许 float 值存在 short 或 byte 类型），<br>该属性的类型必须和需要的变量类型一致（如浮点型）<br>add_offset    变量读取完毕，并且 scale_factor 使用后，加入到变量的一个偏值，<br>该属性的类型必须和需要的变量类型一致（如浮点型）<br>FillValue    表示没有数据写入的一个值，该属性的类型必须和变量的类型一致<br>NCDF_OPEN：【函数】打开一个 NetCDF 文件，返回值是这个文件的 NetCDF ID 值。<br>语法：Result = NCDF_OPEN( Filename [, /NOWRITE | , /WRITE] )</p>
+<p>NCDF_CLOSE：关闭一个 NetCDF 文件。<br>语法：NCDF_CLOSE, Cdfid</p>
+<p>NCDF_VARID：【函数】返回一个变量标识符，变量 ID，如果返回值为 -1 说明变量不存在。<br>语法：Result = NCDF_VARID(Cdfid, Name)</p>
+<p>NCDF_VARGET：读取一个变量。<br>语法：NCDF_VARGET, Cdfid, Varid, Value [, COUNT=vector] [, OFFSET=vector] [, STRIDE=vector]<br>说明：Cdfid 是 NCDF_OPEN 函数获取的返回值；<br>Varid 是 NCDF_VARID 函数获取的返回值；<br>Value 是读取变量的结果；<br>COUNT 是每维中读取元素的数目（默认情况是从当前 offset 的位置到每维的最后一个元素）；<br>OFFSET 是每维中读取的第一个元素（从零开始，默认为 [0, 0, … ,0]；<br>STRIDE 是在每维中提取的间隔（默认为 [1, 1, … , 1]，意味着每个元素均被选中）。<br>注意：如果 offset、count 或 stride 导致变量超出了范围，则 IDL 在读取时将舍去超出的部分，并给出错误信息。<br>image.nc 可利用 HDFView 打开显示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">IDL&gt; cd, &apos;F:\IDL\netCDF&apos;</div><div class="line">IDL&gt; cdfid = ncdf_open(&apos;image.nc&apos;)</div><div class="line">IDL&gt; varid = ncdf_varid(cdfid, &apos;image&apos;)</div><div class="line">IDL&gt; ncdf_varget, cdfid, varid, data</div><div class="line">IDL&gt; help,data</div><div class="line">DATA            BYTE      = Array[1200, 600]</div><div class="line">IDL&gt; tvscl, data</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">IDL&gt; cdfid = ncdf_open(&apos;image.nc&apos;)</div><div class="line">IDL&gt; varid = ncdf_varid(cdfid, &apos;image&apos;)</div><div class="line">IDL&gt; ncdf_varget, cdfid, varid, data, offset=[600,0], count=[256,256], stride=[2,2]</div><div class="line">IDL&gt; help, data</div><div class="line">DATA            BYTE      = Array[256, 256]</div><div class="line">IDL&gt; tvscl, data</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">IDL&gt; ncdf_varget, cdfid, varid, data, offset=[600,0], count=[256,512], stride=[2,2]</div><div class="line">% NCDF_VARGET: Requested read is larger than data in dimension 1. Reducing COUNT</div><div class="line">                to 300.</div></pre></td></tr></table></figure>
+<p>NCDF_ATTGET：读取一个属性。<br>语法：NCDF_ATTGET, Cdfid [, Varid] , Name, Value [, /GLOBAL]<br>说明：Name 是包含属性名称的字符串；<br>Value 获取变量结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">IDL&gt; cdfid = ncdf_open(&apos;sao.nc&apos;)</div><div class="line">IDL&gt; varid = ncdf_varid(cdfid, &apos;PRECIP&apos;)</div><div class="line">IDL&gt; ncdf_attget, cdfid, varid, &apos;long_name&apos;, attvalue</div><div class="line">IDL&gt; print, attvalue</div><div class="line"> 112 114 101  99 105 112 105 116  97 116 105 111 110  32  97 109 111 117 110 116</div><div class="line">IDL&gt; string(attvalue)</div><div class="line">precipitation amount</div></pre></td></tr></table></figure></p>
+<p>NCDF_INQUIRE：返回文件信息<br>【函数】返回值是一个结构体，{ NDIMS:0L, NVARS:0L, NGATTS:0L, RECDIM:0L }<br>说明：Ndims 这个 NetCDF 文件定义维度的数目；<br>Nvars 这个 NetCDF 文件定义变量的数目；<br>Ngatts 这个 NetCDF 文件定义全局属性的数目；<br>RecDim The ID of the unlimited dimension, if there is one, for this NetCDF file. If there is no unlimited dimension, RecDim is set to -1.<br>语法：Result = NCDF_INQUIRE(Cdfid)</p>
+<p>NCDF_VARINQ：返回变量信息<br>【函数】返回值是一个结构体，{ NAME:””, DATATYPE:””, NDIMS:0L, NATTS:0L, DIM:LONARR(NDIMS) }<br>说明：Name 变量的名称；<br>DataType 变量数据类型，’BYTE’, ‘CHAR’, ‘INT’, ‘LONG’, ‘FLOAT’, or ‘DOUBLE’；<br>Ndims 维度的数目；<br>Natts 给这个变量分配属性的数目；<br>Dim A vector of the dimension IDs for the variable dimensions.<br>语法：Result = NCDF_VARINQ(Cdfid, Varid)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">Function ncdf_vardir, cdfid</div><div class="line">  ;- Check arguments</div><div class="line">  if(n_params() ne 1) then $</div><div class="line">    message, &apos;Usage: result=ncdf_vardir(cdfid)&apos;</div><div class="line">  if(n_elements(cdfid) eq 0) then $</div><div class="line">    message, &apos;Argument cdfid is undefined&apos;</div><div class="line">    </div><div class="line">  ;- Set default return value</div><div class="line">  varnames=&apos;&apos;</div><div class="line">  </div><div class="line">  ;- Get file information</div><div class="line">  fileinfo = ncdf_inquire(cdfid)</div><div class="line">  nvars=fileinfo.nvars</div><div class="line">  </div><div class="line">  ;- If variables were found, get variable names</div><div class="line">  if(nvars gt 0) then begin</div><div class="line">    varnames = strarr(nvars)</div><div class="line">    for index = 0L, nvars - 1L do begin</div><div class="line">      varinfo = ncdf_varinq(cdfid, index)</div><div class="line">      varnames[index] = varinfo.name</div><div class="line">    endfor</div><div class="line">  endif</div><div class="line">  </div><div class="line">  ; -return the result</div><div class="line">  return, varnames</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">IDL&gt; cdfid = ncdf_open(&apos;sao.nc&apos;)</div><div class="line">IDL&gt; varnames = ncdf_vardir(cdfid)</div><div class="line">IDL&gt; help, varnames</div><div class="line">VARNAMES        STRING    = Array[25]</div><div class="line">IDL&gt; print, varnames</div><div class="line">id region time lat lon elev T TD PSL ALTIM SPD</div><div class="line">DIR GUST WX ZCL CC cloudtype VIS Ptend delP</div><div class="line">PRECIP reftime_PRECIP Tmax Tmin remarks</div></pre></td></tr></table></figure>
+<p>NCDF_ATTNAME：返回一个属性名称。<br>【函数】返回属性名称，如果没有，就返回空。<br>语法：Result = NCDF_ATTNAME( Cdfid [, Varid] , Attnum [, /GLOBAL])</p>
+<p>NCDF_CREATE：创建一个 NetCDF 文件。<br>【函数】创建成功的话就会返回 NetCDF ID 值。文件自动转入定义模式（define mode），意味着新的变量、属性和维度可以加入文件中。<br>语法：Result = NCDF_CREATE( Filename [, /CLOBBER | /NOCLOBBER] [, /NETCDF3_64BIT] [, /NETCDF4_FORMAT] )<br>说明：CLOBBER 设置此关键字，并且文件存在，那么在创建新的版本之前直接擦除文件内容；<br>NOCLOBBER 设置此关键字，只有不存在此文件的情况下才能创建成功，否则报错。</p>
+<p>NCDF_DIMDEF：创建一个维度。<br>【函数】如果成功，返回维度的 ID 值。<br>语法：Result = NCDF_DIMDEF( Cdfid, DimName, Size [, /UNLIMITED] )<br>说明：DimName 被定义纬度的字符串名称；<br>Size 维度的大小。可以用任何数量的表达式来表达。如果使用了关键字 UNLIMITED，Size 相当于无效；<br>UNLIMITED 设置此关键字可以创建一个无限大小的维度。</p>
+<p>NCDF_VARDEF：创建一个变量。<br>【函数】如果成功，返回变量的 ID 值。如果不能创建这个新的变量，就会返回-1。<br>语法：Result = NCDF_VARDEF( Cdfid, Name [, Dim] [, /BYTE | , /CHAR | , /DOUBLE | , /FLOAT | , /LONG | , /SHORT] [, CHUNK_DIMENSIONS] [, /CONTIGUOUS] [, GZIP=value] [, /SHUFFLE] [, /STRING] [, /UBYTE] [, /UINT64] [, /ULONG] [, /USHORT])<br>说明：如果类型关键字没有数据，默认使用 FLOAT；<br>Dim 包括变量维度的 dimension IDs。如果 ID 是无限大小的，那必须放在数组的最右面。如果没有设置 Dim，变量默认为一个标量。</p>
+<p>NCDF_ATTPUT：写入属性数据。<br>语法：NCDF_ATTPUT, Cdfid [, Varid] , Name , Value [, /GLOBAL] [, LENGTH=value] [, /BYTE | , /CHAR | , /DOUBLE | , /FLOAT | , /LONG | , /SHORT] [, /STRING] [, /UBYTE] [, /UINT64] [, /ULONG] [, / USHORT]<br>说明：GLOBAL 设置此关键字去创建全局属性。</p>
+<p>NCDF_CONTROL：开始或结束定义模式。<br>语法：NCDF_CONTROL, Cdfid [, /ABORT] [, /ENDEF] [, /FILL | , /NOFILL] [, /NOVERBOSE | , /VERBOSE] [, OLDFILL=variable] [, /REDEF] [, /SYNC]<br>说明： 设置此关键字可以将一个打开的 NetCDF 文件结束定义模式（define mode），进入数据模式（data mode）文件只有在数据模式下才能写入变量。</p>
+<p>NCDF_VARPUT：写入变量数据。<br>语法：NCDF_VARPUT, Cdfid, Varid, Value [, COUNT=vector] [, OFFSET=vector] [, STRIDE=vector]</p>
+<p><img src="http://www.lai18.com/content/5631585.html" alt="参考"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/22/NetCDF_IDL/" data-id="cj0kxh1dz0009v4p6rk8p1vae" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NetCDF/">NetCDF</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Markdown" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/22/Markdown/" class="article-date">
@@ -105,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/Markdown/" data-id="cj0kq6iqj0005a0p6vv6rqllo" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/22/Markdown/" data-id="cj0kxh1eb000ev4p6ewll8e0z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
@@ -154,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0kq6iqx000aa0p6upaowzy7" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0kxh1ed000hv4p6g4acqa26" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DIP/">DIP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
@@ -209,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/" data-id="cj0kq6iq40000a0p6a4lwdto9" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/" data-id="cj0kxh1de0002v4p6otue0nxb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -258,7 +430,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-QuickStart/" data-id="cj0kq6iqc0002a0p69mx245ty" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-QuickStart/" data-id="cj0kxh1dv0007v4p64yy5plmf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -305,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-advance/" data-id="cj0kq6iqr0007a0p65gwyeluj" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-advance/" data-id="cj0kxh1e7000av4p65l3be5wj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
@@ -326,7 +498,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li></ul>
     </div>
   </div>
 
@@ -336,7 +508,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
     </div>
   </div>
 
@@ -346,7 +518,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a>
+      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/HDF/" style="font-size: 15px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 15px;">NetCDF</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a>
     </div>
   </div>
 
@@ -368,23 +540,23 @@
       <ul>
         
           <li>
+            <a href="/2017/03/22/HDF_IDL/">Read and Write HDF with IDL</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/HierarchicalData/">Open Hierarchical Data in ENVI</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/NetCDF_IDL/">Read and Write NetCDF with IDL</a>
+          </li>
+        
+          <li>
             <a href="/2017/03/22/Markdown/">Markdown语法手册</a>
           </li>
         
           <li>
             <a href="/2017/03/20/Matlab_DIP1/">Matlab DIP - part1</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/16/Hexo-Githubpages/">Hexo + Github Pages</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
           </li>
         
       </ul>
