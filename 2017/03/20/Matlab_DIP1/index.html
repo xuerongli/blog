@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Digital Image Processing - MATLAB part1 | 遥感数据挖掘与应用</title>
+  <title>Matlab DIP - part1 | 遥感数据挖掘与应用</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1．PricipalInput –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
-2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc(A);image(A); % axis off / on;">
+  <meta name="description" content="1．PricipalDigital Image Processing (DIP)Input –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
+2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Digital Image Processing - MATLAB part1">
+<meta property="og:title" content="Matlab DIP - part1">
 <meta property="og:url" content="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/index.html">
 <meta property="og:site_name" content="遥感数据挖掘与应用">
-<meta property="og:description" content="1．PricipalInput –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
-2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc(A);image(A); % axis off / on;">
+<meta property="og:description" content="1．PricipalDigital Image Processing (DIP)Input –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
+2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc">
 <meta property="og:image" content="http://xuerongli.github.io/img/cameraman.png">
-<meta property="og:updated_time" content="2017-03-21T09:42:28.361Z">
+<meta property="og:updated_time" content="2017-03-22T05:23:04.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Digital Image Processing - MATLAB part1">
-<meta name="twitter:description" content="1．PricipalInput –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
-2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc(A);image(A); % axis off / on;">
+<meta name="twitter:title" content="Matlab DIP - part1">
+<meta name="twitter:description" content="1．PricipalDigital Image Processing (DIP)Input –&amp;gt; matrix –&amp;gt; computing –&amp;gt; output
+2．Excise(1) Ex11234A= imread(‘cameraman.tif’); % Read image from graphics fileimshow(A); % Display image imagesc">
 <meta name="twitter:image" content="http://xuerongli.github.io/img/cameraman.png">
   
     <link rel="alternate" href="/atom.xml" title="遥感数据挖掘与应用" type="application/atom+xml">
@@ -88,7 +88,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Digital Image Processing - MATLAB part1
+      Matlab DIP - part1
     </h1>
   
 
@@ -96,9 +96,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1．Pricipal"><a href="#1．Pricipal" class="headerlink" title="1．Pricipal"></a>1．Pricipal</h1><p>Input –&gt; matrix –&gt; computing –&gt; output</p>
+        <h1 id="1．Pricipal"><a href="#1．Pricipal" class="headerlink" title="1．Pricipal"></a>1．Pricipal</h1><p>Digital Image Processing (DIP)<br>Input –&gt; matrix –&gt; computing –&gt; output</p>
 <h1 id="2．Excise"><a href="#2．Excise" class="headerlink" title="2．Excise"></a>2．Excise</h1><h2 id="1-Ex1"><a href="#1-Ex1" class="headerlink" title="(1) Ex1"></a>(1) Ex1</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A= imread(‘cameraman.tif’); % Read image <span class="keyword">from</span> graphics file</div><div class="line">imshow(A); % Display image </div><div class="line">imagesc(A);</div><div class="line">image(A); % axis off / on;</div></pre></td></tr></table></figure>
 <p><img src="/img/cameraman.png" alt="&#39;Camera Man&#39;"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Whos A;  % List variables <span class="keyword">in</span> workspace</div><div class="line">imfinfo cameraman.tif; % Information about graphics file</div><div class="line">imwrite(A,’<span class="number">1</span>cameraman.jpg’,’quality’,<span class="number">50</span>) % Write image to jpg graphics file, compress the file <span class="keyword">from</span> <span class="number">60</span>k to <span class="number">6</span>k</div><div class="line">% imwrite(f,’filename.jpg’,’quality’,q) <span class="number">0</span>&lt;=q&lt;=<span class="number">100</span></div><div class="line">imwrite(A,’cameraman.bmp’,’bmp’) % Write image to bmp graphics file</div><div class="line">B=im2bw(A) % Convert image to binary image, based on threshold</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),imshow(A); % Create axes <span class="keyword">in</span> tiled positions</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),imshow(B);</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h2 id="2-Ex2"><a href="#2-Ex2" class="headerlink" title="(2) Ex2"></a>(2) Ex2</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">C=imread(‘greens.jpg’);</div><div class="line">D=rgb2gray(C); % Convert RGB image or colormap to grayscale</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),imshow(C);</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),imshow(D)</div></pre></td></tr></table></figure>
 <h2 id="3-imread"><a href="#3-imread" class="headerlink" title="(3) imread"></a>(3) imread</h2><p>imread的常见调用格式为：<br>A = imread(filename,fmt)<br>其作用是将文件名用字符串filename表示的，扩展名用fmt表示的图像文件中的数据读到矩阵A中。如果filename所指的为灰度级图像，则A为一个二维矩阵；如果filename所指的为RGB图像，则A为一个m×n×3的三维矩阵。Filename表示的文件名必须在MATLAB的搜索路径范围内，否则需指出其完整路径。</p>
 <p>imread的其他几种重要的调用格式为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[X,map] = imread(filename.fmt)</div><div class="line">[…] = imread(filename)</div><div class="line">[…] = imread(URL,…)</div><div class="line">[…] = imread(…,idx); % (CUR,ICO and TIFF only), idx是指读取图标（cur、ico、tiff）文件中第idx个图像，默认值为<span class="number">1</span>。</div><div class="line">[…] = imread(…,’frames’,idx) (GIF only), ’frame’,idx是指读取gif文件中的图像帧，idx值可以是数量、向量或’all’。</div><div class="line">[…] = imread(…,ref) (HDF only) % ref是指整数值</div><div class="line">[…] = imread(…,’BackgroundColor’,BG) (PNG only)</div><div class="line">[A,map,alpha] = imread(…) (ICO,CUR and PNG only) % alpha是指透明度</div></pre></td></tr></table></figure></p>
@@ -107,7 +108,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0kiqpsh0008u0p6yi7afjrb" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0kiwqsi00079kp6x45355p6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DIP/">DIP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
@@ -119,9 +120,9 @@
 <nav id="article-nav">
   
   
-    <a href="/2017/03/16/my-new-post/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/16/Hexo-Githubpages/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">New Post</div>
+      <div class="article-nav-title">Hexo + Github Pages</div>
     </a>
   
 </nav>
@@ -137,7 +138,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li></ul>
     </div>
   </div>
 
@@ -147,7 +148,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
     </div>
   </div>
 
@@ -157,7 +158,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/post/" style="font-size: 10px;">post</a>
+      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a>
     </div>
   </div>
 
@@ -179,19 +180,15 @@
       <ul>
         
           <li>
-            <a href="/2017/03/20/Matlab_DIP1/">Digital Image Processing - MATLAB part1</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/16/my-new-post/">New Post</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
+            <a href="/2017/03/20/Matlab_DIP1/">Matlab DIP - part1</a>
           </li>
         
           <li>
             <a href="/2017/03/16/Hexo-Githubpages/">Hexo + Github Pages</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
           </li>
         
           <li>
