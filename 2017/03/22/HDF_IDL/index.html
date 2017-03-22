@@ -14,7 +14,7 @@
 <meta property="og:description" content="HDF（Hierarchical Data Formats）数据格式由 NCSA 开发。HDF 提供了大量的数据模式，包括多维数组、表格、图像、注解和调色板。在下面的章节中，将描述 HDF 科学数据系列（SDS）的数据模式，因为它是 HDF 中最具灵活性的，并且它和 NetCDF 具有相似性。也就是说，HDF SDS 的基本组成也是变量、属性和维数。
 常用的 HDF SDS 程序名 称    功">
 <meta property="og:image" content="http://www.lai18.com/content/5631586.html">
-<meta property="og:updated_time" content="2017-03-22T12:02:49.628Z">
+<meta property="og:updated_time" content="2017-03-22T12:15:23.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Read and Write HDF with IDL">
 <meta name="twitter:description" content="HDF（Hierarchical Data Formats）数据格式由 NCSA 开发。HDF 提供了大量的数据模式，包括多维数组、表格、图像、注解和调色板。在下面的章节中，将描述 HDF 科学数据系列（SDS）的数据模式，因为它是 HDF 中最具灵活性的，并且它和 NetCDF 具有相似性。也就是说，HDF SDS 的基本组成也是变量、属性和维数。
@@ -94,6 +94,7 @@
       
         <p>HDF（Hierarchical Data Formats）数据格式由 NCSA 开发。HDF 提供了大量的数据模式，包括多维数组、表格、图像、注解和调色板。在下面的章节中，将描述 HDF 科学数据系列（SDS）的数据模式，因为它是 HDF 中最具灵活性的，并且它和 NetCDF 具有相似性。也就是说，HDF SDS 的基本组成也是变量、属性和维数。</p>
 <p>常用的 HDF SDS 程序<br>名 称    功 能<br>HDF_SD_START()    打开一个 SDS 模式的 HDF 文件<br>HDF_SD_END    关闭一个 SDS 模式的 HDF 文件<br>HDF_SD_NAMETOINDEX()    返回变量索引<br>HDF_SD_SELECT    返回变量标识符<br>HDF_SD_GETDATA    读取变量数据<br>HDF_SD_ENDACCESS    结束到一个变量的通道<br>HDF_SD_ATTRFIND()    返回属性索引<br>HDF_SD_ATTRINFO    读取属性数据<br>HDF_SD_ATTRFIND()    返回全局属性索引<br>HDF_SD_ATTRINFO    读取全局属性数据<br>HDF_SD_FILEINFO    返回文件信息<br>HDF_SD_GETINFO    返回变量信息<br>HDF_SD_ATTRINFO    返回属性名称<br>HDF_SD_START()    创建一个 HDF 文件<br>HDF_SD_CREATE()    创建一个变量<br>HDF_SD_DIMGETID()    创建一个维度<br>HDF_SD_DIMSET    设置维度信息<br>HDF_SD_ADDDATA    写入变量数据<br>HDF_SD_ATTRSET    写入属性数据</p>
+<a id="more"></a>
 <p>HDF_SD_START：打开一个 SDS模式的 HDF 文件。<br>【函数】返回值是这个 HDF 文件的 SD ID。如果没有设置关键字，则以只读形式打开。<br>语法：Result = HDF_SD_START( Filename [, /READ | , /RDWR] [, /CREATE] )<br>说明：READ 只读模式，默认模式；<br>RDWR 读写模式；<br>CREATE 创建一个新的 SD 文件。</p>
 <p>HDF_SD_END：关闭一个 SDS 模式的 HDF 文件。<br>语法：HDF_SD_END, SDinterface_id</p>
 <p>HDF_SD_NAMETOINDEX：返回变量索引。<br>【函数】返回值为指定 SD 数据集的索引值。<br>语法：Result = HDF_SD_NAMETOINDEX(SDinterface_id, SDS_Name)<br>说明：SDinterface_id An SD interface ID as returned by HDF_SD_START.<br>SDS_Name A string containing the name of the SD dataset be located.</p>
@@ -117,7 +118,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/HDF_IDL/" data-id="cj0kxh1d70000v4p65i8txnki" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/22/HDF_IDL/" data-id="cj0kywixv000c78p60ep1i2sd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HDF/">HDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li></ul>
@@ -128,10 +129,19 @@
     
 <nav id="article-nav">
   
+    <a href="/2017/03/22/HierarchicalData/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Open Hierarchical Data in ENVI
+        
+      </div>
+    </a>
   
-    <a href="/2017/03/22/HierarchicalData/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2017/03/22/Imp_Urls/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Open Hierarchical Data in ENVI</div>
+      <div class="article-nav-title">Useful Urls</div>
     </a>
   
 </nav>
@@ -157,7 +167,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
     </div>
   </div>
 
@@ -167,7 +177,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/HDF/" style="font-size: 15px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 15px;">NetCDF</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a>
+      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/HDF/" style="font-size: 13.33px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 13.33px;">NetCDF</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a>
     </div>
   </div>
 
@@ -189,11 +199,15 @@
       <ul>
         
           <li>
+            <a href="/2017/03/22/HierarchicalData/">Open Hierarchical Data in ENVI</a>
+          </li>
+        
+          <li>
             <a href="/2017/03/22/HDF_IDL/">Read and Write HDF with IDL</a>
           </li>
         
           <li>
-            <a href="/2017/03/22/HierarchicalData/">Open Hierarchical Data in ENVI</a>
+            <a href="/2017/03/22/Imp_Urls/">Useful Urls</a>
           </li>
         
           <li>
@@ -202,10 +216,6 @@
         
           <li>
             <a href="/2017/03/22/Markdown/">Markdown语法手册</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/20/Matlab_DIP1/">Matlab DIP - part1</a>
           </li>
         
       </ul>
