@@ -66,50 +66,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-HDF_IDL" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/HDF_IDL/" class="article-date">
-  <time datetime="2017-03-22T11:47:07.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/HDF_IDL/">Read and Write HDF with IDL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>HDF（Hierarchical Data Formats）数据格式由 NCSA 开发。HDF 提供了大量的数据模式，包括多维数组、表格、图像、注解和调色板。在下面的章节中，将描述 HDF 科学数据系列（SDS）的数据模式，因为它是 HDF 中最具灵活性的，并且它和 NetCDF 具有相似性。也就是说，HDF SDS 的基本组成也是变量、属性和维数。</p>
-<p>常用的 HDF SDS 程序<br>名 称    功 能<br>HDF_SD_START()    打开一个 SDS 模式的 HDF 文件<br>HDF_SD_END    关闭一个 SDS 模式的 HDF 文件<br>HDF_SD_NAMETOINDEX()    返回变量索引<br>HDF_SD_SELECT    返回变量标识符<br>HDF_SD_GETDATA    读取变量数据<br>HDF_SD_ENDACCESS    结束到一个变量的通道<br>HDF_SD_ATTRFIND()    返回属性索引<br>HDF_SD_ATTRINFO    读取属性数据<br>HDF_SD_ATTRFIND()    返回全局属性索引<br>HDF_SD_ATTRINFO    读取全局属性数据<br>HDF_SD_FILEINFO    返回文件信息<br>HDF_SD_GETINFO    返回变量信息<br>HDF_SD_ATTRINFO    返回属性名称<br>HDF_SD_START()    创建一个 HDF 文件<br>HDF_SD_CREATE()    创建一个变量<br>HDF_SD_DIMGETID()    创建一个维度<br>HDF_SD_DIMSET    设置维度信息<br>HDF_SD_ADDDATA    写入变量数据<br>HDF_SD_ATTRSET    写入属性数据</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/03/22/HDF_IDL/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/HDF_IDL/" data-id="cj0m0bxm70005y8p6yr8o75os" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HDF/">HDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-HierarchicalData" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/22/HierarchicalData/" class="article-date">
@@ -144,10 +100,117 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/HierarchicalData/" data-id="cj0m0bxmi000ay8p6hil4nl9u" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/22/HierarchicalData/" data-id="cj0m7gp0d0006u8p6saczjjj8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HDF/">HDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NetCDF/">NetCDF</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python_GUI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/Python_GUI/" class="article-date">
+  <time datetime="2017-03-22T11:47:07.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/Python_GUI/">Python GUI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>图形用户界面（Graphical User Interface，简称 GUI）是指采用图形方式显示的计算机操作用户接口。</p>
+<p>Python的GUI工具包：</p>
+<ul>
+<li>Tkinter</li>
+<li>wxPython</li>
+<li><p>PyQt</p>
+<hr>
+</li>
+</ul>
+<p>GUI 的设计主要包括下面三个步骤：</p>
+<ul>
+<li>创建主窗体</li>
+<li>创建元件</li>
+<li>显示元件</li>
+<li>进入窗体的主循环</li>
+</ul>
+<h2 id="最小的-Tkinter-程序-only-3-lines-："><a href="#最小的-Tkinter-程序-only-3-lines-：" class="headerlink" title="最小的[Tkinter]程序(only 3 lines)："></a>最小的[<strong>Tkinter</strong>]程序(only 3 lines)：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import Tkinter     # import the Tkinter module</div><div class="line">root=Tkinter.Tk()  # create a root window</div><div class="line">root.mainloop()     # create an event loop</div></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/22/Python_GUI/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/22/Python_GUI/" data-id="cj0m7gp0j0007u8p6qpe3wu1g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GUI/">GUI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HDF_IDL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/HDF_IDL/" class="article-date">
+  <time datetime="2017-03-22T11:47:07.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/HDF_IDL/">Read and Write HDF with IDL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HDF（Hierarchical Data Formats）数据格式由 NCSA 开发。HDF 提供了大量的数据模式，包括多维数组、表格、图像、注解和调色板。在下面的章节中，将描述 HDF 科学数据系列（SDS）的数据模式，因为它是 HDF 中最具灵活性的，并且它和 NetCDF 具有相似性。也就是说，HDF SDS 的基本组成也是变量、属性和维数。</p>
+<p>常用的 HDF SDS 程序<br>名 称    功 能<br>HDF_SD_START()    打开一个 SDS 模式的 HDF 文件<br>HDF_SD_END    关闭一个 SDS 模式的 HDF 文件<br>HDF_SD_NAMETOINDEX()    返回变量索引<br>HDF_SD_SELECT    返回变量标识符<br>HDF_SD_GETDATA    读取变量数据<br>HDF_SD_ENDACCESS    结束到一个变量的通道<br>HDF_SD_ATTRFIND()    返回属性索引<br>HDF_SD_ATTRINFO    读取属性数据<br>HDF_SD_ATTRFIND()    返回全局属性索引<br>HDF_SD_ATTRINFO    读取全局属性数据<br>HDF_SD_FILEINFO    返回文件信息<br>HDF_SD_GETINFO    返回变量信息<br>HDF_SD_ATTRINFO    返回属性名称<br>HDF_SD_START()    创建一个 HDF 文件<br>HDF_SD_CREATE()    创建一个变量<br>HDF_SD_DIMGETID()    创建一个维度<br>HDF_SD_DIMSET    设置维度信息<br>HDF_SD_ADDDATA    写入变量数据<br>HDF_SD_ATTRSET    写入属性数据</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/22/HDF_IDL/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/22/HDF_IDL/" data-id="cj0m7gp0n000au8p6zfiexlbk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HDF/">HDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li></ul>
 
     </footer>
   </div>
@@ -193,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/Imp_Urls/" data-id="cj0m0bxmm000cy8p6qm673hhq" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/22/Imp_Urls/" data-id="cj0m7gp0r000cu8p6kmwkezrp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/URL/">URL</a></li></ul>
@@ -244,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/NetCDF_IDL/" data-id="cj0m0bxmq000gy8p6utdvymif" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/22/NetCDF_IDL/" data-id="cj0m7gp1g000mu8p6me0ygdep" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NetCDF/">NetCDF</a></li></ul>
@@ -295,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/Markdown/" data-id="cj0m0bxme0007y8p6tfuzr3oe" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/22/Markdown/" data-id="cj0m7gp10000iu8p6ykiir5zl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
@@ -344,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0m0bxmt000jy8p6q80i1y5q" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0m7gp0w000fu8p6ltx4xm29" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DIP/">DIP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
@@ -399,10 +462,57 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/" data-id="cj0m0bxlt0000y8p6yevhedm3" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/" data-id="cj0m7gozp0000u8p6h3dg47ha" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Hexo-advance" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/16/Hexo-advance/" class="article-date">
+  <time datetime="2017-03-16T06:01:25.000Z" itemprop="datePublished">2017-03-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/hexo/">hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>hexo new ‘filename’<br>或者直接在_posts目录下创建 filename.md文件<br>然后打开并编辑该文件，头部信息以—开始和结尾<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 文章名称  #文章页面上的显示名称，可以任意修改，不会出现在URL中</div><div class="line">layout: post</div><div class="line">date: 2014-11-10 10:07:43  #文章生成时间，一般不改，当然也可以任意修改</div><div class="line">updated: 2014-11-12 13:24</div><div class="line">comments: true</div><div class="line">categories: </div><div class="line">- Git</div><div class="line">tags: </div><div class="line">- hexo</div><div class="line">- pages</div><div class="line">---</div><div class="line">正文</div><div class="line">... ...</div></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/16/Hexo-advance/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-advance/" data-id="cj0m7gp010002u8p6ug89whrj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
 
     </footer>
   </div>
@@ -448,57 +558,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-QuickStart/" data-id="cj0m0bxm00002y8p66czxtyu0" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-QuickStart/" data-id="cj0m7gp090005u8p61g2kmdpg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Hexo-advance" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/16/Hexo-advance/" class="article-date">
-  <time datetime="2017-03-16T06:01:25.000Z" itemprop="datePublished">2017-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>hexo new ‘filename’<br>或者直接在_posts目录下创建 filename.md文件<br>然后打开并编辑该文件，头部信息以—开始和结尾<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 文章名称  #文章页面上的显示名称，可以任意修改，不会出现在URL中</div><div class="line">layout: post</div><div class="line">date: 2014-11-10 10:07:43  #文章生成时间，一般不改，当然也可以任意修改</div><div class="line">updated: 2014-11-12 13:24</div><div class="line">comments: true</div><div class="line">categories: </div><div class="line">- Git</div><div class="line">tags: </div><div class="line">- hexo</div><div class="line">- pages</div><div class="line">---</div><div class="line">正文</div><div class="line">... ...</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/03/16/Hexo-advance/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-advance/" data-id="cj0m0bxmb0006y8p60yjtok9p" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
 
     </footer>
   </div>
@@ -516,7 +579,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li></ul>
     </div>
   </div>
 
@@ -526,7 +589,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
     </div>
   </div>
 
@@ -536,7 +599,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/HDF/" style="font-size: 13.33px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 13.33px;">NetCDF</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a>
+      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/HDF/" style="font-size: 13.33px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 13.33px;">NetCDF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a>
     </div>
   </div>
 
@@ -558,11 +621,15 @@
       <ul>
         
           <li>
-            <a href="/2017/03/22/HDF_IDL/">Read and Write HDF with IDL</a>
+            <a href="/2017/03/22/HierarchicalData/">Open Hierarchical Data in ENVI</a>
           </li>
         
           <li>
-            <a href="/2017/03/22/HierarchicalData/">Open Hierarchical Data in ENVI</a>
+            <a href="/2017/03/22/Python_GUI/">Python GUI</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/HDF_IDL/">Read and Write HDF with IDL</a>
           </li>
         
           <li>
@@ -571,10 +638,6 @@
         
           <li>
             <a href="/2017/03/22/NetCDF_IDL/">Read and Write NetCDF with IDL</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/22/Markdown/">Markdown语法手册</a>
           </li>
         
       </ul>
