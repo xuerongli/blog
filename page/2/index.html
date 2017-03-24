@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Matlab_DIP1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/20/Matlab_DIP1/" class="article-date">
+  <time datetime="2017-03-20T13:20:25.000Z" itemprop="datePublished">2017-03-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/DIP/">DIP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/20/Matlab_DIP1/">Matlab DIP - part1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1．Principal"><a href="#1．Principal" class="headerlink" title="1．Principal"></a>1．Principal</h1><p>Digital Image Processing (DIP)<br>Input –&gt; matrix –&gt; computing –&gt; output</p>
+<h1 id="2．Excise"><a href="#2．Excise" class="headerlink" title="2．Excise"></a>2．Excise</h1><h2 id="1-Ex1"><a href="#1-Ex1" class="headerlink" title="(1) Ex1"></a>(1) Ex1</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A= imread(‘cameraman.tif’); % Read image <span class="keyword">from</span> graphics file</div><div class="line">imshow(A); % Display image </div><div class="line">imagesc(A);</div><div class="line">image(A); % axis off / on;</div></pre></td></tr></table></figure>
+<p><img src="/images/cameraman.png" alt="&#39;Camera Man&#39;"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Whos A;  % List variables <span class="keyword">in</span> workspace</div><div class="line">imfinfo cameraman.tif; % Information about graphics file</div><div class="line">imwrite(A,’<span class="number">1</span>cameraman.jpg’,’quality’,<span class="number">50</span>) % Write image to jpg graphics file, compress the file <span class="keyword">from</span> <span class="number">60</span>k to <span class="number">6</span>k</div><div class="line">% imwrite(f,’filename.jpg’,’quality’,q) <span class="number">0</span>&lt;=q&lt;=<span class="number">100</span></div><div class="line">imwrite(A,’cameraman.bmp’,’bmp’) % Write image to bmp graphics file</div><div class="line">B=im2bw(A) % Convert image to binary image, based on threshold</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),imshow(A); % Create axes <span class="keyword">in</span> tiled positions</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),imshow(B);</div></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/20/Matlab_DIP1/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0nn2ch8000jp8p6yuwh9lbl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DIP/">DIP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Hexo-advance" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/16/Hexo-advance/" class="article-date">
@@ -101,59 +150,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-advance/" data-id="cj0nfdh0p0007zkp6wm8cxq92" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-advance/" data-id="cj0nn2cgn000cp8p6a3k0u55h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Hexo-QuickStart" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/16/Hexo-QuickStart/" class="article-date">
-  <time datetime="2017-03-16T06:01:25.000Z" itemprop="datePublished">2017-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/">Hexo</a>! If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a><br>
-        
-          <p class="article-more-link">
-            <a href="/2017/03/16/Hexo-QuickStart/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-QuickStart/" data-id="cj0nfdh0x000czkp6sa9p3zhs" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
     </footer>
   </div>
@@ -205,10 +205,59 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/" data-id="cj0nfdh0k0006zkp655h8d824" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/" data-id="cj0nn2cgd0007p8p6ik5d2xri" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Hexo-QuickStart" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/16/Hexo-QuickStart/" class="article-date">
+  <time datetime="2017-03-16T06:01:25.000Z" itemprop="datePublished">2017-03-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/hexo/">hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/">Hexo</a>! If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a><br>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/16/Hexo-QuickStart/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-QuickStart/" data-id="cj0nn2cg80006p8p6lqc31ruu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
     </footer>
   </div>
@@ -230,7 +279,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Activiti/">Activiti</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/matlab/">matlab</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Activiti/">Activiti</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Video/">Video</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/matlab/">matlab</a></li></ul>
     </div>
   </div>
 
@@ -240,7 +289,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BPM/">BPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Workflow/">Workflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/m-map/">m_map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BPM/">BPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Workflow/">Workflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/m-map/">m_map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/">video</a></li></ul>
     </div>
   </div>
 
@@ -250,7 +299,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Activiti/" style="font-size: 10px;">Activiti</a> <a href="/tags/BPM/" style="font-size: 13.33px;">BPM</a> <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/HDF/" style="font-size: 13.33px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 13.33px;">NetCDF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/Workflow/" style="font-size: 13.33px;">Workflow</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/m-map/" style="font-size: 10px;">m_map</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/matlab/" style="font-size: 13.33px;">matlab</a>
+      <a href="/tags/Activiti/" style="font-size: 10px;">Activiti</a> <a href="/tags/BPM/" style="font-size: 13.33px;">BPM</a> <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/HDF/" style="font-size: 13.33px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 13.33px;">NetCDF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/Workflow/" style="font-size: 13.33px;">Workflow</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/m-map/" style="font-size: 10px;">m_map</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/matlab/" style="font-size: 16.67px;">matlab</a> <a href="/tags/video/" style="font-size: 10px;">video</a>
     </div>
   </div>
 
@@ -276,6 +325,10 @@
           </li>
         
           <li>
+            <a href="/2017/03/24/Matlab_video/">Matlab 视频处理</a>
+          </li>
+        
+          <li>
             <a href="/2017/03/23/Activiti/">工作流引擎Activiti</a>
           </li>
         
@@ -285,10 +338,6 @@
         
           <li>
             <a href="/2017/03/22/HierarchicalData/">Open Hierarchical Data in ENVI</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/22/HDF_IDL/">Read and Write HDF with IDL</a>
           </li>
         
       </ul>

@@ -109,10 +109,118 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/24/Workflow/" data-id="cj0nfdh1i000tzkp64cryz0uw" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/24/Workflow/" data-id="cj0nn2che000rp8p6hp823mg4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BPM/">BPM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Workflow/">Workflow</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Matlab_video" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/24/Matlab_video/" class="article-date">
+  <time datetime="2017-03-24T08:20:25.000Z" itemprop="datePublished">2017-03-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Video/">Video</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/24/Matlab_video/">Matlab 视频处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>matlab视频处理</p>
+<ul>
+<li>读入AVI视频，变成一帧帧的图片</li>
+<li>循环模式下的图片处理</li>
+<li>把图片连成视频</li>
+</ul>
+<p>函数：</p>
+<ul>
+<li><p>视频输入 aviread（只能读取特定编码格式的avi视频，avi视频文件的编码有很多，而matlab只支持部分编码格式）、<br>mmread（mmreader可以读取更多格式的avi视频，2010版本才能支持）</p>
+</li>
+<li><p>视频播放 movie</p>
+</li>
+<li><p>视频文件信息 aviinfo</p>
+</li>
+<li><p>视频格式转换 movie2avi</p>
+</li>
+</ul>
+<ol>
+<li>用matlab读取avi视频</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; aviinfo(&apos;d:\abc.avi&apos;);</div><div class="line">%显示存在d 盘文件abc.avi 的信息</div><div class="line">&gt;&gt; mov=aviread(&apos;abc:.avi&apos;); %读入电影abc.avi(matlab2010 版本中)</div><div class="line">&gt;&gt; movie(mov); %放映电影</div></pre></td></tr></table></figure>
+<ol>
+<li>avi视频转成图片序列</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; mov=aviread(&apos;d:\abc.avi&apos;); %读入</div><div class="line">&gt;&gt; Vframes=size(mov,2); %读取视频的帧数，mov 为1*1179 struct，struct就是第4点所介绍的 </div><div class="line">&gt;&gt; for i=1: Vframes</div><div class="line">     strtemp=strcat(&apos;d:\转换的图片\&apos;,int2str(i),&apos;.&apos;,&apos;jpg&apos;); %将每帧转成.jpg 的图片</div><div class="line">     imwrite(mov(i).cdata(:,:,), mov(i).colormap, strtemp); % 把图像写入磁盘</div><div class="line">   end</div></pre></td></tr></table></figure>
+<ol>
+<li>读取avi视频第index帧有三种使用方式（不适用于索引图）：<br>第一种：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mov=aviread(filename); % 读入视频</div><div class="line">frame=mov(index); %读取avi 文件的第index 帧图像；</div><div class="line">img = frame.cdata; % 读取图像的颜色信息</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>第二种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">frame = aviread(filename, index);</div><div class="line">img = frame.cdata;</div></pre></td></tr></table></figure></p>
+<p>第三种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mov = aviread(filename);</div><div class="line">frame = mov.cdata;</div><div class="line">frame = mov.cdata;</div><div class="line">img = mov&#123;index&#125;;</div></pre></td></tr></table></figure></p>
+<p>例：%读取第一帧图像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mov = aviread(&apos;highwayI_raw.AVI&apos;); </div><div class="line">frame=mov(index); </div><div class="line">imshow(frame.cdata);</div></pre></td></tr></table></figure></p>
+<ol>
+<li>读取avi视频第index帧图像后，所储存帧格式是一个结构体(struct)，该结构体有两个元素：cdata 和colormap</li>
+</ol>
+<p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">frame = aviread(&apos;highwayI_raw.AVI&apos;, i);</div><div class="line">frame.cdata 表示了一个数据数组，彩色图像就是3 维的，灰度图像就是2 维的。也就是相当于I=imread(‘abc.jpg’)后的数组I</div><div class="line">frame.colormap 见（help aviread)</div></pre></td></tr></table></figure></p>
+<h2 id="了解了以上四点，处理视频文件就可以相当于图像文件一样处理了"><a href="#了解了以上四点，处理视频文件就可以相当于图像文件一样处理了" class="headerlink" title="了解了以上四点，处理视频文件就可以相当于图像文件一样处理了"></a><strong>了解了以上四点，处理视频文件就可以相当于图像文件一样处理了</strong></h2><ol>
+<li><p>将彩色图像转换为灰度图像，很简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">frame = aviread(&apos;highwayI_raw.AVI&apos;, i);</div><div class="line">f_gray = rgb2gray(frame.cdata); % 将文件的第i帧转换为灰度图像。</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建avi视频文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">aviobj = avifile(filename)</div><div class="line">aviobj = avifile(filename, &apos;Param1&apos;, Val1, &apos;Param2&apos;, Val2,...)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>描述:<br>aviobj = avifile(filename) 创建一个AVI文件，其名称为filename，AVI文件对象的所有属性均取默认值。如果文件名中并不包含扩展名，则avifile为filename自动添加扩展名.avi。AVI是一种存储声音和图像数据的文件格式。<br>avifile返回一个指向AVI文件对象aviobj的句柄，使用该对象在其他函数中可以引用该对象。AVＩ文件对象支持控制被创建的AVI文件的各方面属性和方法。</p>
+<ul>
+<li>实例显示如何使用函数avifile创建AVI文件example.avi。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">t = linspace(0,2.5*pi,40);</div><div class="line">fact = 10*sin(t);</div><div class="line">fig=figure;</div><div class="line">aviobj = avifile(&apos;example.avi&apos;)</div><div class="line">[x,y,z] = peaks;</div><div class="line">for k=1:length(fact)</div><div class="line">  h = surf(x,y,fact(k)*z);</div><div class="line">  axis([-3 3 -3 3 -80 80])</div><div class="line">  axis off</div><div class="line">  caxis([-90 90])</div><div class="line">  F = getframe(fig);</div><div class="line">  aviobj = addframe(aviobj,F);</div><div class="line">end</div><div class="line"></div><div class="line">close(fig)</div><div class="line">aviobj = close(aviobj);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li>mmreader类—创建一个视频文件读取对象</li>
+</ol>
+<p>在matlab2010中，会建议采用mmreader、mmfileinfo等函数，如果使用aviread会出现警告如下：<br>Warning: AVIREAD will be removed in a future release. Use MMREADER instead.</p>
+<p>这是由于aviread接口需要要求avi文件时没有压缩的，有很大限制。</p>
+<p>mmreader类 是为了创建一个读取视频文件的多媒体读取对象</p>
+<p>描述：<br>函数 mmreader可以读取所有的多媒体文件，返回值为一个结构体；然后可以用read 函数进行读取文件</p>
+<p>mmreader 支持的文件格式由各个操作系统平台决定<br>Window: AVI(.avi)/MPEG-1(.mgp)<br>Window Media Video(.wmv,.asf,.asx)<br>Window: AVI(.avi)/MPEG-1(.mgp)Window Media Video(.wmv,.asf,.asx)<br>Macintosh： AVI(.avi)/MPEG-1(.mpg)/MPEG(.mp4,.m4v)/苹果Quick Time movie(.mov) 以及被QuickTime在苹果系统上所支持的视频格式<br>Linux: 支持系统中所安装的GStreamer 0.10 支持的视频格式，包括AVI/Ogg Theora(.ogg)</p>
+<p>mmreader创建视频文件有两种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj = mmreader(filename);</div><div class="line">obj = mmreader(filename, ‘PropertyName’, ‘PropertyValue’);</div></pre></td></tr></table></figure></p>
+<p>obj具有的属性如下：<br>BitsPerPixel (只读) 视频的每个像素的位数<br>Duration (只读) 每秒的总长度<br>FrameRate (只读) 每秒的帧率<br>Height (只读） 视频每帧图像的高度<br>Name (只读） 对象所对应的视频文件名<br>NumberOfFrames (只读) 视频流中的总帧数<br>Path (只读）视频文件所在的路径名<br>Tag 定义视频对象的标签（默认’’）<br>Type (只读) 对象的类名—mmreader<br>UserData 给用户自定义数据的区域<br>VideoFormat (只读) 视频文件压缩格式<br>Width (只读）视频每帧图像的宽度</p>
+<p>通常obj对象配合read方法使用；read的使用方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">video = read(obj);</div><div class="line">video = read(obj,index); 或 video = read(obj, [index1,index2])</div></pre></td></tr></table></figure></p>
+<p>其实第一种默认是read(obj, [1,inf])<br>第一种方法读入obj视频对象的所有帧;<br>第二种方法读入obj视频对象的第index帧.<br>第一种方法返回的video对象是个4维数组,H-W-B-F<br>H： 图像帧的高度<br>W： 图像帧的宽度<br>B： 图像帧的颜色通道<br>F： 图像帧的数目</p>
+<p>第二种方法返回就是图像帧的数据，灰度图像返回二维数组，RGB24图像返回三维数组。 读取第一帧图像例子如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">obj = mmreader(&apos;abc.avi&apos;);</div><div class="line">video = read(obj);</div><div class="line">img = video(:,:,:1);</div><div class="line">imshow(img);</div></pre></td></tr></table></figure></p>
+<p>第一种只需提供（默认路径名）+文件名，就可以返回一个视频对象；使用第二种方法，可以设置属性名以及属性值</p>
+<p>例程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">[filename,pathname,fileindex]=uigetfile(&apos;*.avi&apos;,&apos;请选择一个Avi文件&apos;);</div><div class="line">video_info=aviinfo([pathname filename]);</div><div class="line">% info =</div><div class="line">%               Filename:  视频名称</div><div class="line">%               FileSize:  视频大小</div><div class="line">%            FileModDate:  视频创建日期</div><div class="line">%              NumFrames:  视频总帧数</div><div class="line">%        FramesPerSecond:  视频采集速率</div><div class="line">%                  Width:  视频宽度</div><div class="line">%                 Height:  视频高度</div><div class="line">%              ImageType: &apos;truecolor&apos;  图像模式</div><div class="line">%       VideoCompression: &apos;DIV3&apos;  视频图像压缩格式</div><div class="line">%                Quality: 0</div><div class="line">%     NumColormapEntries: 0</div><div class="line">LEN=video_info.NumFrames; %获得视频长度</div><div class="line">for k=1:LEN</div><div class="line">    video_videotape(k)=aviread(video_info.Filename,k);   %读入avi文件的第k帧    </div><div class="line">    video_image=video_videotape(k).cdata;</div><div class="line"></div><div class="line">    if k&lt;10</div><div class="line">        imwrite(video_image,strcat(&apos;0000&apos;,int2str(k),&apos;.bmp&apos;),&apos;bmp&apos;);%把每帧图像存入硬盘</div><div class="line">    elseif k&gt;=10 &amp; k&lt;100</div><div class="line">        imwrite(video_image,strcat(&apos;000&apos;,int2str(k),&apos;.bmp&apos;),&apos;bmp&apos;);%把每帧图像存入硬盘</div><div class="line">    elseif k&gt;=100 &amp; k&lt;1000</div><div class="line">        imwrite(video_image,strcat(&apos;00&apos;,int2str(k),&apos;.bmp&apos;),&apos;bmp&apos;);%把每帧图像存入硬盘</div><div class="line">    elseif k&gt;=1000 &amp; k&lt;1000</div><div class="line">        imwrite(video_image,strcat(&apos;0&apos;,int2str(k),&apos;.bmp&apos;),&apos;bmp&apos;);%把每帧图像存入硬盘 </div><div class="line">    else</div><div class="line">        imwrite(video_image,strcat(int2str(k),&apos;.bmp&apos;),&apos;bmp&apos;);%把每帧图像存入硬盘</div><div class="line">    end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>备注：通过更改imwrite那儿的很多参数，可以获得自己想要的很多结果，比如更改bmp为jpg，<br>以及其它，具体请在MATLAB下help imwrite。</p>
+<p>MATLAB下有一个Computer Vision System Toolbox</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/24/Matlab_video/" data-id="cj0nn2cgx000ep8p60ia9e4s5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/video/">video</a></li></ul>
 
     </footer>
   </div>
@@ -147,11 +255,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>Activiti是一个针对企业用户、开发人员、系统管理员轻量级工作流业务管理平台。其核心是使用Java开发的快速、稳定BPMN 2.0流程引擎。Activiti 是在 Apache V2 许可下发布的。Activiti可以运行在任何类型的Java程序中，例如服务器、集群、云服务。它可以完美地与Spring集成。基于简约思想的设计使Activiti非常的轻量级。 它有着活跃的社区，而且越来越多的企业都选择Activiti作为自己的流程引擎或者嵌入到自己的系统平台中（例如ESB）。</p>
+<h2 id="环境要求和基本演示"><a href="#环境要求和基本演示" class="headerlink" title="环境要求和基本演示"></a>环境要求和基本演示</h2><p>(1)操作系统环境变量中要配置JAVA_HOME<br>(2)将activiti-5.13.zip压缩文件中的activiti-explorer.war 复制到tomcat中的webapps<br>(3)启动浏览器<a href="http://localhost:8080/activiti-explorer，以" target="_blank" rel="external">http://localhost:8080/activiti-explorer，以</a> kermit/kermit登录<br>演示版本中共有三个用户<br>UserId Password Security roles<br>             kermit kermit admin<br>             gonzo gonzo manager<br>             fozzie fozzie user<br>UserId Password Security roles kermit kermit admin gonzo gonzo manager fozzie fozzie user (4)下载eclipse_indigo(eclipse3.7)，解压缩运行，indigo版本集成了maven，插件Activiti BPMN 2.0 designer必须安装在indigo中<br>(5)运行eclipse，安装Activiti BPMN 2.0 designer插件，具体参见：<a href="http://www.ecmkit.com/zh-hans/2012/03/21/activiti-workflow-hell" target="_blank" rel="external">http://www.ecmkit.com/zh-hans/2012/03/21/activiti-workflow-hell</a><br>Help -&gt; Install New Software，输入以下站点信息：<br>Name: Activiti BPMN 2.0 designer<br>Location: <a href="http://activiti.org/designer/update/" target="_blank" rel="external">http://activiti.org/designer/update/</a></p>
+<h2 id="数据库配置为oracle"><a href="#数据库配置为oracle" class="headerlink" title="数据库配置为oracle"></a>数据库配置为oracle</h2><p>(1)将database-&gt;create目录中对应的sql语句复制到数据库中执行即可<br>我的是oracle11g，结果出现了“A-01460: 转换请求无法实现或不合理”问题，将驱动转换成ojdbc6.jar，还要在环境变量classpath中配置一下<br>4.相关jar包<br>(1)在eclipse中新建一个Web Project<br>(2)将activiti-5.11中lib目录下所有jar包复制到web-inf\lib\<br>(3)复制activation-1.1.jar；commons-dbcp-1.4.jar；commons-email-1.2.jar;commons-lang3-3.1.jar;commons-logging.jar;commons-pool-1.5.4.jar;mail-1.4.1.jar<br>spring 3.1所有jar包，数据库jar包<br>(4)相关jar包如果没有，可以到这个去下<a href="http://yiyiboy2010.iteye.com/blog/1530924" target="_blank" rel="external">http://yiyiboy2010.iteye.com/blog/1530924</a></p>
+<h2 id="演示代码"><a href="#演示代码" class="headerlink" title="演示代码"></a>演示代码</h2><p>(1)新建一个bpmn<br>可以自己新建，也可以用<a href="http://yiyiboy2010.iteye.com/blog/1530924里的Interview.bpmn20.xml，将名字改成Interview.bpmn，放在根目录下" target="_blank" rel="external">http://yiyiboy2010.iteye.com/blog/1530924里的Interview.bpmn20.xml，将名字改成Interview.bpmn，放在根目录下</a><br>北风网讲师提醒注意：从activti5.10开始，bpmn20.xml后缀都改成了bpmn，如果需要图片，自己从eclipse中导出<br>(2)在根目录下新建一个数据库配置文件activiti.cfg.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</div><div class="line">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans </div><div class="line">    http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</div><div class="line">    &lt;bean id=&quot;processEngineConfiguration&quot;</div><div class="line">        class=&quot;org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration&quot;&gt;</div><div class="line">        &lt;property name=&quot;databaseSchemaUpdate&quot; value=&quot;true&quot; /&gt;</div><div class="line">        &lt;property name=&quot;jdbcUrl&quot; value=&quot;jdbc:mysql://localhost:3306/webauth?useUnicode=true&amp;characterEncoding=utf-8&quot; /&gt;</div><div class="line">        &lt;property name=&quot;jdbcDriver&quot; value=&quot;com.mysql.jdbc.Driver&quot; /&gt;</div><div class="line">        &lt;property name=&quot;jdbcUsername&quot; value=&quot;root&quot; /&gt;</div><div class="line">        &lt;property name=&quot;jdbcPassword&quot; value=&quot;&quot; /&gt;</div><div class="line">        &lt;property name=&quot;jobExecutorActivate&quot; value=&quot;true&quot; /&gt;</div><div class="line">    &lt;/bean&gt;</div><div class="line">     &lt;!--</div><div class="line">    &lt;bean id=&quot;processEngineConfiguration&quot; class=&quot;org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration&quot;&gt;</div><div class="line">        &lt;property name=&quot;databaseSchemaUpdate&quot; value=&quot;true&quot; /&gt;</div><div class="line">        &lt;property name=&quot;jdbcUrl&quot; value=&quot;jdbc:oracle:thin:@192.108.119.45:1521:test&quot; /&gt;</div><div class="line">        &lt;property name=&quot;jdbcDriver&quot; value=&quot;oracle.jdbc.driver.OracleDriver&quot; /&gt;</div><div class="line">        &lt;property name=&quot;jdbcUsername&quot; value=&quot;username&quot; /&gt;</div><div class="line">        &lt;property name=&quot;jdbcPassword&quot; value=&quot;password&quot; /&gt;</div><div class="line">        &lt;property name=&quot;jobExecutorActivate&quot; value=&quot;true&quot; /&gt;</div><div class="line">    &lt;/bean&gt;</div><div class="line">    --&gt;</div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure>
+<p>(3)新建一个java测试类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">import java.util.List;</div><div class="line">import org.activiti.engine.HistoryService;</div><div class="line">import org.activiti.engine.ProcessEngine;</div><div class="line">import org.activiti.engine.ProcessEngineConfiguration;</div><div class="line">import org.activiti.engine.RepositoryService;</div><div class="line">import org.activiti.engine.RuntimeService;</div><div class="line">import org.activiti.engine.TaskService;</div><div class="line">import org.activiti.engine.history.HistoricProcessInstance;</div><div class="line">import org.activiti.engine.task.Task;</div><div class="line">public class Test &#123;</div><div class="line">    //本流程模拟的是某公司2012年实习生招聘流程</div><div class="line">    //张三来参加该招聘流程，公司相关负责人负责处理流程</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        //加载配置文件</div><div class="line">        ProcessEngine processEngine = ProcessEngineConfiguration</div><div class="line">                .createProcessEngineConfigurationFromResource(&quot;activiti.cfg.xml&quot;)</div><div class="line">                .buildProcessEngine();</div><div class="line">        RepositoryService repositoryService = processEngine.getRepositoryService();</div><div class="line">        RuntimeService runtimeService = processEngine.getRuntimeService();</div><div class="line">        repositoryService.createDeployment()</div><div class="line">            .addClasspathResource(&quot;Interview.bpmn&quot;)</div><div class="line">            .deploy();</div><div class="line">        String processId = runtimeService.startProcessInstanceByKey(&quot;Interview&quot;).getId();</div><div class="line">        TaskService taskService = processEngine.getTaskService();</div><div class="line">        HistoryService historyService = processEngine.getHistoryService();</div><div class="line">        //得到笔试的流程</div><div class="line">        System.out.println(&quot;***************笔试流程开始***************&quot;);</div><div class="line">        List&lt;Task&gt; tasks = taskService.createTaskQuery().taskCandidateGroup(&quot;人力资源部&quot;).list();</div><div class="line">        for (Task task : tasks) &#123;</div><div class="line">            System.out.println(&quot;人力资源部的任务：name:&quot;+task.getName()+&quot;,id:&quot;+task.getId());</div><div class="line">            taskService.claim(task.getId(), &quot;张三&quot;);</div><div class="line">        &#125;</div><div class="line">        System.out.println(&quot;张三的任务数量：&quot;+taskService.createTaskQuery().taskAssignee(&quot;张三&quot;).count());</div><div class="line">        tasks = taskService.createTaskQuery().taskAssignee(&quot;张三&quot;).list();</div><div class="line">        for (Task task : tasks) &#123;</div><div class="line">            System.out.println(&quot;张三的任务：name:&quot;+task.getName()+&quot;,id:&quot;+task.getId());</div><div class="line">            taskService.complete(task.getId());</div><div class="line">        &#125;</div><div class="line">        System.out.println(&quot;张三的任务数量：&quot;+taskService.createTaskQuery().taskAssignee(&quot;张三&quot;).count());</div><div class="line">        System.out.println(&quot;***************笔试流程结束***************&quot;);</div><div class="line">        System.out.println(&quot;***************一面流程开始***************&quot;);</div><div class="line">        tasks = taskService.createTaskQuery().taskCandidateGroup(&quot;技术部&quot;).list();</div><div class="line">        for (Task task : tasks) &#123;</div><div class="line">            System.out.println(&quot;技术部的任务：name:&quot;+task.getName()+&quot;,id:&quot;+task.getId());</div><div class="line">            taskService.claim(task.getId(), &quot;李四&quot;);</div><div class="line">        &#125;</div><div class="line">        System.out.println(&quot;李四的任务数量：&quot;+taskService.createTaskQuery().taskAssignee(&quot;李四&quot;).count());</div><div class="line">        for (Task task : tasks) &#123;</div><div class="line">            System.out.println(&quot;李四的任务：name:&quot;+task.getName()+&quot;,id:&quot;+task.getId());</div><div class="line">            taskService.complete(task.getId());</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">System.out.println(&quot;李四的任务数量：&quot;+taskService.createTaskQuery().taskAssignee(&quot;李四&quot;).count());</div><div class="line">System.out.println(&quot;***************一面流程结束***************&quot;);</div><div class="line">System.out.println(&quot;***************二面流程开始***************&quot;);</div><div class="line">tasks = taskService.createTaskQuery().taskCan</div></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/23/Activiti/" data-id="cj0nfdh020000zkp6sf1htyoj" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/23/Activiti/" data-id="cj0nn2cft0000p8p6kkkankxw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BPM/">BPM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Workflow/">Workflow</a></li></ul>
@@ -201,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/23/m_map/" data-id="cj0nfdh1k000vzkp6mv8d24y9" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/23/m_map/" data-id="cj0nn2chq0011p8p68vwyshd2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/m-map/">m_map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
@@ -247,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/HierarchicalData/" data-id="cj0nfdh0u000azkp6wkz1dnlu" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/22/HierarchicalData/" data-id="cj0nn2cgh000ap8p6o0m9h4z6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HDF/">HDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NetCDF/">NetCDF</a></li></ul>
@@ -291,61 +407,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/HDF_IDL/" data-id="cj0nfdh0i0005zkp64abu75kj" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/22/HDF_IDL/" data-id="cj0nn2cg60005p8p6qc30oemg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HDF/">HDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-NetCDF_IDL" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/NetCDF_IDL/" class="article-date">
-  <time datetime="2017-03-22T11:47:07.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/IDL/">IDL</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/NetCDF_IDL/">Read and Write NetCDF with IDL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>NetCDF（network Common Data Form）由位于科罗拉多州波尔市的 Unidata 程序中心开发，主要应用于大气科学的研究。NetCDF 的数据模式具有简单性和灵活性的特点。NetCDF 文件的基本组成为变量、属性和维数：</p>
-<p><strong>变量</strong>为标量或多维数组。NetCDF 所支持的 IDL 数据类型有 string、byte、int、long、float 和 double</p>
-<p><strong>属性</strong>包含一个变量或这个文件的附加性质。包含变量信息（如单位、有效范围、尺度因子等）的属性称作变量属性；包含文件信息的属性称作全局属性。属性可以是标量或一维数组，支持的数据类型为 string、byte、int、long、float 和 double</p>
-<p><strong>维数</strong>为长整形标量，记录了一个或多个变量的大小。</p>
-<p>从数学上来说，NetCDF 存储的数据就是一个多自变量的单值函数。 用公式来说就是 f(x,y,z,…) = value，函数的自变量 x,y,z 等在 NetCDF 中叫做维 (dimension) 或坐标轴 (axis)，函数值 value 在 NetCDF 中叫做变量 (Variables)。而自变量和函数值在物理学上的一些性质，比如计量单位 (量纲)、物理学名称等等在 NetCDF 中就叫属性 (Attributes)。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/03/22/NetCDF_IDL/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/NetCDF_IDL/" data-id="cj0nfdh1c000nzkp6gdokg861" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NetCDF/">NetCDF</a></li></ul>
 
     </footer>
   </div>
@@ -405,10 +470,61 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/Python_GUI/" data-id="cj0nfdh1g000rzkp694dkaw3f" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/22/Python_GUI/" data-id="cj0nn2chh000up8p690csez77" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GUI/">GUI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-NetCDF_IDL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/NetCDF_IDL/" class="article-date">
+  <time datetime="2017-03-22T11:47:07.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/IDL/">IDL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/NetCDF_IDL/">Read and Write NetCDF with IDL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>NetCDF（network Common Data Form）由位于科罗拉多州波尔市的 Unidata 程序中心开发，主要应用于大气科学的研究。NetCDF 的数据模式具有简单性和灵活性的特点。NetCDF 文件的基本组成为变量、属性和维数：</p>
+<p><strong>变量</strong>为标量或多维数组。NetCDF 所支持的 IDL 数据类型有 string、byte、int、long、float 和 double</p>
+<p><strong>属性</strong>包含一个变量或这个文件的附加性质。包含变量信息（如单位、有效范围、尺度因子等）的属性称作变量属性；包含文件信息的属性称作全局属性。属性可以是标量或一维数组，支持的数据类型为 string、byte、int、long、float 和 double</p>
+<p><strong>维数</strong>为长整形标量，记录了一个或多个变量的大小。</p>
+<p>从数学上来说，NetCDF 存储的数据就是一个多自变量的单值函数。 用公式来说就是 f(x,y,z,…) = value，函数的自变量 x,y,z 等在 NetCDF 中叫做维 (dimension) 或坐标轴 (axis)，函数值 value 在 NetCDF 中叫做变量 (Variables)。而自变量和函数值在物理学上的一些性质，比如计量单位 (量纲)、物理学名称等等在 NetCDF 中就叫属性 (Attributes)。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/22/NetCDF_IDL/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/22/NetCDF_IDL/" data-id="cj0nn2chj000wp8p6s8r3c58h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NetCDF/">NetCDF</a></li></ul>
 
     </footer>
   </div>
@@ -454,7 +570,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/Imp_Urls/" data-id="cj0nfdh14000ezkp6aeiacru1" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/22/Imp_Urls/" data-id="cj0nn2ch2000gp8p6e29f0ons" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL/">IDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/URL/">URL</a></li></ul>
@@ -505,59 +621,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/22/Markdown/" data-id="cj0nfdh18000gzkp6uf8mx3nz" class="article-share-link">Share</a>
+      <a data-url="http://xuerongli.github.io/2017/03/22/Markdown/" data-id="cj0nn2chb000np8p6lmylutfx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Matlab_DIP1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/20/Matlab_DIP1/" class="article-date">
-  <time datetime="2017-03-20T13:20:25.000Z" itemprop="datePublished">2017-03-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/DIP/">DIP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/20/Matlab_DIP1/">Matlab DIP - part1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1．Principal"><a href="#1．Principal" class="headerlink" title="1．Principal"></a>1．Principal</h1><p>Digital Image Processing (DIP)<br>Input –&gt; matrix –&gt; computing –&gt; output</p>
-<h1 id="2．Excise"><a href="#2．Excise" class="headerlink" title="2．Excise"></a>2．Excise</h1><h2 id="1-Ex1"><a href="#1-Ex1" class="headerlink" title="(1) Ex1"></a>(1) Ex1</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A= imread(‘cameraman.tif’); % Read image <span class="keyword">from</span> graphics file</div><div class="line">imshow(A); % Display image </div><div class="line">imagesc(A);</div><div class="line">image(A); % axis off / on;</div></pre></td></tr></table></figure>
-<p><img src="/images/cameraman.png" alt="&#39;Camera Man&#39;"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Whos A;  % List variables <span class="keyword">in</span> workspace</div><div class="line">imfinfo cameraman.tif; % Information about graphics file</div><div class="line">imwrite(A,’<span class="number">1</span>cameraman.jpg’,’quality’,<span class="number">50</span>) % Write image to jpg graphics file, compress the file <span class="keyword">from</span> <span class="number">60</span>k to <span class="number">6</span>k</div><div class="line">% imwrite(f,’filename.jpg’,’quality’,q) <span class="number">0</span>&lt;=q&lt;=<span class="number">100</span></div><div class="line">imwrite(A,’cameraman.bmp’,’bmp’) % Write image to bmp graphics file</div><div class="line">B=im2bw(A) % Convert image to binary image, based on threshold</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),imshow(A); % Create axes <span class="keyword">in</span> tiled positions</div><div class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),imshow(B);</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/03/20/Matlab_DIP1/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/20/Matlab_DIP1/" data-id="cj0nfdh1a000jzkp68ycyr74m" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DIP/">DIP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
 
     </footer>
   </div>
@@ -579,7 +646,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Activiti/">Activiti</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/matlab/">matlab</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Activiti/">Activiti</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Video/">Video</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/matlab/">matlab</a></li></ul>
     </div>
   </div>
 
@@ -589,7 +656,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BPM/">BPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Workflow/">Workflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/m-map/">m_map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BPM/">BPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Workflow/">Workflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/m-map/">m_map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/">video</a></li></ul>
     </div>
   </div>
 
@@ -599,7 +666,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Activiti/" style="font-size: 10px;">Activiti</a> <a href="/tags/BPM/" style="font-size: 13.33px;">BPM</a> <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/HDF/" style="font-size: 13.33px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 13.33px;">NetCDF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/Workflow/" style="font-size: 13.33px;">Workflow</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/m-map/" style="font-size: 10px;">m_map</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/matlab/" style="font-size: 13.33px;">matlab</a>
+      <a href="/tags/Activiti/" style="font-size: 10px;">Activiti</a> <a href="/tags/BPM/" style="font-size: 13.33px;">BPM</a> <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/HDF/" style="font-size: 13.33px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 13.33px;">NetCDF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/Workflow/" style="font-size: 13.33px;">Workflow</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/m-map/" style="font-size: 10px;">m_map</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/matlab/" style="font-size: 16.67px;">matlab</a> <a href="/tags/video/" style="font-size: 10px;">video</a>
     </div>
   </div>
 
@@ -625,6 +692,10 @@
           </li>
         
           <li>
+            <a href="/2017/03/24/Matlab_video/">Matlab 视频处理</a>
+          </li>
+        
+          <li>
             <a href="/2017/03/23/Activiti/">工作流引擎Activiti</a>
           </li>
         
@@ -634,10 +705,6 @@
         
           <li>
             <a href="/2017/03/22/HierarchicalData/">Open Hierarchical Data in ENVI</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/22/HDF_IDL/">Read and Write HDF with IDL</a>
           </li>
         
       </ul>
