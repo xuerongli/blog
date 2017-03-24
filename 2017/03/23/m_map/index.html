@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Matlab m_map toolbox | 遥感数据挖掘与应用</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="m_map工具箱（http://www.eos.ubc.ca/~rich/map.html）下载后解压，两种使用方式：一是首先将m_map路径加入Path。12path(path, &amp;apos;D:\m_map&amp;apos;);% addpath D:\m_map
+二是将m_map放在toolbox\matlab下，然后在toolbox\local\pathdef.m中加入m_map路径：12mat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matlab m_map toolbox">
+<meta property="og:url" content="http://xuerongli.github.io/2017/03/23/m_map/index.html">
+<meta property="og:site_name" content="遥感数据挖掘与应用">
+<meta property="og:description" content="m_map工具箱（http://www.eos.ubc.ca/~rich/map.html）下载后解压，两种使用方式：一是首先将m_map路径加入Path。12path(path, &amp;apos;D:\m_map&amp;apos;);% addpath D:\m_map
+二是将m_map放在toolbox\matlab下，然后在toolbox\local\pathdef.m中加入m_map路径：12mat">
+<meta property="og:updated_time" content="2017-03-23T03:36:46.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Matlab m_map toolbox">
+<meta name="twitter:description" content="m_map工具箱（http://www.eos.ubc.ca/~rich/map.html）下载后解压，两种使用方式：一是首先将m_map路径加入Path。12path(path, &amp;apos;D:\m_map&amp;apos;);% addpath D:\m_map
+二是将m_map放在toolbox\matlab下，然后在toolbox\local\pathdef.m中加入m_map路径：12mat">
+  
+    <link rel="alternate" href="/atom.xml" title="遥感数据挖掘与应用" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">遥感数据挖掘与应用</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xuerongli.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-m_map" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/23/m_map/" class="article-date">
+  <time datetime="2017-03-23T13:20:25.000Z" itemprop="datePublished">2017-03-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/matlab/">matlab</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Matlab m_map toolbox
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>m_map工具箱（<a href="http://www.eos.ubc.ca/~rich/map.html）" target="_blank" rel="external">http://www.eos.ubc.ca/~rich/map.html）</a><br>下载后解压，两种使用方式：<br>一是首先将m_map路径加入Path。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path(path, &apos;D:\m_map&apos;);</div><div class="line">% addpath D:\m_map</div></pre></td></tr></table></figure></p>
+<p>二是将m_map放在toolbox\matlab下，然后在toolbox\local\pathdef.m中加入m_map路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">matlabroot,&apos;\toolbox\matlab\datamanager;&apos;, ...</div><div class="line">matlabroot,&apos;\toolbox\matlab\m_map&apos;,...</div></pre></td></tr></table></figure></p>
+<p>然后运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; rehash toolboxcache</div><div class="line">&gt;&gt; what m_map</div></pre></td></tr></table></figure></p>
+<p>m_map命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">m_grid          m_ll2xy         m_scale        </div><div class="line">m_coast         m_gshhs         m_lldist        m_tba2b        </div><div class="line">m_contour       m_gshhs_c       m_mag2geo       m_tbase        </div><div class="line">m_contourf      m_gshhs_f       m_patch         m_text         </div><div class="line">m_coord         m_gshhs_h       m_pcolor        m_track        </div><div class="line">m_demo          m_gshhs_i       m_plot          m_ungrid       </div><div class="line">m_elev          m_gshhs_l       m_plotbndry     m_usercoast    </div><div class="line">m_etopo2        m_hatch         m_proj          m_vec          </div><div class="line">m_fdist         m_idist         m_quiver        m_xy2ll        </div><div class="line">m_geo2mag       m_legend        m_range_ring    m_xydist       </div><div class="line">m_geodesic      m_line          m_ruler</div></pre></td></tr></table></figure></p>
+<p>运行测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; m_proj(&apos;oblique mercator&apos;);</div><div class="line">&gt;&gt; m_coast;</div><div class="line">&gt;&gt; m_grid;</div><div class="line"></div><div class="line">&gt;&gt; m_coast(&apos;linewidth&apos;,2,&apos;color&apos;,&apos;r&apos;);</div><div class="line">&gt;&gt; m_coast(&apos;patch&apos;,[.7.7 .7],&apos;edgecolor&apos;,&apos;none&apos;);</div><div class="line"></div><div class="line"></div><div class="line">% 在129°W,48°30&apos;N 位置显示和标注</div><div class="line">&gt;&gt; [X,Y]=m_ll2xy(-129,48.5);</div><div class="line">&gt;&gt; line(X,Y,&apos;marker&apos;,&apos;square&apos;,&apos;markersize&apos;,4,&apos;color&apos;,&apos;r&apos;);</div><div class="line">&gt;&gt; text(X,Y,&apos; M5&apos;,&apos;vertical&apos;,&apos;top&apos;); </div><div class="line"></div><div class="line">&gt;&gt; m_line(-129,48.5,&apos;marker&apos;,&apos;square&apos;,&apos;markersize&apos;,4,&apos;color&apos;,&apos;r&apos;);</div><div class="line">&gt;&gt; m_text(-129,48.5,&apos; M5&apos;,&apos;vertical&apos;,&apos;top&apos;);</div><div class="line"></div><div class="line">% 画线、文本、箭头、填充、等高线等</div><div class="line">&gt;&gt; m_plot(LONG,LAT,...lineproperties)   % draw a line on a map(erase current plot)</div><div class="line">&gt;&gt; m_line(LONG,LAT,...line properties)  % draw a line on a map </div><div class="line">&gt;&gt; m_quiver(LONG,LAT,U,V,S)             % A quiver plot </div><div class="line">&gt;&gt; m_text(LONG,LAT,&apos;string&apos;)            % Text </div><div class="line">&gt;&gt; m_patch(LONG,LAT,..patch properties) % Patches. </div><div class="line"></div><div class="line">% 以经纬度方式组织的格网数据也可以contoured:</div><div class="line">&gt;&gt; m_contour(LONG,LAT,VALUES)</div><div class="line">&gt;&gt; m_contourf(LONG,LAT,VALUES)</div><div class="line">% 这个功能也可以返回图形对象句柄。例如画等高线？？</div><div class="line">&gt;&gt; [cs,h]=m_contour(LONG,LAT,VALUES)</div><div class="line">&gt;&gt; clabel(cs,h,&apos;fontsize&apos;,6);</div></pre></td></tr></table></figure></p>
+<p>m_map工具箱画图：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">figure</div><div class="line">%% P 为某点数据</div><div class="line">lon=0.5:359.5;</div><div class="line">lat=-89.5:89.5;</div><div class="line">[lon,lat]=meshgrid(lon,lat);</div><div class="line">m_proj(&apos;Equidistant Cylindrical&apos;,&apos;lon&apos;,[0.5,359.5],&apos;lat&apos;,[-89.5,89.5]);</div><div class="line">m_pcolor(lon,lat,P);hold on;</div><div class="line">shading flat;</div><div class="line">m_grid(&apos;box&apos;,&apos;fancy&apos;);</div><div class="line">hold on;</div></pre></td></tr></table></figure></p>
+<p>使用GSHHS高分辨率海岸线数据<br>下载：<a href="http://www.ngdc.noaa.gov/mgg/shorelines/data/gshhs/" target="_blank" rel="external">http://www.ngdc.noaa.gov/mgg/shorelines/data/gshhs/</a><br>解压后，将gshhs_c.b.gz、gshhs_l.b.gz、gshhs_i.b.gz、gshhs_h.b.gz等文件放在m_map\private文件夹下。<br>可以使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">m_proj (&apos;Mercator&apos;) % set upprojection parameters</div><div class="line">% This command does not drawanything - it merely processes the </div><div class="line">% high-resolution database usingthe current projection parameters </div><div class="line">% to generate a smaller coastlinefile called &quot;gumby&quot;</div><div class="line">m_gshhs_h(&apos;save&apos;,&apos;gumby&apos;);</div><div class="line">% Now we can draw a few maps ofthe same area much more quickly</div><div class="line">figure(1);</div><div class="line">m_usercoast(&apos;gumby&apos;,&apos;patch&apos;,&apos;r&apos;);</div><div class="line">m_grid;</div><div class="line">figure(2);</div><div class="line">m_usercoast(&apos;gumby&apos;,&apos;linewidth&apos;,2,&apos;color&apos;,&apos;b&apos;);</div><div class="line">m_grid(&apos;tickdir&apos;,&apos;out&apos;,&apos;yaxisloc&apos;,&apos;left&apos;);</div></pre></td></tr></table></figure></p>
+<p><a href="https://www.eoas.ubc.ca/~rich/private/mapug.html" target="_blank" rel="external">参考1</a><br><a href="https://www.eoas.ubc.ca/~rich/map.html" target="_blank" rel="external">参考2</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/23/m_map/" data-id="cj0nf1qpw000g2op6thmcaqy2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/m-map/">m_map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/24/Workflow/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          工作流引擎
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/23/Activiti/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">工作流引擎Activiti</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Activiti/">Activiti</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/matlab/">matlab</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BPM/">BPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Workflow/">Workflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/m-map/">m_map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Activiti/" style="font-size: 10px;">Activiti</a> <a href="/tags/BPM/" style="font-size: 13.33px;">BPM</a> <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/HDF/" style="font-size: 13.33px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 13.33px;">NetCDF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/Workflow/" style="font-size: 13.33px;">Workflow</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/m-map/" style="font-size: 10px;">m_map</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/matlab/" style="font-size: 13.33px;">matlab</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/24/Workflow/">工作流引擎</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/23/m_map/">Matlab m_map toolbox</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/23/Activiti/">工作流引擎Activiti</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/HierarchicalData/">Open Hierarchical Data in ENVI</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/Python_GUI/">Python GUI</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Xuerong Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -66,6 +66,153 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Workflow" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/24/Workflow/" class="article-date">
+  <time datetime="2017-03-24T13:20:25.000Z" itemprop="datePublished">2017-03-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Activiti/">Activiti</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/24/Workflow/">工作流引擎</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>所谓工作流引擎是指workflow作为应用系统的一部分，并为之提供对各应用系统有决定作用的根据角色、分工和条件的不同决定信息传递路由、内容等级等核心解决方案。工作流引擎包括了流程的节点管理、流向管理、流程样例管理等重要功能。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>什么是工作流引擎（Workflow Engine）<br>开发一个系统最关键的部分不是系统的界面，也不是和数据库之间的信息交换，而是如何根据业务逻辑开发出符合实际需要的程序逻辑并确保其稳定性、易维护性（模块化和结构化）和弹性（容易根据实际业务逻辑的变化作出程序上的变动，例如决策权的改变、组织结构的变动和由于业务方向的变化产生的全新业务逻辑等等）。<br>Workflow 引擎解决的就是这个问题：如果应用程序缺乏强大的逻辑层，势必变得容易出错（信息的路由错误、死循环等等）。</p>
+<h2 id="服务架构"><a href="#服务架构" class="headerlink" title="服务架构"></a>服务架构</h2><p>面向服务的体系结构，是一个组件模型，它将应用程序的不同功能单元（称为服务）通过这些服务之间定义良好的接口和契约联系起来。接口是采用中立的方式进行定义的，它应该独立于实现服务的硬件平台、操作系统和编程语言。工作流引擎使得构建在各种这样的系统中的服务，可以以一种统一和通用的方式进行交互。</p>
+<h2 id="BPM与工作流的区别"><a href="#BPM与工作流的区别" class="headerlink" title="BPM与工作流的区别"></a>BPM与工作流的区别</h2><p>随着信息技术的发展，越来越多的信息系统如 ERP 、 CRM 、 SRM 等得到广泛应用，其中部分信息系统能实现工作流的固化和自动化，提高流程效率。但他们仍无法实质性改善企业的整体流程效率，提高企业的竞争力。 BPM 就是在早期的这些系统的运营与使用经验等基础上建立的。</p>
+<p>BPM 与工作流相比有如下的不同：</p>
+<p>( 一 ) 跨组织的业务流程描述语言和工具。在工作流系统上马早期，经常会发现同一个企业内部不同组织单元、部门的流程采用不同的描述方法，比如 A/B/C/F 四个部门的账目管理系统采用某种工作流系统，而 A/B/D/E 四个部门的订单和销售管理系统又采用另外一种工作流系统。这种情况在大型企业集团内部尤为明显，影响了各业务单元的业务协同和业务最佳实践的提炼和推广。而 BPM 致力于跨组织的业务流程描述语言和工具，避免了企业各部门进行业务流程交流和沟通时各说各话的情况。</p>
+<p>( 二 ) 统一的流程架构。企业内部从单一管理主题出发进行设计的工作流，通常在企业中缺乏对业务运营活动的总体考虑，局限于本部门或者本业务的业务需求，各部门和各管理专题之间的流程无法衔接，信息的共享和传递困难，存在大量流程断点。而 BPM 在流程之间进行衔接、协调，避免了流程孤岛的产生； BPM 的目标是形成端到端的流程体系，提高整个业务流程运行的效率、成本、质量，在激烈的市场竞争环境下，满足客户的需求。</p>
+<p>（三）无“甲方优势”现象。如果用一般的工作流系统做接口，我们发现一个有趣的现象，就是服务提供方的甲方优势现象。通常，一个工作流系统要和另外一个已经存在的系统做接口，工作流系统是有求于已经存在的系统，也就是已经存在的系统有“甲方优势”。这样，工作流系统就必须按照已经存在的系统的技术规格来实现，离“跨组织的业务流程描述语言和工具”就越来越远了，更不用谈“跨企业的业务流程管理”。而 BPM 是在“工作流系统”和“已经存在的系统”之间建立了一个公平的约定，不存在“甲方优势”。</p>
+<p>( 四 ) 流程的持续改进。由于工作流系统的存在，相关的业务人员通常已经忽略其内嵌 的业务流程，业务部门对信息系统内嵌的流程缺乏直观认识和关注，工作流系统的改进非常的复杂，更不要谈什么持续改进了。但是 BPM 帮助业务人员密切关注信息系统内嵌流程与其它业务流程衔接关系，随着业务内外部环境的变化，及时进行流程的调整；这种情况下，流程的持续改进，成为提高企业整体流程运行效率的最主要因素。</p>
+<p>（五） BPM 的 SOA 本质。 SOA 是创建更灵活的企业基础架构的架构方法，而 BPM 是一套协调的业务流程活动。 SOA 使用户可以轻松完成将业务流程连接到基础系统的任务，从而节省时间和 IT 资源。与之相比，将流程链接到传统的应用通常要依赖大量不同的专有技术。而且，在采用 BPM 的同时转向 SOA 可以促进 SOA 组件的再利用，从而最大程度地降低业务流程本身的复杂性。</p>
+<p>（六） BPM 一定是企业级的。要实施 BPM ，一定要树立流程战略、 流程设计、流程实施和流程监控的循环管理理念 : 从企业的发展战略出发制定流程的战略，将战略指标分解为流程的目标体系，通过流程实现战略的落地 ; 根据流程战略进行业务流程的梳理、设计和优化 ; 通过组织结构和信息系统的调整来实施业务流程 ; 通过流程合规管理和流程绩效监控，对流程 执行情况进行监控，根据结果调整业务流程设计。</p>
+<p>如果你正在为信息孤岛 (ERP 、 CRM 、 HR) 这类的以工作流为核心的系统造成的工作瓶颈而苦恼，如果你想抢得市场先机，或者希望强化服务质量、传承既有知识，现在是该使用 BPM 的时候了。</p>
+<p><a href="http://www.bpmn.org/" target="_blank" rel="external">Business Process Model and Notation</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/24/Workflow/" data-id="cj0nf1qp800012op6k2dzrhc9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BPM/">BPM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Workflow/">Workflow</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-m_map" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/23/m_map/" class="article-date">
+  <time datetime="2017-03-23T13:20:25.000Z" itemprop="datePublished">2017-03-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/matlab/">matlab</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/23/m_map/">Matlab m_map toolbox</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>m_map工具箱（<a href="http://www.eos.ubc.ca/~rich/map.html）" target="_blank" rel="external">http://www.eos.ubc.ca/~rich/map.html）</a><br>下载后解压，两种使用方式：<br>一是首先将m_map路径加入Path。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path(path, &apos;D:\m_map&apos;);</div><div class="line">% addpath D:\m_map</div></pre></td></tr></table></figure></p>
+<p>二是将m_map放在toolbox\matlab下，然后在toolbox\local\pathdef.m中加入m_map路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">matlabroot,&apos;\toolbox\matlab\datamanager;&apos;, ...</div><div class="line">matlabroot,&apos;\toolbox\matlab\m_map&apos;,...</div></pre></td></tr></table></figure></p>
+<p>然后运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; rehash toolboxcache</div><div class="line">&gt;&gt; what m_map</div></pre></td></tr></table></figure></p>
+<p>m_map命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">m_grid          m_ll2xy         m_scale        </div><div class="line">m_coast         m_gshhs         m_lldist        m_tba2b        </div><div class="line">m_contour       m_gshhs_c       m_mag2geo       m_tbase        </div><div class="line">m_contourf      m_gshhs_f       m_patch         m_text         </div><div class="line">m_coord         m_gshhs_h       m_pcolor        m_track        </div><div class="line">m_demo          m_gshhs_i       m_plot          m_ungrid       </div><div class="line">m_elev          m_gshhs_l       m_plotbndry     m_usercoast    </div><div class="line">m_etopo2        m_hatch         m_proj          m_vec          </div><div class="line">m_fdist         m_idist         m_quiver        m_xy2ll        </div><div class="line">m_geo2mag       m_legend        m_range_ring    m_xydist       </div><div class="line">m_geodesic      m_line          m_ruler</div></pre></td></tr></table></figure></p>
+<p>运行测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; m_proj(&apos;oblique mercator&apos;);</div><div class="line">&gt;&gt; m_coast;</div><div class="line">&gt;&gt; m_grid;</div><div class="line"></div><div class="line">&gt;&gt; m_coast(&apos;linewidth&apos;,2,&apos;color&apos;,&apos;r&apos;);</div><div class="line">&gt;&gt; m_coast(&apos;patch&apos;,[.7.7 .7],&apos;edgecolor&apos;,&apos;none&apos;);</div><div class="line"></div><div class="line"></div><div class="line">% 在129°W,48°30&apos;N 位置显示和标注</div><div class="line">&gt;&gt; [X,Y]=m_ll2xy(-129,48.5);</div><div class="line">&gt;&gt; line(X,Y,&apos;marker&apos;,&apos;square&apos;,&apos;markersize&apos;,4,&apos;color&apos;,&apos;r&apos;);</div><div class="line">&gt;&gt; text(X,Y,&apos; M5&apos;,&apos;vertical&apos;,&apos;top&apos;); </div><div class="line"></div><div class="line">&gt;&gt; m_line(-129,48.5,&apos;marker&apos;,&apos;square&apos;,&apos;markersize&apos;,4,&apos;color&apos;,&apos;r&apos;);</div><div class="line">&gt;&gt; m_text(-129,48.5,&apos; M5&apos;,&apos;vertical&apos;,&apos;top&apos;);</div><div class="line"></div><div class="line">% 画线、文本、箭头、填充、等高线等</div><div class="line">&gt;&gt; m_plot(LONG,LAT,...lineproperties)   % draw a line on a map(erase current plot)</div><div class="line">&gt;&gt; m_line(LONG,LAT,...line properties)  % draw a line on a map </div><div class="line">&gt;&gt; m_quiver(LONG,LAT,U,V,S)             % A quiver plot </div><div class="line">&gt;&gt; m_text(LONG,LAT,&apos;string&apos;)            % Text </div><div class="line">&gt;&gt; m_patch(LONG,LAT,..patch properties) % Patches. </div><div class="line"></div><div class="line">% 以经纬度方式组织的格网数据也可以contoured:</div><div class="line">&gt;&gt; m_contour(LONG,LAT,VALUES)</div><div class="line">&gt;&gt; m_contourf(LONG,LAT,VALUES)</div><div class="line">% 这个功能也可以返回图形对象句柄。例如画等高线？？</div><div class="line">&gt;&gt; [cs,h]=m_contour(LONG,LAT,VALUES)</div><div class="line">&gt;&gt; clabel(cs,h,&apos;fontsize&apos;,6);</div></pre></td></tr></table></figure></p>
+<p>m_map工具箱画图：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">figure</div><div class="line">%% P 为某点数据</div><div class="line">lon=0.5:359.5;</div><div class="line">lat=-89.5:89.5;</div><div class="line">[lon,lat]=meshgrid(lon,lat);</div><div class="line">m_proj(&apos;Equidistant Cylindrical&apos;,&apos;lon&apos;,[0.5,359.5],&apos;lat&apos;,[-89.5,89.5]);</div><div class="line">m_pcolor(lon,lat,P);hold on;</div><div class="line">shading flat;</div><div class="line">m_grid(&apos;box&apos;,&apos;fancy&apos;);</div><div class="line">hold on;</div></pre></td></tr></table></figure></p>
+<p>使用GSHHS高分辨率海岸线数据<br>下载：<a href="http://www.ngdc.noaa.gov/mgg/shorelines/data/gshhs/" target="_blank" rel="external">http://www.ngdc.noaa.gov/mgg/shorelines/data/gshhs/</a><br>解压后，将gshhs_c.b.gz、gshhs_l.b.gz、gshhs_i.b.gz、gshhs_h.b.gz等文件放在m_map\private文件夹下。<br>可以使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">m_proj (&apos;Mercator&apos;) % set upprojection parameters</div><div class="line">% This command does not drawanything - it merely processes the </div><div class="line">% high-resolution database usingthe current projection parameters </div><div class="line">% to generate a smaller coastlinefile called &quot;gumby&quot;</div><div class="line">m_gshhs_h(&apos;save&apos;,&apos;gumby&apos;);</div><div class="line">% Now we can draw a few maps ofthe same area much more quickly</div><div class="line">figure(1);</div><div class="line">m_usercoast(&apos;gumby&apos;,&apos;patch&apos;,&apos;r&apos;);</div><div class="line">m_grid;</div><div class="line">figure(2);</div><div class="line">m_usercoast(&apos;gumby&apos;,&apos;linewidth&apos;,2,&apos;color&apos;,&apos;b&apos;);</div><div class="line">m_grid(&apos;tickdir&apos;,&apos;out&apos;,&apos;yaxisloc&apos;,&apos;left&apos;);</div></pre></td></tr></table></figure></p>
+<p><a href="https://www.eoas.ubc.ca/~rich/private/mapug.html" target="_blank" rel="external">参考1</a><br><a href="https://www.eoas.ubc.ca/~rich/map.html" target="_blank" rel="external">参考2</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/23/m_map/" data-id="cj0nf1qpw000g2op6thmcaqy2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/m-map/">m_map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Activiti" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/23/Activiti/" class="article-date">
+  <time datetime="2017-03-23T13:20:25.000Z" itemprop="datePublished">2017-03-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Activiti/">Activiti</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/23/Activiti/">工作流引擎Activiti</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/23/Activiti/" data-id="cj0nf1qp300002op6f0mo6u0f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BPM/">BPM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Workflow/">Workflow</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-HierarchicalData" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/22/HierarchicalData/" class="article-date">
@@ -419,158 +566,11 @@
 
 
   
-    <article id="post-Hexo-Githubpages" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/16/Hexo-Githubpages/" class="article-date">
-  <time datetime="2017-03-16T06:01:25.000Z" itemprop="datePublished">2017-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/16/Hexo-Githubpages/">Hexo + Github Pages</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>博客架设于github；静态博客hexo；markdown写作。数据归自己管，可以本地随时查看，对外是博客，对内知识库。</p>
-<h1 id="1-Github配置"><a href="#1-Github配置" class="headerlink" title="1. Github配置"></a>1. Github配置</h1><ul>
-<li><p>注册Github账号<br>访问地址：<a href="https://github.com">https://github.com</a><br>用户名：[<strong>uname</strong>]<br>邮箱：[<strong>user</strong>]@yic.ac.cn<br>密码：[<strong>passwd</strong>]<br>成功后，访问地址：<a href="https://[uname].github.com">https://[uname].github.com</a></p>
-</li>
-<li><p>创建代码库<br>New repository …<br>作为博客使用,则repository name名字填写：uname.github.io</p>
-</li>
-<li><p>开启GitHub Pages功能<br>Settings -&gt; GitHub Pages …</p>
-</li>
-<li><p>完成后，可以正常访问：<a href="http://[uname].github.io">http://[uname].github.io</a></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/03/16/Hexo-Githubpages/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-Githubpages/" data-id="cj0m7gozp0000u8p6h3dg47ha" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
 
 
-  
-    <article id="post-Hexo-advance" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/16/Hexo-advance/" class="article-date">
-  <time datetime="2017-03-16T06:01:25.000Z" itemprop="datePublished">2017-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/16/Hexo-advance/">Hexo 进阶</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>hexo new ‘filename’<br>或者直接在_posts目录下创建 filename.md文件<br>然后打开并编辑该文件，头部信息以—开始和结尾<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 文章名称  #文章页面上的显示名称，可以任意修改，不会出现在URL中</div><div class="line">layout: post</div><div class="line">date: 2014-11-10 10:07:43  #文章生成时间，一般不改，当然也可以任意修改</div><div class="line">updated: 2014-11-12 13:24</div><div class="line">comments: true</div><div class="line">categories: </div><div class="line">- Git</div><div class="line">tags: </div><div class="line">- hexo</div><div class="line">- pages</div><div class="line">---</div><div class="line">正文</div><div class="line">... ...</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/03/16/Hexo-advance/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-advance/" data-id="cj0m7gp010002u8p6ug89whrj" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Hexo-QuickStart" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/16/Hexo-QuickStart/" class="article-date">
-  <time datetime="2017-03-16T06:01:25.000Z" itemprop="datePublished">2017-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/16/Hexo-QuickStart/">Hexo Quick Start</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/">Hexo</a>! If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a><br>
-        
-          <p class="article-more-link">
-            <a href="/2017/03/16/Hexo-QuickStart/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xuerongli.github.io/2017/03/16/Hexo-QuickStart/" data-id="cj0m7gp090005u8p61g2kmdpg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -579,7 +579,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Activiti/">Activiti</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/matlab/">matlab</a></li></ul>
     </div>
   </div>
 
@@ -589,7 +589,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BPM/">BPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Workflow/">Workflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/m-map/">m_map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
     </div>
   </div>
 
@@ -599,7 +599,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/HDF/" style="font-size: 13.33px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 13.33px;">NetCDF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a>
+      <a href="/tags/Activiti/" style="font-size: 10px;">Activiti</a> <a href="/tags/BPM/" style="font-size: 13.33px;">BPM</a> <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/HDF/" style="font-size: 13.33px;">HDF</a> <a href="/tags/IDL/" style="font-size: 20px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 13.33px;">NetCDF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/Workflow/" style="font-size: 13.33px;">Workflow</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/m-map/" style="font-size: 10px;">m_map</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/matlab/" style="font-size: 13.33px;">matlab</a>
     </div>
   </div>
 
@@ -621,23 +621,23 @@
       <ul>
         
           <li>
+            <a href="/2017/03/24/Workflow/">工作流引擎</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/23/m_map/">Matlab m_map toolbox</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/23/Activiti/">工作流引擎Activiti</a>
+          </li>
+        
+          <li>
             <a href="/2017/03/22/HierarchicalData/">Open Hierarchical Data in ENVI</a>
           </li>
         
           <li>
             <a href="/2017/03/22/Python_GUI/">Python GUI</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/22/HDF_IDL/">Read and Write HDF with IDL</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/22/Imp_Urls/">Useful Urls</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/22/NetCDF_IDL/">Read and Write NetCDF with IDL</a>
           </li>
         
       </ul>
