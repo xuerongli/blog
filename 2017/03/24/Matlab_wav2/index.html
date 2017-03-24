@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Matlab处理音频2 | 遥感数据挖掘与应用</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数字语音是信号的一种，我们处理数字语音信号，也就是对一种信号的处理，那信号是什么呢？
+信号是传递信息的函数。离散时间信号——序列——可以用图形来表示。
+按信号特点的不同，信号可表示成一个或几个独立变量的函数。例如，图像信号就是空间位置（二元变量）的亮度函数。一维变量可以是时间，也可以是其他参量，习惯上将其看成时间。信号有以下几种：
+（1）连续时间信号：在连续时间范围内定义的信号，但信号的幅值可以是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matlab处理音频2">
+<meta property="og:url" content="http://xuerongli.github.io/2017/03/24/Matlab_wav2/index.html">
+<meta property="og:site_name" content="遥感数据挖掘与应用">
+<meta property="og:description" content="数字语音是信号的一种，我们处理数字语音信号，也就是对一种信号的处理，那信号是什么呢？
+信号是传递信息的函数。离散时间信号——序列——可以用图形来表示。
+按信号特点的不同，信号可表示成一个或几个独立变量的函数。例如，图像信号就是空间位置（二元变量）的亮度函数。一维变量可以是时间，也可以是其他参量，习惯上将其看成时间。信号有以下几种：
+（1）连续时间信号：在连续时间范围内定义的信号，但信号的幅值可以是">
+<meta property="og:updated_time" content="2017-03-24T14:13:13.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Matlab处理音频2">
+<meta name="twitter:description" content="数字语音是信号的一种，我们处理数字语音信号，也就是对一种信号的处理，那信号是什么呢？
+信号是传递信息的函数。离散时间信号——序列——可以用图形来表示。
+按信号特点的不同，信号可表示成一个或几个独立变量的函数。例如，图像信号就是空间位置（二元变量）的亮度函数。一维变量可以是时间，也可以是其他参量，习惯上将其看成时间。信号有以下几种：
+（1）连续时间信号：在连续时间范围内定义的信号，但信号的幅值可以是">
+  
+    <link rel="alternate" href="/atom.xml" title="遥感数据挖掘与应用" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">遥感数据挖掘与应用</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xuerongli.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Matlab_wav2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/24/Matlab_wav2/" class="article-date">
+  <time datetime="2017-03-24T13:20:25.000Z" itemprop="datePublished">2017-03-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/matlab/">matlab</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Matlab处理音频2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>数字语音是信号的一种，我们处理数字语音信号，也就是对一种信号的处理，那信号是什么呢？</p>
+<p>信号是传递信息的函数。离散时间信号——序列——可以用图形来表示。</p>
+<p>按信号特点的不同，信号可表示成一个或几个独立变量的函数。例如，图像信号就是空间位置（二元变量）的亮度函数。一维变量可以是时间，也可以是其他参量，习惯上将其看成时间。信号有以下几种：</p>
+<p>（1）连续时间信号：在连续时间范围内定义的信号，但信号的幅值可以是连续数值，也可以是离散数值。当幅值为连续这一特点情况下又常称为模拟信号。实际上连续时间信号与模拟信号常常通用，用以说明同一信号。</p>
+<p>（2）离时间信号：时间为离散变量的信号，即独立变量时间被量化了。而幅度仍是连续变化的。</p>
+<p>（3）数字信号：时间离散而幅度量化的信号。</p>
+<p>语音信号是基于时间轴上的一维数字信号，在这里主要是对语音信号进行频域上的分析。在信号分析中，频域往往包含了更多的信息。对于频域来说，大概有8种波形可以让我们分析：矩形方波，锯齿波，梯形波，临界阻尼指数脉冲波形，三角波，余旋波，余旋平方波，高斯波。对于各种波形，我们都可以用一种方法来分析，就是傅立叶变换：将时域的波形转化到频域来分析。</p>
+<p>于是，本课题就从频域的角度对信号进行分析，并通过分析频谱来设计出合适的滤波器。当然，这些过程的实现都是在MATLAB软件上进行的，MATLAB软件在数字信号处理上发挥了相当大的优势。</p>
+<p>二、       设计方案：</p>
+<p>利用MATLAB中的wavread命令来读入（采集）语音信号，将它赋值给某一向量。再将该向量看作一个普通的信号，对其进行FFT变换实现频谱分析，再依据实际情况对它进行滤波。对于波形图与频谱图（包括滤波前后的对比图）都可以用 MATLAB画出。我们还可以通过sound命令来对语音信号进行回放，以便在听觉上来感受声音的变化。</p>
+<p>选择设计此方案，是对数字信号处理的一次实践。在数字信号处理的课程学习过程中，我们过多的是理论学习，几乎没有进行实践方面的运用。这个课题正好是对数字语音处理的一次有利实践，而且语音处理也可以说是信号处理在实际应用中很大众化的一方面。</p>
+<p>这个方案用到的软件也是在数字信号处理中非常通用的一个软件——MATLAB软件。所以这个课题的设计过程也是一次数字信号处理在MATLAB中应用的学习过程。课题用到了较多的MATLAB语句，而由于课题研究范围所限，真正与数字信号有关的命令函数却并不多。</p>
+<p>三、       主体部分：</p>
+<p>（一）、语音的录入与打开：</p>
+<p>[y,fs,bits]=wavread(‘Blip’,[N1 N2]);用于读取语音，采样值放在向量y中，fs表示采样频率(Hz)，bits表示采样位数。[N1 N2]表示读取从N1点到N2点的值（若只有一个N的点则表示读取前N点的采样值）。</p>
+<p>sound(x,fs,bits); 用于对声音的回放。向量y则就代表了一个信号（也即一个复杂的“函数表达式”）也就是说可以像处理一个信号表达式一样处理这个声音信号。</p>
+<p>FFT的MATLAB实现</p>
+<p>在MATLAB的信号处理工具箱中函数FFT和IFFT用于快速傅立叶变换和逆变换。下面介绍这些函数。</p>
+<p>函数FFT用于序列快速傅立叶变换。</p>
+<p>函数的一种调用格式为        y=fft(x)</p>
+<p>其中，x是序列，y是序列的FFT，x可以为一向量或矩阵，若x为一向量，y是x的FFT。且和x相同长度。若x为一矩阵，则y是对矩阵的每一列向量进行FFT。</p>
+<p>如果x长度是2的幂次方，函数fft执行高速基－2FFT算法；否则fft执行一种混合基的离散傅立叶变换算法，计算速度较慢。</p>
+<p>函数FFT的另一种调用格式为         y=fft(x,N)</p>
+<p>式中，x，y意义同前，N为正整数。</p>
+<p>函数执行N点的FFT。若x为向量且长度小于N，则函数将x补零至长度N。若向量x的长度大于N，则函数截短x使之长度为N。若x 为矩阵，按相同方法对x进行处理。</p>
+<p>经函数fft求得的序列y一般是复序列，通常要求其幅值和相位。MATLAB提供求复数的幅值和相位函数：abs，angle，这些函数一般和FFT同时使用。</p>
+<p>函数abs(x)用于计算复向量x的幅值，函数angle(x)用于计算复向量的相角，介于 和 之间，以弧度表示。</p>
+<p>函数unwrap(p)用于展开弧度相位角p ,当相位角绝对变化超过 时，函数把它扩展至 。</p>
+<p>用MATLAB工具箱函数fft进行频谱分析时需注意：</p>
+<p>（1）    函数fft返回值y的数据结构对称性</p>
+<p>若已知序列x=[4,3,2,6,7,8,9,0],求X(k)=DFT[x(n)]。</p>
+<p>利用函数fft计算，用MATLAB编程如下：</p>
+<p>N=8;</p>
+<p>n=0:N-1;</p>
+<p>xn=[4 3 2 6 7 8 9 0]’;</p>
+<p>XK=fft(xn)</p>
+<p>结果为：</p>
+<p>XK =</p>
+<p>39.0000        </p>
+<p>-10.7782 + 6.2929i</p>
+<pre><code>0 - 5.0000i
+</code></pre><p>   4.7782 - 7.7071i</p>
+<p>   5.0000        </p>
+<p>   4.7782 + 7.7071i</p>
+<pre><code>0 + 5.0000i
+</code></pre><p>-10.7782 - 6.2929i</p>
+<p>由程序运行所得结果可见，X(k)和x(n)的维数相同，共有8个元素。X(k)的第一行元素对应频率值为0，第五行元素对应频率值为Nyquist频率，即标准频率为1.因此第一行至第五行对应的标准频率为0～1。而第五行至第八行对应的是负频率，其X(k)值是以Nyquist频率为轴对称。（注：通常表示为Nyquist频率外扩展，标以正值。）</p>
+<p>一般而言，对于N点的x(n)序列的FFT是N点的复数序列，其点n=N/2+1对应Nyquist频率，作频谱分析时仅取序列X(k)的前一半，即前N/2点即可。X(k)的后一半序列和前一半序列时对称的。</p>
+<p>（2）    频率计算</p>
+<pre><code>若N点序列x(n)(n=0,1,…,N-1)是在采样频率 下获得的。它的FFT也是N点序列，即X(k)(k=0,1,2,…,N-1)，则第k点所对应实际频率值为f=k*f /N.
+</code></pre><p>（3）    作FFT分析时，幅值大小与FFT选择点数有关，但不影响分析结果。</p>
+<p>2、设计内容：</p>
+<p>（1）下面的一段程序是语音信号在MATLAB中的最简单表现，它实现了语音的读入打开，以及绘出了语音信号的波形频谱图。</p>
+<pre><code>[x,fs,bits]=wavread(&apos;ding.wav&apos;,[1024 5120]);
+</code></pre><p>   sound(x,fs,bits);</p>
+<p>   X=fft(x,4096);</p>
+<p>magX=abs(X);</p>
+<p>angX=angle(X);</p>
+<p>   subplot(221);plot(x);title(‘原始信号波形’);</p>
+<p>subplot(222);plot(X); title(‘原始信号频谱’);</p>
+<p>subplot(223);plot(magX);title(‘原始信号幅值’);</p>
+<p>subplot(224);plot(angX);title(‘原始信号相位’);</p>
+<p>程序运行可以听到声音，得到的图形为：</p>
+<p>（2）定点分析：已知一个语音信号，数据采样频率为100Hz，试分别绘制N＝128点DFT的幅频图和N＝1024点DFT幅频图。</p>
+<pre><code>编程如下：
+</code></pre><p>x=wavread(‘ding.wav’);</p>
+<p>   sound(x);</p>
+<p>fs=100;N=128;</p>
+<p>y=fft(x,N);</p>
+<p>magy=abs(y);</p>
+<p>f=(0:length(y)-1)’*fs/length(y);</p>
+<p>subplot(221);plot(f,magy);</p>
+<p>xlabel(‘频率（Hz）’);ylabel(‘幅值’);</p>
+<p>title(‘N=128(a)’);grid</p>
+<p>subplot(222);plot(f(1:N/2),magy(1:N/2));</p>
+<p>xlabel(‘频率（Hz）’);ylabel(‘幅值’);</p>
+<p>title(‘N=128(b)’);grid</p>
+<p>fs=100;N=1024;</p>
+<p>y=fft(x,N);</p>
+<p>magy=abs(y);</p>
+<p>f=(0:length(y)-1)’*fs/length(y);</p>
+<p>subplot(223);plot(f,magy);</p>
+<p>xlabel(‘频率（Hz）’);ylabel(‘幅值’);</p>
+<p>title(‘N=1024(c)’);grid</p>
+<p>subplot(224);plot(f(1:N/2),magy(1:N/2));</p>
+<p>xlabel(‘频率（Hz）’);ylabel(‘幅值’);</p>
+<p>title(‘N=1024(d)’);grid</p>
+<p>运行结果如图：</p>
+<p>上图(a)、(b)为N=128点幅频谱图，(c)、(d)为N=1024点幅频谱图。由于采样频率f =100Hz，故Nyquist频率为 50Hz。(a)、(c)是0～100Hz频谱图，(b)、(d)是0～50Hz频谱图。由(a)或(c)可见，整个频谱图是以Nyquist频率为轴对称的。因此利用fft对信号作频谱分析，只要考察0～Nyquist频率（采样频率一半）范围的幅频特性。比较(a)和(c)或(b)和(d)可见，幅值大小与fft选用点数N有关，但只要点数N足够不影响研究结果。从上图幅频谱可见，信号中包括15Hz和40Hz的正弦分量。</p>
+<p>（3）若信号长度T=25.6s，即抽样后x(n)点数为T/Ts=256，所得频率分辨率为 Hz，以此观察数据长度N的变化对DTFT分辨率的影响：</p>
+<p>编程如下：</p>
+<p>[x,fs,bits]=wavread(‘ding.wav’);</p>
+<p>N=256;</p>
+<p>f=0:fs/N:fs/2-1/N;</p>
+<p>X=fft(x);</p>
+<p>X=abs(X);</p>
+<p>subplot(211)</p>
+<p>plot(f(45:60),X(45:60));grid</p>
+<p>xlabel(‘Hz’),ylabel(‘|H(ejw)|’)</p>
+<p>%数据长度N扩大4倍后观察信号频谱</p>
+<p>N=N*4;</p>
+<p>f=0:fs/N:fs/2-1/N;</p>
+<p>X=fft(x);</p>
+<p>X=abs(X);</p>
+<p>subplot(212)</p>
+<p>plot(f(45<em>4:4</em>60),X(4<em>45:4</em>60));grid</p>
+<p>xlabel(‘Hz’),ylabel(‘|H(ejw)|’)</p>
+<p>结果如图：</p>
+<p>（三）、滤波器设计：</p>
+<p>1、相关原理：</p>
+<p>设计数字滤波器的任务就是寻求一个因果稳定的线性时不变系统，并使系统函数H(z)具有指定的频率特性。</p>
+<p>数字滤波器从实现的网络结构或者从单位冲激响应分类，可以分成无限长单位冲激响应（IIR）数字滤波器和有限长单位冲激响应（FIR）数字滤波器。</p>
+<p>数字滤波器频率响应的三个参数：</p>
+<p>（1）    幅度平方响应：</p>
+<p>（2）    相位响应</p>
+<p>其中，相位响应            </p>
+<p>（3）    群时延响应</p>
+<p>IIR数字滤波器：</p>
+<p>IIR数字滤波器的系统函数为 的有理分数，即</p>
+<p>IIR数字滤波器的逼近问题就是求解滤波器的系数 和 ，使得在规定的物理意义上逼近所要求的特性的问题。如果是在s平面上逼近，就得到模拟滤波器，如果是在z平面上逼近，则得到数字滤波器。</p>
+<p>FIR数字滤波器：</p>
+<p>设FIR的单位脉冲响应h(n)为实数，长度为N，则其z变换和频率响应分别为</p>
+<p>按频域采样定理FIR数字滤波器的传输函数H(z)和单位脉冲响应h(n)可由它的N个频域采样值H(k)唯一确定。</p>
+<p>MATLAB中提供了几个函数，分别用于实现IIR滤波器和FIR滤波器。</p>
+<p>（1）卷积函数conv</p>
+<p>卷积函数conv的调用格式为           c=conv(a,b)</p>
+<p>该格式可以计算两向量a和b的卷积，可以直接用于对有限长信号采用FIR滤波器的滤波。</p>
+<p>（2）函数filter</p>
+<p>函数filter的调用格式为          y=filter(b,a,x)</p>
+<p>该格式采用数字滤波器对数据进行滤波，既可以用于IIR滤波器，也可以用于FIR滤波器。其中向量b和a分别表示系统函数的分子、分母多项式的系数，若a＝1，此时表示FIR滤波器，否则就是IIR滤波器。该函数是利用给出的向量b和a，对x中的数据进行滤波，结果放入向量y。</p>
+<p>（3）函数fftfilt</p>
+<p>函数fftfilt的调用格式为         y=fftfilt(b,x)</p>
+<p>该格式是利用基于FFT的重叠相加法对数据进行滤波，这种频域滤波技术只对FIR滤波器有效。该函数是通过向量b描述的滤波器对x数据进行滤波。</p>
+<p>关于用butter函数求系统函数分子与分母系数的几种形式。</p>
+<p>[b,a]=butter(N,wc,’high’):设计N阶高通滤波器，wc为它的3dB边缘频率，以 为单位，故 。</p>
+<p>[b,a]=butter(N,wc):当wc为具有两个元素的矢量wc=[w1,w2]时，它设计2N阶带通滤波器，3dB通带为 ，w的单位为 。</p>
+<p>[b,a]=butter(N,wc,’stop’):若wc=[w1,w2]，则它设计2N阶带阻滤波器，3dB通带为 ，w的单位为 。</p>
+<p>如果在这个函数输入变元的最后，加一个变元“s”，表示设计的是模拟滤波器。这里不作讨论。</p>
+<p>为了设计任意的选项巴特沃斯滤波器，必须知道阶数N和3dB边缘频率矢量wc。这可以直接利用信号处理工具箱中的buttord函数来计算。如果已知滤波器指标 ， ， 和 ，则调用格式为</p>
+<p>[N,wc]=buttord(wp,ws,Rp,As)</p>
+<p>对于不同类型的滤波器，参数wp和ws有一些限制：对于低通滤波器，wp<ws；对于高通滤波器，wp>ws；对于带通滤波器，wp和ws分别为具有两个元素的矢量，wp=[wp1,wp2]和ws=[ws1,ws2]，并且 ws1&lt;wp1&lt;wp2&lt;ws2；对于带阻滤波器wp1&lt;ws1&lt;ws2&lt;wp2。</ws；对于高通滤波器，wp></p>
+<p>2、设计内容：</p>
+<p>（1）滤波器示例：</p>
+<p>在这里为了说明如何用MATLAB来实现滤波，特举出一个简单的函数信号滤波实例（对信号x(n)=sin( n/4)+5cos( n/2)进行滤波，信号长度为500点），从中了解滤波的实现过程。程序如下：</p>
+<p>Wn=0.2*pi;</p>
+<p>N=5;</p>
+<p>[b,a]=butter(N,Wn/pi);</p>
+<p>n=0:499;</p>
+<p>x=sin(pi<em>n/4)+5</em>cos(pi*n/2);</p>
+<p>X=fft(x,4096);</p>
+<p>subplot(221);plot(x);title(‘滤波前信号的波形’);</p>
+<p>subplot(222);plot(X);title(‘滤波前信号的频谱’);</p>
+<p>y=filter(b,a,x);</p>
+<p>Y=fft(y,4096);</p>
+<p>subplot(223);plot(y);title(‘滤波后信号的波形’);</p>
+<p>subplot(224);plot(Y);title(‘滤波后信号的频谱’);</p>
+<p>在这里，是采用了butter命令，设计出一个巴特沃斯低通滤波器，从频谱图中可以很明显的看出来。下面，也就是本课题的主要内容，也都是运用到了butter函数，以便容易的得到系统函数的分子与分母系数，最终以此来实现信号的滤波。</p>
+<p>（2）N阶高通滤波器的设计（在这里，以5阶为例，其中wc为其3dB边缘频率，以 为单位），程序设计如下：</p>
+<p>x=wavread(‘ding.wav’);</p>
+<p>   sound(x);</p>
+<p>N=5;wc=0.3;</p>
+<p>[b,a]=butter(N,wc,’high’);</p>
+<p>X=fft(x);</p>
+<p>subplot(321);plot(x);title(‘滤波前信号的波形’);</p>
+<p>subplot(322);plot(X);title(‘滤波前信号的频谱’);</p>
+<p>y=filter(b,a,x);</p>
+<p>Y=fft(y);</p>
+<p>subplot(323);plot(y);title(‘IIR滤波后信号的波形’);</p>
+<p>subplot(324);plot(Y);title(‘IIR滤波后信号的频谱’);</p>
+<p>z=fftfilt(b,x);</p>
+<p>Z=fft(z);</p>
+<p>subplot(325);plot(z);title(‘FIR滤波后信号的波形’);</p>
+<p>subplot(326);plot(Z);title(‘FIR滤波后信号的频谱’);</p>
+<p>得到结果如图：</p>
+<p>（3）N阶低通滤波器的设计（在这里，同样以5阶为例，其中wc为其3dB边缘频率，以 为单位），程序设计如下：</p>
+<p>x=wavread(‘ding.wav’);</p>
+<p>   sound(x);</p>
+<p>N=5;wc=0.3;</p>
+<p>[b,a]=butter(N,wc);</p>
+<p>X=fft(x);</p>
+<p>subplot(321);plot(x);title(‘滤波前信号的波形’);</p>
+<p>subplot(322);plot(X);title(‘滤波前信号的频谱’);</p>
+<p>y=filter(b,a,x);</p>
+<p>Y=fft(y);</p>
+<p>subplot(323);plot(y);title(‘IIR滤波后信号的波形’);</p>
+<p>subplot(324);plot(Y);title(‘IIR滤波后信号的频谱’);</p>
+<p>z=fftfilt(b,x);</p>
+<p>Z=fft(z);</p>
+<p>subplot(325);plot(z);title(‘FIR滤波后信号的波形’);</p>
+<p>subplot(326);plot(Z);title(‘FIR滤波后信号的频谱’);</p>
+<p>得到结果如图：</p>
+<p>（4）2N阶带通滤波器的设计（在这里，以10阶为例，其中wc为其3dB边缘频率，以 为单位，wc=[w1,w2],w1 wc w2），程序设计如下：</p>
+<p>x=wavread(‘ding.wav’);</p>
+<p>   sound(x);</p>
+<p>N=5;wc=[0.3,0.6];</p>
+<p>[b,a]=butter(N,wc);</p>
+<p>X=fft(x);</p>
+<p>subplot(321);plot(x);title(‘滤波前信号的波形’);</p>
+<p>subplot(322);plot(X);title(‘滤波前信号的频谱’);</p>
+<p>y=filter(b,a,x);</p>
+<p>Y=fft(y);</p>
+<p>subplot(323);plot(y);title(‘IIR滤波后信号的波形’);</p>
+<p>subplot(324);plot(Y);title(‘IIR滤波后信号的频谱’);</p>
+<p>z=fftfilt(b,x);</p>
+<p>Z=fft(z);</p>
+<p>subplot(325);plot(z);title(‘FIR滤波后信号的波形’);</p>
+<p>subplot(326);plot(Z);title(‘FIR滤波后信号的频谱’);</p>
+<p>得到结果如图：</p>
+<p>（5）2N阶带阻滤波器的设计（在这里，以10阶为例，其中wc为其3dB边缘频率，以 为单位，wc=[w1,w2],w1 wc w2），程序设计如下：</p>
+<p>x=wavread(‘ding.wav’);</p>
+<p>   sound(x);</p>
+<p>N=5;wc=[0.2,0.7];</p>
+<p>[b,a]=butter(N,wc,’stop’);</p>
+<p>X=fft(x);</p>
+<p>subplot(321);plot(x);title(‘滤波前信号的波形’);</p>
+<p>subplot(322);plot(X);title(‘滤波前信号的频谱’);</p>
+<p>y=filter(b,a,x);</p>
+<p>Y=fft(y);</p>
+<p>subplot(323);plot(y);title(‘IIR滤波后信号的波形’);</p>
+<p>subplot(324);plot(Y);title(‘IIR滤波后信号的频谱’);</p>
+<p>z=fftfilt(b,x);</p>
+<p>Z=fft(z);</p>
+<p>subplot(325);plot(z);title(‘FIR滤波后信号的波形’);</p>
+<p>subplot(326);plot(Z);title(‘FIR滤波后信号的频谱’);</p>
+<p>得到结果如图：</p>
+<p>（6）小结：以上几种滤波，我们都可以从信号滤波前后的波形图以及频谱图上看出变化。当然，也可以用sound()函数来播放滤波后的语音，从听觉上直接感受语音信号的变化，但由于人耳听力的限制，有些情况下我们是很难听出异同的。</p>
+<p>同样，通过函数的调用，也可以将信号的频谱进行“分离观察”，如显出信号的幅值或相位。下面，通过改变系统函数的分子与分母系数比，来观察信号滤波前后的幅值与相位。并且使结果更加明显，使人耳得以很容易的辨听。</p>
+<p>x=wavread(‘ding.wav’);</p>
+<p>   sound(x);</p>
+<pre><code>b=100;a=5;
+</code></pre><p>y=filter(b,a,x);</p>
+<p>X=fft(x,4096);</p>
+<p>subplot(221);plot(x);title(‘滤波前信号的波形’);</p>
+<p>subplot(222);plot(abs(X));title(‘滤波前信号的幅值’);</p>
+<p>Y=fft(y,4096);</p>
+<p>subplot(223);plot(y);title(‘滤波后信号的波形’);</p>
+<p>subplot(224);plot(abs(Y));title(‘滤波后信号的幅值’);</p>
+<p>结果如图：</p>
+<blockquote>
+<blockquote>
+<p>sound(y);</p>
+</blockquote>
+</blockquote>
+<p>可以听到声音明显变得高亢了。从上面的波形与幅值（即幅频）图，也可看出，滤波后的幅值变成了滤波前的20倍。</p>
+<blockquote>
+<blockquote>
+<p>figure,</p>
+</blockquote>
+</blockquote>
+<p>subplot(211);plot(angle(X));title(‘滤波前信号相位’);</p>
+<p>subplot(212);plot(angle(Y));title(‘滤波后信号相位’);</p>
+<p>得图：</p>
+<p>可以看到相位谱没什么变化。</p>
+<p>（四）、界面设计：</p>
+<p>直接用M文件编写GUI程序很繁琐，而使用GUIDE设计工具可以大大提高工作效率。GUIDE相当于一个控制面板，从中可以调用各种设计工具以辅助完成界面设计任务，例如控件的创建和布局、控件属性的编辑和菜单设计等。</p>
+<p>使用GUIDE设计GUI程序的一般步骤如下：</p>
+<ol>
+<li><p>将所需控件从控件面板拖拽到GUIDE的设计区域；</p>
+</li>
+<li><p>利用工具条中的工具（或相应的菜单和现场菜单），快速完成界面布局；</p>
+</li>
+<li><p>设置控件的属性。尤其是tag属性，它是控件在程序内部的唯一标识；</p>
+</li>
+<li><p>如果需要，打开菜单编辑器为界面添加菜单或现场菜单；</p>
+</li>
+<li><p>保存设计。GUIDE默认把GUI程序保存为两个同名文件：一个是.fig文件，用来保存窗体布局和所有控件的界面信息；一个是.m文件，该文件的初始内容是GUIDE自动产生的程序框架，其中包括了各个控件回调函数的定义。该M文件与一般的M文件没有本质区别，但是鉴于它的特殊性，MATALAB把这类文件统称为GUI-M文件。保存完后GUI-M文件自动在编辑调试器中打开以供编辑。</p>
+</li>
+<li><p>为每个回调函数添加代码以实现GUI程序的具体功能。这一步与一般函数文件的编辑调试过程相同。</p>
+</li>
+</ol>
+<p>设计过程及内容：</p>
+<p>在MATLAB版面上，通过键入GUIDE弹出一个菜单栏进入gui制作界面（或者在File到new来进入gui）,从而开始应用界面的制作。</p>
+<p>该界面主要实现了以下几个功能：</p>
+<p>①打开wav格式的音频文件，并将该音频信号的值读取并赋予某一向量；</p>
+<p>②播放音频文件，可以选择性的显示该音频信号的波形、频谱、幅值以及相位；</p>
+<p>③对音频信号进行IIR与FIR的5阶固定滤波处理，可以选择性的显示滤波前后信号的波形、频谱、幅值以及相位，以及播放滤波后的声音。</p>
+<p>界面如图所示：</p>
+<p>通过该界面，可以方便用户进行语音信号的处理。</p>
+<p>界面主程序见附件。</p>
+<p>（五）、校验：</p>
+<p>1、本设计圆满的完成了对语音信号的读取与打开，与课题的要求十分相符；</p>
+<p>2、本设计也较好的完成了对语音信号的频谱分析，通过fft变换，得出了语音信号的频谱图；</p>
+<p>3、在滤波这一块，课题主要是从巴特沃斯滤波器入手来设计滤波器，也从一方面基本实现了滤波；</p>
+<p>4、初略的完成了界面的设计，但也存在相当的不足，只是很勉强的达到了打开语音文件、显示已定滤波前后的波形等图。</p>
+<p>四、 结论：</p>
+<p>语音信号处理是语音学与数字信号处理技术相结合的交叉学科，课题在这里不讨论语音学，而是将语音当做一种特殊的信号，即一种“复杂向量”来看待。也就是说，课题更多的还是体现了数字信号处理技术。</p>
+<p>从课题的中心来看，课题是希望将数字信号处理技术应用于某一实际领域，这里就是指对语音的处理。作为存储于计算机中的语音信号，其本身就是离散化了的向量，我们只需将这些离散的量提取出来，就可以对其进行处理了。</p>
+<p><a href="http://lingchenwangzi.blog.163.com/blog/static/128076136200982725059828/" target="_blank" rel="external">参考</a><br>在这里，用到了处理数字信号的强有力工具MATLAB，通过MATLAB里几个命令函数的调用，很轻易的在实际化语音与数字信号的理论之间搭了一座桥。</p>
+<p>课题的特色在于它将语音看作了一个向量，于是语音数字化了，则可以完全利用数字信号处理的知识来解决。我们可以像给一般信号做频谱分析一样，来给语音信号做频谱分析，也可以较容易的用数字滤波器来对语音进行滤波处理。</p>
+<p>最后，还利用了MATLAB的另一强大功能——gui界面设计。设计出了一个简易的用户应用界面，可以让人实现界面操作。更加方便的进行语音的频谱分析与滤波处理。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/24/Matlab_wav2/" data-id="cj0nxnmsr0001qop6sx3guriq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wav/">wav</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/24/Matlab_wav/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Matlab处理音频</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Activiti/">Activiti</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Video/">Video</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/matlab/">matlab</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BPM/">BPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Workflow/">Workflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/m-map/">m_map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/">video</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wav/">wav</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Activiti/" style="font-size: 10px;">Activiti</a> <a href="/tags/BPM/" style="font-size: 12.5px;">BPM</a> <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/HDF/" style="font-size: 12.5px;">HDF</a> <a href="/tags/IDL/" style="font-size: 17.5px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 12.5px;">NetCDF</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/Workflow/" style="font-size: 12.5px;">Workflow</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/m-map/" style="font-size: 10px;">m_map</a> <a href="/tags/markdown/" style="font-size: 12.5px;">markdown</a> <a href="/tags/matlab/" style="font-size: 20px;">matlab</a> <a href="/tags/video/" style="font-size: 10px;">video</a> <a href="/tags/wav/" style="font-size: 12.5px;">wav</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/24/Matlab_wav2/">Matlab处理音频2</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/Matlab_wav/">Matlab处理音频</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/Workflow/">工作流引擎</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/Matlab_video/">Matlab 视频处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/23/Activiti/">工作流引擎Activiti</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Xuerong Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

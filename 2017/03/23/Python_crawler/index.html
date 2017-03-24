@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Python crawler | 遥感数据挖掘与应用</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python crawler">
+<meta property="og:url" content="http://xuerongli.github.io/2017/03/23/Python_crawler/index.html">
+<meta property="og:site_name" content="遥感数据挖掘与应用">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:updated_time" content="2017-03-23T11:49:04.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python crawler">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+  
+    <link rel="alternate" href="/atom.xml" title="遥感数据挖掘与应用" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">遥感数据挖掘与应用</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xuerongli.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python_crawler" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/23/Python_crawler/" class="article-date">
+  <time datetime="2017-03-23T11:47:07.000Z" itemprop="datePublished">2017-03-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python crawler
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line">#-*-coding:utf-8-*-</div><div class="line"></div><div class="line"># 简易采集爬虫</div><div class="line">#    1.采集Yahoo!Answers，parseData函数修改一下，可以采集任何网站</div><div class="line">#    2.需要sqlite3或者pysqlite支持</div><div class="line">#    3.可以在DreamHost.com空间上面运行</div><div class="line">#    4.可以修改User-Agent冒充搜索引擎蜘蛛</div><div class="line">#    5.可以设置暂停的时间，控制采集速度</div><div class="line">#    6.采集Yahoo会被封IP数小时，所以这个采集用处不大</div><div class="line"># Author: Lukin&lt;mylukin@gmail.com&gt;</div><div class="line"># Date  : 2008-09-25</div><div class="line"></div><div class="line"># 导入采集需要用到的模块</div><div class="line">import re, sys, time</div><div class="line">import httplib, os.path as osp</div><div class="line">from urlparse import urlparse</div><div class="line"># 使用sqite数据库，为了兼容DreamHost.com的空间，只能这么写了</div><div class="line">try :</div><div class="line">    import sqlite3 as sqlite</div><div class="line">except ImportError:</div><div class="line">    from pysqlite2 import dbapi2 as sqlite</div><div class="line"></div><div class="line"># 采集速度控制，单位秒</div><div class="line">sleep = 0</div><div class="line"># 数据库路径</div><div class="line">dbname = &apos;./database.db&apos;</div><div class="line"># 设置提交的header头</div><div class="line">headers = &#123;&quot;Accept&quot;: &quot;*/*&quot;,&quot;Referer&quot;: &quot;http://answers.yahoo.com/&quot;,&quot;User-Agent&quot;: &quot;Mozilla/5.0+(compatible;+Googlebot/2.1;++http://www.google.com/bot.html)&quot;&#125;</div><div class="line"># 连接服务器</div><div class="line">dl = httplib.HTTPConnection(&apos;answers.yahoo.com&apos;)</div><div class="line"># 连接数据库</div><div class="line">conn = sqlite.connect(osp.abspath(dbname))</div><div class="line"></div><div class="line"># 创建数据库</div><div class="line">def createDatabase():</div><div class="line">    global conn,dbname;</div><div class="line">    if osp.isfile(osp.abspath(dbname)) : return </div><div class="line">    c = conn.cursor()</div><div class="line">    # 创建url列表存放表</div><div class="line">    c.execute(&apos;&apos;&apos;CREATE TABLE IF NOT EXISTS [collect]([cid] INTEGER PRIMARY KEY,[curl] TEXT,[state] INTEGER DEFAULT &apos;0&apos;,UNIQUE([curl]));&apos;&apos;&apos;)</div><div class="line">    c.execute(&apos;&apos;&apos;CREATE INDEX IF NOT EXISTS [collect_idx_state] ON [collect]([state]);&apos;&apos;&apos;)</div><div class="line">    # 创建分类表</div><div class="line">    c.execute(&apos;&apos;&apos;CREATE TABLE IF NOT EXISTS [sorts]([sortid] INTEGER PRIMARY KEY,[sortname] TEXT,[sortpath] TEXT,[sortfoot] INTEGER DEFAULT &apos;0&apos;,[sortnum] INTEGER DEFAULT &apos;0&apos;,UNIQUE([sortpath]));&apos;&apos;&apos;)</div><div class="line">    c.execute(&apos;&apos;&apos;CREATE INDEX IF NOT EXISTS [sorts_idx_sortname] ON [sorts]([sortname]);&apos;&apos;&apos;)</div><div class="line">    c.execute(&apos;&apos;&apos;CREATE INDEX IF NOT EXISTS [sorts_idx_sortfoot] ON [sorts]([sortfoot]);&apos;&apos;&apos;)</div><div class="line">    # 创建文章表</div><div class="line">    c.execute(&apos;&apos;&apos;CREATE TABLE IF NOT EXISTS [article]([aid] INTEGER PRIMARY KEY,[sortid] INTEGER DEFAULT &apos;0&apos;,[hits] INTEGER DEFAULT &apos;0&apos;,[title] TEXT,[path] TEXT,[question] TEXT,[banswer] TEXT,[oanswer] TEXT,UNIQUE([path]));&apos;&apos;&apos;)</div><div class="line">    c.execute(&apos;&apos;&apos;CREATE INDEX IF NOT EXISTS [article_idx_sortid] ON [article]([sortid]);&apos;&apos;&apos;)</div><div class="line">    # 事物提交</div><div class="line">    conn.commit()</div><div class="line">    c.close()</div><div class="line"></div><div class="line"># 执行采集 </div><div class="line">def collect(url=&quot;http://answers.yahoo.com/&quot;):</div><div class="line">    global dl,error,headers; R = 0</div><div class="line">    print &quot;GET:&quot;,url</div><div class="line">    urls = urlparse(url); path = urls[2];</div><div class="line">    if urls[4]!=&apos;&apos; : path += &apos;?&apos; + urls[4]</div><div class="line">    dl.request(method=&quot;GET&quot;, url=path, headers=headers); rs = dl.getresponse()</div><div class="line">    if rs.status==200 :</div><div class="line">        R = parseData(rs.read(),url);</div><div class="line">    else :</div><div class="line">        print &quot;3 seconds, try again ...&quot;; time.sleep(3)</div><div class="line">        dl.request(method=&quot;GET&quot;, url=path, headers=headers); rs = dl.getresponse()</div><div class="line">        if rs.status==200 :</div><div class="line">            R = parseData(rs.read(),url);</div><div class="line">        else :</div><div class="line">            print &quot;3 seconds, try again ...&quot;; time.sleep(3)</div><div class="line">            dl.request(method=&quot;GET&quot;, url=path, headers=headers); rs = dl.getresponse()</div><div class="line">            if rs.status==200 :</div><div class="line">                R = parseData(rs.read(),url);</div><div class="line">            else :</div><div class="line">                print &quot;Continue to collect ...&quot;</div><div class="line">                R = 3</div><div class="line">    # 更新记录</div><div class="line">    updateOneUrl(url,R)</div><div class="line">    # 返回结果</div><div class="line">    return R</div><div class="line"></div><div class="line"># 处理采集到的数据</div><div class="line">def parseData(html,url):</div><div class="line">    global dl,conn; R = 2;</div><div class="line">    c = conn.cursor()</div><div class="line">    # 格式化html代码</div><div class="line">    format = formatURL(clearBlank(html),url)</div><div class="line">    # 取出所有的连接</div><div class="line">    urls = re.findall(r&apos;&apos;&apos;(&lt;a[^&gt;]*?href=&quot;([^&quot;]+)&quot;[^&gt;]*?&gt;)|(&lt;a[^&gt;]*?href=&apos;([^&apos;]+)&apos;[^&gt;]*?&gt;)&apos;&apos;&apos;,format,re.I)</div><div class="line">    if urls != None :</div><div class="line">        i = 0</div><div class="line">        # 循环所有的连接</div><div class="line">        for regs in urls :</div><div class="line">            # 得到一个单一的url</div><div class="line">            sUrl = en2chr(regs[1].strip())</div><div class="line">            # 判断url是否符合规则，符合，则插入数据库</div><div class="line">            if re.search(&apos;http(.*?)/(dir|question)/index(.*?)&apos;,sUrl,re.I) != None :</div><div class="line">                if re.search(&apos;http(.*?)/dir/index(.*?)&apos;,sUrl,re.I) != None:</div><div class="line">                    if sUrl.find(&apos;link=list&apos;) == -1 and sUrl.find(&apos;link=over&apos;) == -1 :</div><div class="line">                        sUrl+= &apos;&amp;link=over&apos;</div><div class="line">                    else:</div><div class="line">                        sUrl = sUrl.replace(&apos;link=list&apos;,&apos;link=over&apos;)</div><div class="line">                if sUrl[-11:]==&apos;link=mailto&apos; : continue</div><div class="line">                try :</div><div class="line">                    c.execute(&apos;INSERT INTO [collect]([curl])VALUES(?);&apos;,(sUrl,))</div><div class="line">                    i = i + 1</div><div class="line">                except sqlite.IntegrityError :</div><div class="line">                    pass</div><div class="line">        if i&gt;0 : print &quot;Message: %d get a new URL.&quot; % (i,)</div><div class="line">    </div><div class="line">    # 截取数据</div><div class="line">    if re.search(&apos;http(.*)/question/index(.*)&apos;,url,re.I) != None :</div><div class="line">        sortfoot = 0</div><div class="line">        # 自动创建分类和分类关系</div><div class="line">        guide  = sect(format,&apos;&lt;ol id=&quot;yan-breadcrumbs&quot;&gt;&apos;,&apos;&lt;/ol&gt;&apos;,&apos;(&lt;li&gt;(.*?)Home(.*?)&lt;/li&gt;)&apos;)</div><div class="line">        aGuide = re.findall(&apos;&lt;a[^&gt;]*href=&quot;[^&quot;]*&quot;[^&gt;]*&gt;(.*?)&lt;/a&gt;&apos;,guide,re.I)</div><div class="line">        if aGuide != None :</div><div class="line">            sortname = &quot;&quot;</div><div class="line">            for sortname in aGuide :</div><div class="line">                sortname = sortname.strip()</div><div class="line">                sortpath = en2path(sortname)</div><div class="line">                # 查询分类是否存在</div><div class="line">                c.execute(&apos;SELECT [sortid],[sortname] FROM [sorts] WHERE [sortpath]=? LIMIT 0,1;&apos;,(sortpath,))</div><div class="line">                row = c.fetchone();</div><div class="line">                # 分类不存在，添加分类</div><div class="line">                if row==None : </div><div class="line">                    c.execute(&apos;INSERT INTO [sorts]([sortname],[sortpath],[sortfoot])VALUES(?,?,?);&apos;,(sortname,sortpath,sortfoot))</div><div class="line">                    sortfoot = c.lastrowid</div><div class="line">                else:</div><div class="line">                    sortfoot = row[0]</div><div class="line">            # 标题</div><div class="line">            title = sect(format,&apos;&lt;h1 class=&quot;subject&quot;&gt;&apos;,&apos;&lt;/h1&gt;&apos;)</div><div class="line">            # 最佳答案</div><div class="line">            BestAnswer = sect(format,&apos;(&lt;h2&gt;&lt;span&gt;Best Answer&lt;/span&gt;(.*?)&lt;/h2&gt;(.*?)&lt;div class=&quot;content&quot;&gt;)&apos;,&apos;(&lt;/div&gt;)&apos;)</div><div class="line">            # 最佳答案不存在，则不采集</div><div class="line">            if BestAnswer != None :</div><div class="line">                # 文章路径</div><div class="line">                path = en2path(sortname + &apos;-&apos; + title.strip())</div><div class="line">                # 问题</div><div class="line">                adddata = sect(format,&apos;&lt;div class=&quot;additional-details&quot;&gt;&apos;,&apos;&lt;/div&gt;&apos;)</div><div class="line">                content = sect(format,&apos;(&lt;h1 class=&quot;subject&quot;&gt;(.*?)&lt;div class=&quot;content&quot;&gt;)&apos;,&apos;(&lt;/div&gt;)&apos;)</div><div class="line">                if adddata != None : content += &apos;&lt;br/&gt;&apos; + adddata</div><div class="line">                # 其他回答</div><div class="line">                OtherAnswer = &apos;&apos;</div><div class="line">                for regs in re.findall(&apos;&lt;div class=&quot;qa-container&quot;&gt;(.+?)&lt;div class=&quot;utils-container&quot;&gt;&apos;,format):</div><div class="line">                    if regs.find(&apos;&lt;h2&gt;&apos;) == -1 and regs.find(&apos;&lt;/h2&gt;&apos;) == -1 :</div><div class="line">                        a1 = sect(regs,&apos;&lt;div class=&quot;content&quot;&gt;&apos;,&apos;&lt;/div&gt;&apos;)</div><div class="line">                        a2 = sect(regs,&apos;&lt;div class=&quot;reference&quot;&gt;&apos;,&apos;&lt;/div&gt;&apos;)</div><div class="line">                        OtherAnswer+= &apos;&lt;div class=&quot;oAnswer&quot;&gt;&apos; + a1</div><div class="line">                        if a2 != None : OtherAnswer+= &apos;&lt;div class=&quot;reference&quot;&gt;&apos; + a2 + &apos;&lt;/div&gt;&apos;</div><div class="line">                        OtherAnswer+= &apos;&lt;/div&gt;&apos;</div><div class="line">                </div><div class="line">                # 判断采集成功</div><div class="line">                if title != None and content != None :</div><div class="line">                    # 将数据写入到数据</div><div class="line">                    try :</div><div class="line">                        c.execute(&apos;INSERT INTO [article]([sortid],[title],[path],[question],[banswer],[oanswer])VALUES(?,?,?,?,?,?);&apos;,(sortfoot,title,path,content,BestAnswer,OtherAnswer))</div><div class="line">                        print &quot;Message：%s.html&quot; % (path,)</div><div class="line">                        R = 1</div><div class="line">                    except sqlite.IntegrityError :</div><div class="line">                        pass</div><div class="line">    # 提交写入数据库</div><div class="line">    conn.commit(); c.close()</div><div class="line">    return R</div><div class="line">    </div><div class="line"># 取得一条URL</div><div class="line">def getOneUrl():</div><div class="line">    global conn; c = conn.cursor()</div><div class="line">    c.execute(&apos;SELECT [curl] FROM [collect] WHERE [state] IN(0,3) LIMIT 0,1;&apos;)</div><div class="line">    row = c.fetchone(); c.close()</div><div class="line">    if row==None : return &quot;&quot;</div><div class="line">    return row[0].encode(&apos;utf-8&apos;)</div><div class="line"></div><div class="line"># 更新一条记录的状态</div><div class="line">def updateOneUrl(url,state):</div><div class="line">    global conn; c = conn.cursor()</div><div class="line">    c.execute(&apos;UPDATE [collect] SET [state]=? WHERE [curl]=?;&apos;,(state,url))</div><div class="line">    conn.commit(); c.close()</div><div class="line"></div><div class="line"># 清除html代码里的多余空格</div><div class="line">def clearBlank(html):</div><div class="line">    if len(html) == 0 : return &apos;&apos;</div><div class="line">    html = re.sub(&apos;\r|\n|\t&apos;,&apos;&apos;,html)</div><div class="line">    while html.find(&quot;  &quot;)!=-1 or html.find(&apos;&amp;nbsp;&apos;)!=-1 :</div><div class="line">        html = html.replace(&apos;&amp;nbsp;&apos;,&apos; &apos;).replace(&apos;  &apos;,&apos; &apos;)</div><div class="line">    return html</div><div class="line"></div><div class="line"># 格式化url</div><div class="line">def formatURL(html,url):</div><div class="line">    urls = re.findall(&apos;&apos;&apos;(&lt;a[^&gt;]*?href=&quot;([^&quot;]+)&quot;[^&gt;]*?&gt;)|(&lt;a[^&gt;]*?href=&apos;([^&apos;]+)&apos;[^&gt;]*?&gt;)&apos;&apos;&apos;,html,re.I)</div><div class="line">    if urls == None : return html</div><div class="line">    for regs in urls :</div><div class="line">        html = html.replace(regs[0],matchURL(regs[0],url))</div><div class="line">    return html</div><div class="line"></div><div class="line"># 格式化单个url</div><div class="line">def matchURL(tag,url):</div><div class="line">    urls = re.findall(&apos;&apos;&apos;(.*)(src|href)=(.+?)( |/&gt;|&gt;).*|(.*)url\(([^\)]+)\)&apos;&apos;&apos;,tag,re.I)</div><div class="line">    if urls == None :</div><div class="line">        return tag</div><div class="line">    else :</div><div class="line">        if urls[0][5] == &apos;&apos; :</div><div class="line">            urlQuote = urls[0][2]</div><div class="line">        else:</div><div class="line">            urlQuote = urls[0][5]</div><div class="line"></div><div class="line">    if len(urlQuote) &gt; 0 :</div><div class="line">        cUrl = re.sub(&apos;&apos;&apos;[&apos;&quot;]&apos;&apos;&apos;,&apos;&apos;,urlQuote)</div><div class="line">    else :</div><div class="line">        return tag</div><div class="line"></div><div class="line">    urls = urlparse(url); scheme = urls[0];</div><div class="line">    if scheme!=&apos;&apos; : scheme+=&apos;://&apos;</div><div class="line">    host = urls[1]; host = scheme + host</div><div class="line">    if len(host)==0 : return tag</div><div class="line">    path = osp.dirname(urls[2]);</div><div class="line">    if path==&apos;/&apos; : path = &apos;&apos;;</div><div class="line">    if cUrl.find(&quot;#&quot;)!=-1 : cUrl = cUrl[:cUrl.find(&quot;#&quot;)]</div><div class="line">    # 判断类型</div><div class="line">    if re.search(&apos;&apos;&apos;^(http|https|ftp):(//|\\\\)(([\w/\\\+\-~`@:%])+\.)+([\w/\\\.\=\?\+\-~`@&apos;:!%#]|(&amp;amp;)|&amp;)+&apos;&apos;&apos;,cUrl,re.I) != None :</div><div class="line">        # http开头的url类型要跳过</div><div class="line">        return tag</div><div class="line">    elif cUrl[:1] == &apos;/&apos; :</div><div class="line">        # 绝对路径</div><div class="line">        cUrl = host + cUrl</div><div class="line">    elif cUrl[:3]==&apos;../&apos; :</div><div class="line">        # 相对路径</div><div class="line">        while cUrl[:3]==&apos;../&apos; :</div><div class="line">            cUrl = cUrl[3:]</div><div class="line">            if len(path) &gt; 0 :</div><div class="line">                path = osp.dirname(path)</div><div class="line">    elif cUrl[:2]==&apos;./&apos; :</div><div class="line">        cUrl = host + path + cUrl[1:]</div><div class="line">    elif cUrl.lower()[:7]==&apos;mailto:&apos; or cUrl.lower()[:11]==&apos;javascript:&apos; :</div><div class="line">        return tag</div><div class="line">    else :</div><div class="line">        cUrl = host + path + &apos;/&apos; + cUrl</div><div class="line">    R = tag.replace(urlQuote,&apos;&quot;&apos; + cUrl + &apos;&quot;&apos;)</div><div class="line">    return R</div><div class="line"></div><div class="line"># html代码截取函数</div><div class="line">def sect(html,start,end,cls=&apos;&apos;):</div><div class="line">    if len(html)==0 : return ;</div><div class="line">    # 正则表达式截取</div><div class="line">    if start[:1]==chr(40) and start[-1:]==chr(41) and end[:1]==chr(40) and end[-1:]==chr(41) :</div><div class="line">        reHTML = re.search(start + &apos;(.*?)&apos; + end,html,re.I)</div><div class="line">        if reHTML == None : return </div><div class="line">        reHTML = reHTML.group()</div><div class="line">        intStart = re.search(start,reHTML,re.I).end()</div><div class="line">        intEnd = re.search(end,reHTML,re.I).start()</div><div class="line">        R = reHTML[intStart:intEnd]</div><div class="line">    # 字符串截取</div><div class="line">    else :</div><div class="line">        # 取得开始字符串的位置</div><div class="line">        intStart = html.lower().find(start.lower())</div><div class="line">        # 如果搜索不到开始字符串，则直接返回空</div><div class="line">        if intStart == -1 : return </div><div class="line">        # 取得结束字符串的位置</div><div class="line">        intEnd = html[intStart+len(start):].lower().find(end.lower())</div><div class="line">        # 如果搜索不到结束字符串，也返回为空</div><div class="line">        if intEnd == -1 : return </div><div class="line">        # 开始和结束字符串都有了，可以开始截取了</div><div class="line">        R = html[intStart+len(start):intStart+intEnd+len(start)]</div><div class="line">    # 清理内容</div><div class="line">    if cls != &apos;&apos; :</div><div class="line">        R = clear(R,cls)</div><div class="line">    # 返回截取的字符</div><div class="line">    return R</div><div class="line"></div><div class="line"># 正则清除</div><div class="line">def clear(html,regexs):</div><div class="line">    if regexs == &apos;&apos; : return html</div><div class="line">    for regex in regexs.split(chr(10)):</div><div class="line">        regex = regex.strip()</div><div class="line">        if regex != &apos;&apos; :</div><div class="line">            if regex[:1]==chr(40) and regex[-1:]==chr(41):</div><div class="line">                html = re.sub(regex,&apos;&apos;,html,re.I|re.S)</div><div class="line">            else :</div><div class="line">                html = html.replace(regex,&apos;&apos;)</div><div class="line">    return html</div><div class="line"></div><div class="line"># 格式化为路径</div><div class="line">def en2path(enStr):</div><div class="line">    return re.sub(&apos;[\W]+&apos;,&apos;-&apos;,en2chr(enStr),re.I|re.U).strip(&apos;-&apos;)</div><div class="line"></div><div class="line"># 替换实体为正常字符</div><div class="line">def en2chr(enStr):</div><div class="line">    return enStr.replace(&apos;&amp;amp;&apos;,&apos;&amp;&apos;)</div><div class="line"></div><div class="line"># ------------------------------------- 开始执行程序 -------------------------------------------</div><div class="line"></div><div class="line"># 首先创建数据库</div><div class="line">createDatabase()</div><div class="line"></div><div class="line"># 开始采集</div><div class="line">loops = 0</div><div class="line">while True:</div><div class="line">    if loops&gt;0 :</div><div class="line">        url = getOneUrl()</div><div class="line">        if url == &quot;&quot; :</div><div class="line">            loops = 0</div><div class="line">        else :</div><div class="line">            loops = collect(url)</div><div class="line">    else :</div><div class="line">        loops = collect()</div><div class="line">    # 暂停</div><div class="line">    time.sleep(sleep)</div><div class="line">    if loops==0 : break</div><div class="line">        </div><div class="line"># 关闭HTTP连接</div><div class="line">dl.close()</div><div class="line"># 退出程序 </div><div class="line">sys.exit()</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/23/Python_crawler/" data-id="cj0nxnmtj000aqop6gyi5658v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/23/m_map/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Matlab m_map toolbox
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/22/Imp_Urls/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Useful Urls</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Activiti/">Activiti</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Video/">Video</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/matlab/">matlab</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BPM/">BPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Workflow/">Workflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/m-map/">m_map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/">video</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wav/">wav</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Activiti/" style="font-size: 10px;">Activiti</a> <a href="/tags/BPM/" style="font-size: 12.5px;">BPM</a> <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/HDF/" style="font-size: 12.5px;">HDF</a> <a href="/tags/IDL/" style="font-size: 17.5px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 12.5px;">NetCDF</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/Workflow/" style="font-size: 12.5px;">Workflow</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/m-map/" style="font-size: 10px;">m_map</a> <a href="/tags/markdown/" style="font-size: 12.5px;">markdown</a> <a href="/tags/matlab/" style="font-size: 20px;">matlab</a> <a href="/tags/video/" style="font-size: 10px;">video</a> <a href="/tags/wav/" style="font-size: 12.5px;">wav</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/24/Matlab_wav2/">Matlab处理音频2</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/Matlab_wav/">Matlab处理音频</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/Workflow/">工作流引擎</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/Matlab_video/">Matlab 视频处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/23/Activiti/">工作流引擎Activiti</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Xuerong Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

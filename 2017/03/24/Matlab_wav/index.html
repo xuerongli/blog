@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Matlab处理音频 | 遥感数据挖掘与应用</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="语音信号是基于时间轴上的一维数字信号，在这里主要是对语音信号进行频域上的分析。在信号分析中，频域往往包含了更多的信息。对于频域来说，大概有8种波形可以让我们分析：矩形方波，锯齿波，梯形波，临界阻尼指数脉冲波形，三角波，余旋波，余旋平方波，高斯波。对于各种波形，我们都可以用一种方法来分析，就是傅立叶变换：将时域的波形转化到频域来分析。将语音作为一种信号来处理。常用方法: 数字滤波器（FIR、IIR）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matlab处理音频">
+<meta property="og:url" content="http://xuerongli.github.io/2017/03/24/Matlab_wav/index.html">
+<meta property="og:site_name" content="遥感数据挖掘与应用">
+<meta property="og:description" content="语音信号是基于时间轴上的一维数字信号，在这里主要是对语音信号进行频域上的分析。在信号分析中，频域往往包含了更多的信息。对于频域来说，大概有8种波形可以让我们分析：矩形方波，锯齿波，梯形波，临界阻尼指数脉冲波形，三角波，余旋波，余旋平方波，高斯波。对于各种波形，我们都可以用一种方法来分析，就是傅立叶变换：将时域的波形转化到频域来分析。将语音作为一种信号来处理。常用方法: 数字滤波器（FIR、IIR）">
+<meta property="og:updated_time" content="2017-03-24T14:11:05.120Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Matlab处理音频">
+<meta name="twitter:description" content="语音信号是基于时间轴上的一维数字信号，在这里主要是对语音信号进行频域上的分析。在信号分析中，频域往往包含了更多的信息。对于频域来说，大概有8种波形可以让我们分析：矩形方波，锯齿波，梯形波，临界阻尼指数脉冲波形，三角波，余旋波，余旋平方波，高斯波。对于各种波形，我们都可以用一种方法来分析，就是傅立叶变换：将时域的波形转化到频域来分析。将语音作为一种信号来处理。常用方法: 数字滤波器（FIR、IIR）">
+  
+    <link rel="alternate" href="/atom.xml" title="遥感数据挖掘与应用" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">遥感数据挖掘与应用</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xuerongli.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Matlab_wav" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/24/Matlab_wav/" class="article-date">
+  <time datetime="2017-03-24T13:20:25.000Z" itemprop="datePublished">2017-03-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/matlab/">matlab</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Matlab处理音频
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>语音信号是基于时间轴上的一维数字信号，在这里主要是对语音信号进行频域上的分析。在信号分析中，频域往往包含了更多的信息。对于频域来说，大概有8种波形可以让我们分析：矩形方波，锯齿波，梯形波，临界阻尼指数脉冲波形，三角波，余旋波，余旋平方波，高斯波。对于各种波形，我们都可以用一种方法来分析，就是傅立叶变换：将时域的波形转化到频域来分析。将语音作为一种信号来处理。<br>常用方法: 数字滤波器（FIR、IIR）；快速付里叶变换（FFT）；线性预测编码（LPC）；同态信号处理等。<br>新的方法：神经网络、矢量量化、子波变换等</p>
+<p>利用MATLAB中的wavread命令来读入（采集）语音信号，将它赋值给某一向量。再将该向量看作一个普通的信号，对其进行FFT变换实现频谱分析，再依据实际情况对它进行滤波。对于波形图与频谱图（包括滤波前后的对比图）都可以用 MATLAB画出。我们还可以通过sound命令来对语音信号进行回放，以便在听觉上来感受声音的变化。</p>
+<ol>
+<li>读入音频文件<br>仅仅支持windows的wav音频文件（18k的mp3文件转化后为66k的wav文件）：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">[x,fs,bits]=wavread(&apos;F:\data\bird.wav&apos;);%读取音频</div><div class="line">%   x: 读入的音频数据，以[-1.0,+1.0)的浮点数表示，单声道的话是一个一维数组，双声道的话是一个二维的数组。 </div><div class="line">%   fs: 采样频率。 </div><div class="line">%   nbits: 量化精度。</div><div class="line"></div><div class="line">% hist(x,50)  %hist为频数直方图，按照50个区间对x分组统计频数；可以看信号是否强</div><div class="line">% length(x) %矩阵x的大小，一维列向量则给出行数。</div><div class="line"></div><div class="line">dt=1/fs   %每个样本点持续时间；</div><div class="line"></div><div class="line">tmax=length(x)/fs    %这段音频文件总的持续时间；</div><div class="line"></div><div class="line">plot(dt:dt:tmax,x)   %时间-振幅图</div><div class="line"></div><div class="line">reverse_sound = x(end:-1:1);  %反向音频</div><div class="line">soundsc(reverse_sound,fs)</div><div class="line"></div><div class="line">wavplay(flipud(x),fs) %反向播放声音 方法2</div><div class="line"></div><div class="line">%变声——好玩的东东  变频实现</div><div class="line">soundsc(x,fs*.4)  %低沉的像个男低音</div><div class="line">soundsc(x,fs*1.5) %尖锐的像个女高音</div><div class="line">sound(x*10,fs)  %声音振幅改变，声音变大</div><div class="line"></div><div class="line">%几种播放函数</div><div class="line">wavplay(x,fs) %播放 仅适用于windows系统，默认播放完才能执行下一个操作；</div><div class="line">soundsc(x,fs*1.5) %播放 把x优化到-1和+1之间再播放，优先使用此函数</div><div class="line">sound(x,fs*1.5)  %播放 一般的播放</div></pre></td></tr></table></figure>
+<p>写wav文件<br>wavwrite(x,fs,nbits,’abcde.wav’);<br>输入数据x需要保证在[-1.0, +1.0)的区间内。 </p>
+<p>播放读入的wav数据<br>soundsc(x,fs); </p>
+<p>画出波形图<br>plot(x) </p>
+<p>代码1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">%显示原始波形图以及滤波后的频谱图</div><div class="line"></div><div class="line">%用matlab处理音频文件，要求输出时域波形和频域波形（FFT变换）</div><div class="line"></div><div class="line">clear;</div><div class="line">close all;</div><div class="line">clc;</div><div class="line">[X,FS,NBITS,]=wavread(&apos;F:\data\bird.wav&apos;);</div><div class="line">B=[0.0062,0.0187,0.0187,0.0062];</div><div class="line">A=[1,-2.1706,1.6517,-0.4312];</div><div class="line">Y=filter(B,A,X);</div><div class="line">t=(0:length(X)-1)/FS;</div><div class="line"></div><div class="line">subplot(2,2,1);</div><div class="line">plot(t,X);</div><div class="line">title(&apos;原信号波形图&apos;);</div><div class="line"></div><div class="line">xf=fft(X);</div><div class="line">yf=fft(Y);</div><div class="line">fm=3000*length(xf)/FS;</div><div class="line">f=(0:fm)*FS/length(xf);</div><div class="line"></div><div class="line">subplot(2,2,2);</div><div class="line">plot(f,abs(xf(1:length(f))));</div><div class="line">title(&apos;滤波后信号的频谱图&apos;);</div><div class="line"></div><div class="line">%from http://xiaozu.renren.com/xiaozu/106512/334264341</div></pre></td></tr></table></figure></p>
+<p>代码2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">[x,fs,bits]=wavread(&apos;F:\data\bird.wav&apos;);</div><div class="line">N=256;</div><div class="line">f=0:fs/N:fs/2-1/N;</div><div class="line"></div><div class="line">X=fft(x);</div><div class="line">X=abs(X);</div><div class="line"></div><div class="line">subplot(411)</div><div class="line">plot(f(45:60),X(45:60));grid</div><div class="line">xlabel(&apos;Hz&apos;),ylabel(&apos;|H(ejw)|&apos;)</div><div class="line"></div><div class="line">%数据长度N扩大4倍后观察信号频谱</div><div class="line">N=N*4;</div><div class="line">f=0:fs/N:fs/2-1/N;</div><div class="line"></div><div class="line">X=fft(x);</div><div class="line">X=abs(X);</div><div class="line"></div><div class="line">subplot(412)</div><div class="line">plot(f(45*4:4*60),X(4*45:4*60));grid</div><div class="line">xlabel(&apos;Hz&apos;),ylabel(&apos;|H(ejw)|&apos;)</div><div class="line"></div><div class="line">%数据长度N扩大4*4倍后观察信号频谱</div><div class="line">N=N*4;</div><div class="line">f=0:fs/N:fs/2-1/N;</div><div class="line"></div><div class="line">X=fft(x);</div><div class="line">X=abs(X);</div><div class="line"></div><div class="line">subplot(413)</div><div class="line">plot(f(45*4*4:4*60*4),X(4*45*4:4*60*4));grid</div><div class="line">xlabel(&apos;Hz&apos;),ylabel(&apos;|H(ejw)|&apos;)</div><div class="line"></div><div class="line">%数据长度N扩大4*4*4倍后观察信号频谱</div><div class="line">N=N*4;</div><div class="line">f=0:fs/N:fs/2-1/N;</div><div class="line"></div><div class="line">X=fft(x);</div><div class="line">X=abs(X);</div><div class="line"></div><div class="line">subplot(414)</div><div class="line">plot(f(45*4*4*4:4*60*4*4),X(4*45*4*4:4*60*4*4));grid</div><div class="line">xlabel(&apos;Hz&apos;),ylabel(&apos;|H(ejw)|&apos;)</div></pre></td></tr></table></figure></p>
+<p>信号的频谱分析:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">a=10; %波信号振幅</div><div class="line">fb1=3e6; %频率fb1</div><div class="line">fb2=4e6; %频率fb2</div><div class="line">fs=2.4*fb2; %抽样频率fs</div><div class="line">T=1e-5; %调频周期，也可设置抽样点数</div><div class="line">t=0:(1/fs):T;</div><div class="line">N=T*fs+1;</div><div class="line">df=fs/N;</div><div class="line">f=0:df:(N-1)*fs/N;</div><div class="line">x=1/fs*a*(cos(2*pi*fb1.*t)+cos(2*pi*fb2.*t)); %线性调频连续波信号</div><div class="line"></div><div class="line">subplot(4,1,1);</div><div class="line">plot(t,x);</div><div class="line">title(&apos;波信号&apos;)</div><div class="line"></div><div class="line">subplot(4,1,2);</div><div class="line">stem(t,x);</div><div class="line">title(&apos;抽样后&apos;);</div><div class="line"></div><div class="line">subplot(4,1,3);</div><div class="line">stem(f,abs(fft(x,N)));</div><div class="line">title(&apos;频谱幅度&apos;);</div><div class="line"></div><div class="line">subplot(4,1,4);</div><div class="line">stem(f,angle(fft(x,N)));</div><div class="line">title(&apos;频谱相位&apos;);</div></pre></td></tr></table></figure>
+<p>下面给出一个简单的例子算法：flanger</p>
+<p>请将以下代码复制到文本文件并命名为flanger.m<br>%=========================================<br>function y=flanger(x,SAMPLERATE,Modfreq,Width)<br>indata = x;<br>Delay=Width; % basic delay of input sample in sec<br>DELAY=round(Delay<em>SAMPLERATE); % basic delay in # samples<br>WIDTH=round(Width</em>SAMPLERATE); % modulation width in # samples<br>if WIDTH&gt;DELAY<br>error(‘!!!’);<br>return;<br>end<br>MODFREQ=Modfreq/SAMPLERATE; % modulation frequency in # samples<br>LEN=length(x); % # of samples in WAV-file<br>L=2+DELAY+WIDTH<em>2; % length of the entire delay<br>Delayline=zeros(L,1); % memory allocation for delay<br>y=zeros(size(x)); % memory allocation for output vector<br>BL = 0.7;<br>FF = 0.7;<br>FB = 0.8;<br>dout = 0;<br>for n=1:(LEN-1)<br>M=MODFREQ;<br>MOD=sin(M</em>2<em>pi</em>n);<br>ZEIGER=15+DELAY+WIDTH<em>MOD;<br>i=floor(ZEIGER);<br>frac=ZEIGER-i;<br>x(n) = x(n) + FB</em>dout;<br>Delayline=[x(n);Delayline(1:L-1)];<br>dout=Delayline(i+1)<em>frac+Delayline(i)</em>(1-frac);<br>y(n) = x(n)<em>BL + dout</em>FF;<br>end<br>mix = 0.7;<br>y = indata<em>(1-mix) + y</em>mix;<br>y = y/max(abs(y));<br>%=========================================</p>
+<p>在matlab界面中将当前工作路径Current Directory设置为放置flanger.m的文件夹。然后执行后面的代码。</p>
+<p>假设我们需要的采样率是44100Hz，生成一段10秒钟的白噪音，然后将其通过flanger算法，最后保存为flanger.wav</p>
+<p>fs = 44100; %设置采样率。<br>x = randn(10<em>fs, 1); %产生10</em>fs个样点的白噪声数据，该数据为服从标准正态分布的伪随机序列。<br>x = x/max(abs(x))*0.99; %将x的幅度压缩到[-0.99 +0.99]以内，防止写wav文件时出现错误。<br>soundsc(x,fs); %播放处理前的声音。<br>y = flanger(x,fs,0.1,0.001); %flanger处理，输出结果为y。<br>soundsc(y,fs); %播放处理后的声音。<br>wavwrite(y,fs,’flanger.wav’);</p>
+<p>这个例子程序里面有个bug，flanger的width参数不能调得太小，以后会进一步修正。</p>
+<p>另外程序中的BL、FF、FB三个参数决定了flanger的音色，可以自行调节。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xuerongli.github.io/2017/03/24/Matlab_wav/" data-id="cj0nxnmsn0000qop6xs3ld054" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wav/">wav</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/24/Matlab_wav2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Matlab处理音频2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/24/Workflow/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">工作流引擎</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Activiti/">Activiti</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DIP/">DIP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDL/">IDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Video/">Video</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/matlab/">matlab</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BPM/">BPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DIP/">DIP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ENVI/">ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HDF/">HDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetCDF/">NetCDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Workflow/">Workflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/m-map/">m_map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/">video</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wav/">wav</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Activiti/" style="font-size: 10px;">Activiti</a> <a href="/tags/BPM/" style="font-size: 12.5px;">BPM</a> <a href="/tags/DIP/" style="font-size: 10px;">DIP</a> <a href="/tags/ENVI/" style="font-size: 10px;">ENVI</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/HDF/" style="font-size: 12.5px;">HDF</a> <a href="/tags/IDL/" style="font-size: 17.5px;">IDL</a> <a href="/tags/NetCDF/" style="font-size: 12.5px;">NetCDF</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/Workflow/" style="font-size: 12.5px;">Workflow</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/m-map/" style="font-size: 10px;">m_map</a> <a href="/tags/markdown/" style="font-size: 12.5px;">markdown</a> <a href="/tags/matlab/" style="font-size: 20px;">matlab</a> <a href="/tags/video/" style="font-size: 10px;">video</a> <a href="/tags/wav/" style="font-size: 12.5px;">wav</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/24/Matlab_wav2/">Matlab处理音频2</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/Matlab_wav/">Matlab处理音频</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/Workflow/">工作流引擎</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/Matlab_video/">Matlab 视频处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/23/Activiti/">工作流引擎Activiti</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Xuerong Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
